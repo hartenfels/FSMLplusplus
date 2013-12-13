@@ -2,13 +2,7 @@ FSML++
 ======
 FSML implementation using C++.
 
-To Do
------
-- [ ] Generate a better, more fitting abstract syntax so that we don't need so much code to transform it again.
-- [ ] Fix code generation to be less magic (needs better abstract syntax).
-- [ ] Find a good way to generate visual representation with proper layout.
-- [ ] Proper run options.
-- [ ] Documentation.
+Please see to-dos in issues and leave feedback there.
 
 Build
 -----
