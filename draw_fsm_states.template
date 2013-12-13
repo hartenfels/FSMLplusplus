@@ -1,0 +1,7 @@
+\node{state}	(BIFI_2) 	[right of=BIFI_1]	{\parbox{1,5cm}{\centering BIFI_3}}
+
+
+	ODER ODER ODER
+
+
+\node[state]    (BIFI_2) 	[right of=BIFI_1]  	{\parbox{1,5cm}{\centering BIFI_3_1\linebreak BIFI_3_2}}

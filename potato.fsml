@@ -1,0 +1,24 @@
+initial state locked {
+  ticket/collect -> unlocked;
+  pass/alarm -> exception;
+  potato/potato -> potato;
+}
+state unlocked {
+  ticket/eject;
+  pass -> locked;
+  potato/potato -> potato;
+}
+state exception {
+  ticket/eject;
+  pass;
+  mute;
+  release -> locked;
+  potato/potato -> potato;
+}
+state potato {
+  ticket/potato;
+  pass/potato;
+  mute/potato;
+  release/potato;
+  potato/potato;
+}

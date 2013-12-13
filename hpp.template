@@ -1,0 +1,14 @@
+#ifndef FSML_GENERATE%1%_HPP
+#define FSML_GENERATE%1%_HPP
+#include "fsml/Machine.hpp"
+namespace fsml
+{
+
+/**This generated code will create a final state machine as per the following FSML code:
+
+%2%
+@return An fsml::Machine corresponding to the FSML code it was generated from.*/
+Machine createMachine%1%();
+
+}
+#endif // FSML_GENERATE%1%_HPP

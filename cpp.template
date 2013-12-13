@@ -1,0 +1,19 @@
+#include "generate/Generate%1%.hpp"
+namespace fsml
+{
+
+Machine
+createMachine%1%()
+{
+    return Machine{
+		// States
+		{{
+%2%		}},
+		// Initial State
+		%3%,
+		// Steps
+		{{
+%4%		}}};
+}
+
+}

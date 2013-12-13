@@ -1,0 +1,7 @@
+(BIFI_2)	edge [bend left]  	node {BIFI_4} 		(BIFI_6)
+
+
+ODER ODER ODER
+
+
+(BIFI_2)	edge [loop]	node {BIFI_4}		(BIFI_2)

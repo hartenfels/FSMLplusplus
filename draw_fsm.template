@@ -1,0 +1,31 @@
+\documentclass{article}
+\pagestyle{empty}
+\usepackage[paperwidth=BIFI_1cm,paperheight=15cm,top=0cm,bottom=0cm,left=0cm,right=0cm]{geometry}
+\usepackage{color}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage[latin1]{inputenc}
+\usepackage{verbatim}
+
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[->,shorten >=1pt,node distance=4,5cm, semithick]
+
+\tikzstyle{initial}= [fill=gray!50!white,text=black]
+
+
+\node[initial,state] 	(BIFI_2)   				{\parbox{1,5cm}{\centering BIFI_5}};
+	BIFI_3  
+  
+  ;
+  
+\tikzstyle{every node}=[font=\footnotesize]
+
+\path BIFI_6 	
+        ;
+  
+\end{tikzpicture}
+\end{center}
+\end{document}
+
