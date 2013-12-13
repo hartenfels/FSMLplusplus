@@ -1,11 +1,11 @@
-#include "generate/Generate.hpp"
+#include "generate/Generate1386937547.hpp"
 namespace fsml
 {
 
 Machine
-createMachine1386353591()
+createMachine1386937547()
 {
-    return Machine(
+    return Machine{
 		// States
 		{{
 			"locked",
@@ -16,7 +16,7 @@ createMachine1386353591()
 		"locked",
 		// Steps
 		{{
-			StepTup("locked", "ticket" , "collect", "unlocked"),
+			StepTup("locked", "ticket", "collect", "unlocked"),
 			StepTup("locked", "pass", "alarm", "exception"),
 			StepTup("unlocked", "ticket", "eject", "unlocked"),
 			StepTup("unlocked", "pass", "", "locked"),
@@ -24,7 +24,7 @@ createMachine1386353591()
 			StepTup("exception", "pass", "", "exception"),
 			StepTup("exception", "mute", "", "exception"),
 			StepTup("exception", "release", "", "locked"),
-		}});
+		}}};
 }
 
 }
