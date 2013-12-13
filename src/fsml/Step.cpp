@@ -15,7 +15,7 @@ Step::invoke()
 	return target;
 }
 
-const State*
+const State* const
 Step::getTarget() const
 {
 	return target;

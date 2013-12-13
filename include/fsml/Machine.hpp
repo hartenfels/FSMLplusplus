@@ -21,6 +21,7 @@ public:
 	virtual const size_t reachableFrom(const State* const start) const;
 	virtual void registerAt(const std::string& action,
 		const ActionFunction& func);
+	virtual const State& getCurrentState() const;
 protected:
 	void addStep(const std::string& sourceId, const std::string& input,
 		const std::string& actionId, const std::string& targetId);

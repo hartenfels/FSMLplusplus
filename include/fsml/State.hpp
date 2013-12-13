@@ -9,11 +9,14 @@ namespace fsml
 class State
 {
 public:
+	State(const std::string& id);
 	virtual ~State() = default;
 	virtual const bool addStep(const std::string& input, const Step& step);
 	virtual State* const step(const std::string& input);
+	virtual const std::string& getId() const;
 	virtual const std::unordered_map<std::string, Step>& getSteps() const;
 protected:
+	const std::string id;
 	std::unordered_map<std::string, Step> steps;
 };
 

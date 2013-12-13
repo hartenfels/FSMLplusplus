@@ -11,7 +11,7 @@ Machine::Machine(const vector<string>& states, const string& initial,
 		const vector<StepTup>& steps)
 {
 	for (const string& s : states)
-		if (!stateMap.insert(pair<string, State>(s, State())).second)
+		if (!stateMap.insert(pair<string, State>(s, State(s))).second)
 			throw validator::Exception((format(validator::DISTINCT) % s).str());
 	current = &stateMap.at(initial);
 	for (const auto& s : steps)
@@ -46,6 +46,12 @@ void
 Machine::registerAt(const string& a, const ActionFunction& f)
 {
 	return actionMap.at(a).registerFunction(f);
+}
+
+const State&
+Machine::getCurrentState() const
+{
+	return *current;
 }
 
 

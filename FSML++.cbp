@@ -40,6 +40,21 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Simulation">
+				<Option output="bin/Simulation/fsmlsim" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include/abstract" />
+					<Add directory="include/parser" />
+					<Add directory="include" />
+					<Add directory="include/fsml" />
+					<Add directory="include/validator" />
+					<Add directory="include/generate" />
+				</Compiler>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-pedantic" />
@@ -57,28 +72,73 @@
 		<Unit filename="include/fsml/Machine.hpp" />
 		<Unit filename="include/fsml/State.hpp" />
 		<Unit filename="include/fsml/Step.hpp" />
-		<Unit filename="include/generate/Generate.hpp" />
-		<Unit filename="include/generate/Generator.hpp" />
-		<Unit filename="include/parser/Machine.hpp" />
-		<Unit filename="include/parser/NewParser.hpp" />
-		<Unit filename="include/parser/Parser.hpp" />
-		<Unit filename="include/parser/State.hpp" />
-		<Unit filename="include/parser/Step.hpp" />
+		<Unit filename="include/generate/Generator.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="include/generate/Machine1386937547.hpp" />
+		<Unit filename="include/parser/Machine.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="include/parser/NewParser.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="include/parser/Parser.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="include/parser/State.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="include/parser/Step.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="include/validator/Exception.hpp" />
-		<Unit filename="include/validator/Validator.hpp" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include/validator/Validator.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="simulate.cpp">
+			<Option target="Simulation" />
+		</Unit>
 		<Unit filename="src/fsml/Action.cpp" />
 		<Unit filename="src/fsml/Machine.cpp" />
 		<Unit filename="src/fsml/State.cpp" />
 		<Unit filename="src/fsml/Step.cpp" />
-		<Unit filename="src/generate/Generate.cpp" />
-		<Unit filename="src/generate/Generator.cpp" />
-		<Unit filename="src/parser/Machine.cpp" />
-		<Unit filename="src/parser/Parser.cpp" />
-		<Unit filename="src/parser/State.cpp" />
-		<Unit filename="src/parser/Step.cpp" />
+		<Unit filename="src/generate/Generator.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/generate/Machine1386937547.cpp" />
+		<Unit filename="src/parser/Machine.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/parser/Parser.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/parser/State.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/parser/Step.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/validator/Exception.cpp" />
-		<Unit filename="src/validator/Validator.cpp" />
+		<Unit filename="src/validator/Validator.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

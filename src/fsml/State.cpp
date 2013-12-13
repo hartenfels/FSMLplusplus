@@ -3,6 +3,8 @@
 namespace fsml
 { using namespace std;
 
+State::State(const string& i) : id{i} {}
+
 const bool
 State::addStep(const string& input, const Step& step)
 {
@@ -13,6 +15,12 @@ State* const
 State::step(const string& input)
 {
 	return steps.at(input).invoke();
+}
+
+const string&
+State::getId() const
+{
+	return id;
 }
 
 const unordered_map<string, Step>&

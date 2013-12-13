@@ -40,13 +40,26 @@ OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
 OUT_RELEASE = bin/Release/fsmlpp
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/validator/Validator.o $(OBJDIR_DEBUG)/src/validator/Exception.o $(OBJDIR_DEBUG)/src/parser/Step.o $(OBJDIR_DEBUG)/src/parser/State.o $(OBJDIR_DEBUG)/src/parser/Parser.o $(OBJDIR_DEBUG)/src/parser/Machine.o $(OBJDIR_DEBUG)/src/generate/Generator.o $(OBJDIR_DEBUG)/src/generate/Generate.o $(OBJDIR_DEBUG)/src/fsml/Step.o $(OBJDIR_DEBUG)/src/fsml/State.o $(OBJDIR_DEBUG)/src/fsml/Machine.o $(OBJDIR_DEBUG)/src/fsml/Action.o
+INC_SIMULATION = $(INC) -Iinclude/abstract -Iinclude/parser -Iinclude -Iinclude/fsml -Iinclude/validator -Iinclude/generate
+CFLAGS_SIMULATION = $(CFLAGS) -g
+RESINC_SIMULATION = $(RESINC)
+RCFLAGS_SIMULATION = $(RCFLAGS)
+LIBDIR_SIMULATION = $(LIBDIR)
+LIB_SIMULATION = $(LIB)
+LDFLAGS_SIMULATION = $(LDFLAGS)
+OBJDIR_SIMULATION = obj/Debug
+DEP_SIMULATION = 
+OUT_SIMULATION = bin/Simulation/fsmlsim
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/validator/Validator.o $(OBJDIR_RELEASE)/src/validator/Exception.o $(OBJDIR_RELEASE)/src/parser/Step.o $(OBJDIR_RELEASE)/src/parser/State.o $(OBJDIR_RELEASE)/src/parser/Parser.o $(OBJDIR_RELEASE)/src/parser/Machine.o $(OBJDIR_RELEASE)/src/generate/Generator.o $(OBJDIR_RELEASE)/src/generate/Generate.o $(OBJDIR_RELEASE)/src/fsml/Step.o $(OBJDIR_RELEASE)/src/fsml/State.o $(OBJDIR_RELEASE)/src/fsml/Machine.o $(OBJDIR_RELEASE)/src/fsml/Action.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/validator/Validator.o $(OBJDIR_DEBUG)/src/validator/Exception.o $(OBJDIR_DEBUG)/src/parser/Step.o $(OBJDIR_DEBUG)/src/parser/State.o $(OBJDIR_DEBUG)/src/parser/Parser.o $(OBJDIR_DEBUG)/src/parser/Machine.o $(OBJDIR_DEBUG)/src/generate/Machine1386937547.o $(OBJDIR_DEBUG)/src/generate/Generator.o $(OBJDIR_DEBUG)/src/fsml/Step.o $(OBJDIR_DEBUG)/src/fsml/State.o $(OBJDIR_DEBUG)/src/fsml/Machine.o $(OBJDIR_DEBUG)/src/fsml/Action.o
 
-all: debug release
+OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/validator/Validator.o $(OBJDIR_RELEASE)/src/validator/Exception.o $(OBJDIR_RELEASE)/src/parser/Step.o $(OBJDIR_RELEASE)/src/parser/State.o $(OBJDIR_RELEASE)/src/parser/Parser.o $(OBJDIR_RELEASE)/src/parser/Machine.o $(OBJDIR_RELEASE)/src/generate/Machine1386937547.o $(OBJDIR_RELEASE)/src/generate/Generator.o $(OBJDIR_RELEASE)/src/fsml/Step.o $(OBJDIR_RELEASE)/src/fsml/State.o $(OBJDIR_RELEASE)/src/fsml/Machine.o $(OBJDIR_RELEASE)/src/fsml/Action.o
 
-clean: clean_debug clean_release
+OBJ_SIMULATION = $(OBJDIR_SIMULATION)/src/validator/Exception.o $(OBJDIR_SIMULATION)/src/generate/Machine1386937547.o $(OBJDIR_SIMULATION)/src/fsml/Step.o $(OBJDIR_SIMULATION)/src/fsml/State.o $(OBJDIR_SIMULATION)/src/fsml/Machine.o $(OBJDIR_SIMULATION)/src/fsml/Action.o $(OBJDIR_SIMULATION)/simulate.o
+
+all: debug release simulation
+
+clean: clean_debug clean_release clean_simulation
 
 before_debug: 
 	test -d bin/Debug || mkdir -p bin/Debug
@@ -84,11 +97,11 @@ $(OBJDIR_DEBUG)/src/parser/Parser.o: src/parser/Parser.cpp
 $(OBJDIR_DEBUG)/src/parser/Machine.o: src/parser/Machine.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/parser/Machine.cpp -o $(OBJDIR_DEBUG)/src/parser/Machine.o
 
+$(OBJDIR_DEBUG)/src/generate/Machine1386937547.o: src/generate/Machine1386937547.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/generate/Machine1386937547.cpp -o $(OBJDIR_DEBUG)/src/generate/Machine1386937547.o
+
 $(OBJDIR_DEBUG)/src/generate/Generator.o: src/generate/Generator.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/generate/Generator.cpp -o $(OBJDIR_DEBUG)/src/generate/Generator.o
-
-$(OBJDIR_DEBUG)/src/generate/Generate.o: src/generate/Generate.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/generate/Generate.cpp -o $(OBJDIR_DEBUG)/src/generate/Generate.o
 
 $(OBJDIR_DEBUG)/src/fsml/Step.o: src/fsml/Step.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/fsml/Step.cpp -o $(OBJDIR_DEBUG)/src/fsml/Step.o
@@ -147,11 +160,11 @@ $(OBJDIR_RELEASE)/src/parser/Parser.o: src/parser/Parser.cpp
 $(OBJDIR_RELEASE)/src/parser/Machine.o: src/parser/Machine.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/parser/Machine.cpp -o $(OBJDIR_RELEASE)/src/parser/Machine.o
 
+$(OBJDIR_RELEASE)/src/generate/Machine1386937547.o: src/generate/Machine1386937547.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/generate/Machine1386937547.cpp -o $(OBJDIR_RELEASE)/src/generate/Machine1386937547.o
+
 $(OBJDIR_RELEASE)/src/generate/Generator.o: src/generate/Generator.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/generate/Generator.cpp -o $(OBJDIR_RELEASE)/src/generate/Generator.o
-
-$(OBJDIR_RELEASE)/src/generate/Generate.o: src/generate/Generate.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/generate/Generate.cpp -o $(OBJDIR_RELEASE)/src/generate/Generate.o
 
 $(OBJDIR_RELEASE)/src/fsml/Step.o: src/fsml/Step.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/fsml/Step.cpp -o $(OBJDIR_RELEASE)/src/fsml/Step.o
@@ -174,5 +187,48 @@ clean_release:
 	rm -rf $(OBJDIR_RELEASE)/src/generate
 	rm -rf $(OBJDIR_RELEASE)/src/fsml
 
-.PHONY: before_debug after_debug clean_debug before_release after_release clean_release
+before_simulation: 
+	test -d bin/Simulation || mkdir -p bin/Simulation
+	test -d $(OBJDIR_SIMULATION)/src/validator || mkdir -p $(OBJDIR_SIMULATION)/src/validator
+	test -d $(OBJDIR_SIMULATION)/src/generate || mkdir -p $(OBJDIR_SIMULATION)/src/generate
+	test -d $(OBJDIR_SIMULATION)/src/fsml || mkdir -p $(OBJDIR_SIMULATION)/src/fsml
+	test -d $(OBJDIR_SIMULATION) || mkdir -p $(OBJDIR_SIMULATION)
+
+after_simulation: 
+
+simulation: before_simulation out_simulation after_simulation
+
+out_simulation: before_simulation $(OBJ_SIMULATION) $(DEP_SIMULATION)
+	$(LD) $(LIBDIR_SIMULATION) -o $(OUT_SIMULATION) $(OBJ_SIMULATION)  $(LDFLAGS_SIMULATION) $(LIB_SIMULATION)
+
+$(OBJDIR_SIMULATION)/src/validator/Exception.o: src/validator/Exception.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/validator/Exception.cpp -o $(OBJDIR_SIMULATION)/src/validator/Exception.o
+
+$(OBJDIR_SIMULATION)/src/generate/Machine1386937547.o: src/generate/Machine1386937547.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/generate/Machine1386937547.cpp -o $(OBJDIR_SIMULATION)/src/generate/Machine1386937547.o
+
+$(OBJDIR_SIMULATION)/src/fsml/Step.o: src/fsml/Step.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/fsml/Step.cpp -o $(OBJDIR_SIMULATION)/src/fsml/Step.o
+
+$(OBJDIR_SIMULATION)/src/fsml/State.o: src/fsml/State.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/fsml/State.cpp -o $(OBJDIR_SIMULATION)/src/fsml/State.o
+
+$(OBJDIR_SIMULATION)/src/fsml/Machine.o: src/fsml/Machine.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/fsml/Machine.cpp -o $(OBJDIR_SIMULATION)/src/fsml/Machine.o
+
+$(OBJDIR_SIMULATION)/src/fsml/Action.o: src/fsml/Action.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/fsml/Action.cpp -o $(OBJDIR_SIMULATION)/src/fsml/Action.o
+
+$(OBJDIR_SIMULATION)/simulate.o: simulate.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c simulate.cpp -o $(OBJDIR_SIMULATION)/simulate.o
+
+clean_simulation: 
+	rm -f $(OBJ_SIMULATION) $(OUT_SIMULATION)
+	rm -rf bin/Simulation
+	rm -rf $(OBJDIR_SIMULATION)/src/validator
+	rm -rf $(OBJDIR_SIMULATION)/src/generate
+	rm -rf $(OBJDIR_SIMULATION)/src/fsml
+	rm -rf $(OBJDIR_SIMULATION)
+
+.PHONY: before_debug after_debug clean_debug before_release after_release clean_release before_simulation after_simulation clean_simulation
 
