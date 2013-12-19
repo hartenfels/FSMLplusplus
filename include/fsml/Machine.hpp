@@ -2,6 +2,7 @@
 #define FSML_MACHINE_HPP
 #include "fsml/Action.hpp"
 #include "fsml/State.hpp"
+#include "parser/FlatMachine.hpp"
 #include <string>
 #include <tuple>
 #include <unordered_map>
@@ -14,8 +15,9 @@ typedef std::tuple<std::string, std::string, std::string, std::string> StepTup;
 class Machine
 {
 public:
-	Machine(const std::vector<std::string>& states, const std::string& initial,
-		const std::vector<StepTup>& steps);
+	Machine(const std::vector<std::string>& states,
+		const std::vector<std::string>& initials,
+		const std::vector<FlatStep>& steps);
 	virtual ~Machine() = default;
 	virtual Machine& operator<<(const std::string& input);
 	virtual const size_t reachableFrom(const State* const start) const;

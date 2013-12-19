@@ -1,6 +1,6 @@
 \documentclass{article}
 \pagestyle{empty}
-\usepackage[paperwidth=%1%cm,paperheight=15cm,top=0cm,bottom=0cm,left=0cm,right=0cm]{geometry}
+\usepackage[paperwidth=%1%cm,paperheight=%2%cm,top=0cm,bottom=0cm,left=0cm,right=0cm]{geometry}
 \usepackage{color}
 \usepackage{pgf}
 \usepackage{tikz}
@@ -14,11 +14,11 @@
 
 \tikzstyle{initial}= [fill=gray!50!white,text=black]
 
-
-\node[initial,state](%2%){\parbox{1.5cm}{\centering %2%}};
-%3%
-
+\node[initial,state](%3%){\parbox{1.5cm}{\centering %3%}};
+%4%
 \tikzstyle{every node}=[font=\footnotesize]
+
+\path%5%;
 
 \end{tikzpicture}
 \end{center}

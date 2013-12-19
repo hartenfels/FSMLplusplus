@@ -7,15 +7,20 @@
 namespace fsml
 { using namespace std; using boost::format;
 
-Machine::Machine(const vector<string>& states, const string& initial,
-		const vector<StepTup>& steps)
+Machine::Machine(const vector<string>& states, const vector<string>& initials,
+		const vector<FlatStep>& steps)
 {
+	if (initials.size() < 1)
+		throw validator::Exception(validator::NO_INITIAL);
+	else if (initials.size() > 1)
+		throw validator::Exception(validator::INITIALS);
+	current = &(*stateMap.insert(pair<string, State>(initials[0],
+			State(initials[0]))).first).second;
 	for (const string& s : states)
 		if (!stateMap.insert(pair<string, State>(s, State(s))).second)
 			throw validator::Exception((format(validator::DISTINCT) % s).str());
-	current = &stateMap.at(initial);
-	for (const auto& s : steps)
-		addStep(get<0>(s), get<1>(s), get<2>(s), get<3>(s));
+	for (const FlatStep& s : steps)
+		addStep(s.source, s.input, s.action, s.target);
 	if (reachableFrom(current) < stateMap.size())
 		throw validator::Exception(validator::REACHABLE);
 }
@@ -60,7 +65,7 @@ Machine::addStep(const string& s, const string& i, const string& a,
 		const string& t)
 {
 	State* const src{&stateMap.at(s)};
-	State* const dst{t.empty() ? src : [&](){
+	State* const dst{[&](){
 				const auto it = stateMap.find(t);
 				if (it == stateMap.end())
 					throw validator::Exception(

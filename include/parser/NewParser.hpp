@@ -31,12 +31,15 @@ struct NewFsmlGrammar : qi::grammar<Iterator, fsmlcs::space_type>
 	NewFsmlGrammar() :
 		NewFsmlGrammar::base_type{fsm}
 	{
-		fsm        = *state[[](){std::cout << "state done\n";}];
-		state      = initial >> "state" >> text[[](){std::cout << "name\n";}] >>
-		             '{' >> *transition[[](){std::cout << "transition\n";}] >> '}';
-		initial    = -qi::lit("initial")[[](){std::cout << "initial\n";}];
+		using namespace std;
+		fsm        = *state[[](){cout << "state done\n";}];
+		state      = initial >> "state" >> text[[](){cout << "name\n";}] >>
+		             '{' >> *transition[[](){cout << "transition\n";}] >> '}';
+		initial    = -qi::lit("initial")[[](){cout << "initial\n";}];
 		transition %= text >> -('/' >> text) >> -("->" >> text) >> ';';
-        text       = qi::lexeme[+(fsmlcs::alpha)];
+        text       = qi::lexeme[+(fsmlcs::alpha)][[](vector<char> v){
+				v.push_back('\0');
+				cout << string(v.data()) << '\n';}];
 	}
 	qi::rule<Iterator, fsmlcs::space_type> fsm;
 	qi::rule<Iterator, fsmlcs::space_type> state;

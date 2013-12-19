@@ -6,11 +6,12 @@ Machine
 create%1%()
 {
     return Machine{
-		// States
+		// Initial States
 		{{
 %2%		}},
-		// Initial State
-		%3%,
+		// Other States
+		{{
+%3%		}},
 		// Steps
 		{{
 %4%		}}};

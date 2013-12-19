@@ -77,6 +77,10 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="include/generate/Machine1386937547.hpp" />
+		<Unit filename="include/parser/FlatMachine.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="include/parser/Machine.hpp">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -118,6 +122,10 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="src/generate/Machine1386937547.cpp" />
+		<Unit filename="src/parser/FlatMachine.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/parser/Machine.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />

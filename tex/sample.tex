@@ -1,37 +1,47 @@
 \documentclass{article}
 \pagestyle{empty}
-\usepackage[paperwidth=22cm,paperheight=10.1cm,top=0cm,bottom=0cm,left=0cm,right=0cm]{geometry}
-\usepackage{color}
-\usepackage{pgf}
-\usepackage{tikz}
-\usetikzlibrary{arrows,automata}
-\usepackage[latin1]{inputenc}
-\usepackage{verbatim}
-
+\usepackage[pdf,singlefile]{graphviz}
 \begin{document}
-\begin{center}
-\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=10cm, semithick]
-  %\tikzstyle{every state}=[fill=none,draw=black,text=black]
-  \tikzstyle{initial}= [fill=gray!50!white,text=black]
-
-
-  \node[initial,state] 	(A)                   	{$locked$};
-  \node[state]         	(B) [below left of=A] 	{$unlocked$};
-  \node[state]			(C) [below right of=A] 	{$exception$};
- % \node[accepting,state](Z) [above of=A]		{$fin$};
-
-\tikzstyle{every node}=[font=\footnotesize]
-
-  \path (A) edge [bend left]  	node {pass/alarm} 		(C)
-			edge [bend left]  	node {ticket/collect} 	(B)  
-        (B) edge [bend left] 	node {pass} 			(A)
-        	edge [loop left]  	node {ticket/eject} 	(B)
-        (C) edge [bend left]	node {release}			(A)
-        	edge [loop]  		node {ticket/eject} 	(B)
-            edge [loop right]  	node {pass} 	(B)
-            edge [loop below]  	node {mute} 	(B)
-        ;
-  
-\end{tikzpicture}
-\end{center}
+\digraph{finitestatemachine}{
+	rankdir=LR;
+	size="8,5"
+	node [shape = doublecircle];
+    LR0;
+	node [shape = doublecircle];
+    LR3;
+	node [shape = doublecircle];
+    LR4;
+	node [shape = doublecircle];
+    LR8;
+	node [shape = circle];
+	LR0 -> LR2 [ label = "SS(B)" ];
+	node [shape = circle];
+	LR0 -> LR1 [ label = "SS(S)" ];
+	node [shape = circle];
+	LR1 -> LR3 [ label = "S($end)" ];
+	node [shape = circle];
+	LR2 -> LR6 [ label = "SS(b)" ];
+	node [shape = circle];
+	LR2 -> LR5 [ label = "SS(a)" ];
+	node [shape = circle];
+	LR2 -> LR4 [ label = "S(A)" ];
+	node [shape = circle];
+	LR5 -> LR7 [ label = "S(b)" ];
+	node [shape = circle];
+	LR5 -> LR5 [ label = "S(a)" ];
+	node [shape = circle];
+	LR6 -> LR6 [ label = "S(b)" ];
+	node [shape = circle];
+	LR6 -> LR6 [ label = "S(hsmf)" ];
+	node [shape = circle];
+	LR6 -> LR5 [ label = "S(a)" ];
+	node [shape = circle];
+	LR7 -> LR8 [ label = "S(b)" ];
+	node [shape = circle];
+	LR7 -> LR5 [ label = "S(a)" ];
+	node [shape = circle];
+	LR8 -> LR6 [ label = "S(b)" ];
+	node [shape = circle];
+	LR8 -> LR5 [ label = "S(a)" ];
+} 
 \end{document}

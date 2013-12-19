@@ -13,7 +13,9 @@ createMachine1386937547()
 			"exception",
 		}},
 		// Initial State
+		{{
 		"locked",
+		}},
 		// Steps
 		{{
 			StepTup("locked", "ticket", "collect", "unlocked"),

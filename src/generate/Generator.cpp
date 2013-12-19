@@ -7,15 +7,18 @@
 #include <boost/format.hpp>
 namespace fsml
 { using namespace std; using boost::format;
+namespace karma = boost::spirit::karma;
+namespace fsmlcs = boost::spirit::ascii;
 
 const string HPP{fileToString("hpp.template")};
 const string CPP{fileToString("cpp.template")};
 const string LATEX{fileToString("latex.template")};
-constexpr char INITIAL[]{"\"%1%\""};
 constexpr char STATE[]{"\t\t\"%1%\",\n"};
 constexpr char STEP[]{"\t\tStepTup(\"%1%\", \"%2%\", \"%3%\", \"%4%\"),\n"};
 constexpr char NODE[]
 		{"\\node[state](%1%)[right of=%2%]{\\parbox{1.5cm}{\\centering %1%}};"};
+constexpr char SELF[]{"(%1%)edge[loop]node{%2%}(%1%)"};
+constexpr char OTHER[]{"(%1%)edge[bend left]node{%2%}(%3%)"};
 
 string
 fileToString(const string& file)
@@ -28,32 +31,6 @@ fileToString(const string& file)
 	return ss.str();
 }
 
-template<typename T, size_t N> string
-formatVector(const vector<T>& v, const std::string& tmpl,
-		array<const function<string (const T&)>, N> funcs)
-{
-    if (v.empty())
-		return "";
-	stringstream ss;
-	for (const T& s : v) {
-		format form{tmpl};
-		for (const function<string (const T&)> f : funcs)
-			form % f(s);
-		ss << form.str();
-	}
-	return ss.str();
-}
-
-static const vector<StepTup>
-steps(const vector<ast::State>& sts)
-{
-    vector<StepTup> steps;
-	for (const auto& sta : sts)
-		for (const auto& ste : sta.steps)
-            steps.push_back(StepTup(sta.id, ste.input, ste.action, ste.target));
-    return steps;
-}
-
 const string
 generateHeader(const string& identifier, const string& fsmlCode)
 {
@@ -61,34 +38,35 @@ generateHeader(const string& identifier, const string& fsmlCode)
 }
 
 const string
-generateSource(const string& identifier, const ast::Machine& am)
+generateSource(const string& identifier, const FlatMachine& fm)
 {
-	// Magic. TODO: make less magic, probably via a better abstract syntax.
-	return (format(CPP) % identifier % formatVector<ast::State, 1>(am.states,
-			STATE, {{[](const ast::State& st){return st.id;}}}) %
-			(format(INITIAL) % find_if_not(am.states.begin(), am.states.end(),
-			[](const ast::State& s){return s.initial.empty();})->id) %
-			formatVector<StepTup, 4>(steps(am.states), STEP,
-			{{[](const StepTup& st){return get<0>(st);},
-			[](const StepTup& st){return get<1>(st);},
-			[](const StepTup& st){return get<2>(st);},
-			[](const StepTup& st){return get<3>(st).empty() ? get<0>(st) :
-			get<3>(st);}}})).str();
+	string states, steps;
+	karma::generate(back_insert_iterator<string>(states),
+			*("\t\t\"" << +fsmlcs::alpha << "\",\n"), fm.states);
+	const vector<string> v(fm.steps.begin(), fm.steps.end());
+	karma::generate(back_insert_iterator<string>(steps),
+			*("\t\t" << +karma::char_ << ",\n"), v);
+	return (format(CPP) % identifier % (format(STATE) %	fm.initials[0]) %
+			states % steps).str();
 }
 
 const string
-generateLatex(const string&, const ast::Machine& am)
+generateLatex(const string& init, const vector<string>& states,
+	const vector<StepTup>& self, const vector<StepTup>& other)
 {
-	const ast::State* const init = &*find_if_not(am.states.begin(),
-			am.states.end(), [](const ast::State& s){return s.initial.empty();});
-	const ast::State* prev = init;
-	stringstream ss;
-	for (const ast::State& s : am.states) {
-		if (&s == init) continue;
-		ss << (format(NODE) % s.id % prev->id).str() << '\n';
+	const string* prev{&init};
+	stringstream ss1, ss2;
+	for (const string& s : states) {
+		ss1 << (format(NODE) % s % *prev).str() << '\n';
 		prev = &s;
 	}
-	return (format(LATEX) % (am.states.size() * 5) % init->id % ss.str()).str();
+	for (const StepTup& tup : self)
+		ss2 << (format(SELF) % get<0>(tup) % get<1>(tup)).str() << '\n';
+	for (const StepTup& tup : other)
+		ss2 << (format(OTHER) % get<0>(tup) % get<1>(tup) %
+				get<3>(tup)).str() << '\n';
+	return (format(LATEX) % (5 + states.size() * 5) % (6 + states.size()) % init % ss1.str() %
+			ss2.str()).str();
 }
 
 }
