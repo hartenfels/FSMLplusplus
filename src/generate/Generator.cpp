@@ -10,9 +10,12 @@ namespace fsml
 
 const string HPP{fileToString("hpp.template")};
 const string CPP{fileToString("cpp.template")};
+const string LATEX{fileToString("latex.template")};
 constexpr char INITIAL[]{"\"%1%\""};
-constexpr char STATE[]{"\t\t\t\"%1%\",\n"};
-constexpr char STEP[]{"\t\t\tStepTup(\"%1%\", \"%2%\", \"%3%\", \"%4%\"),\n"};
+constexpr char STATE[]{"\t\t\"%1%\",\n"};
+constexpr char STEP[]{"\t\tStepTup(\"%1%\", \"%2%\", \"%3%\", \"%4%\"),\n"};
+constexpr char NODE[]
+		{"\\node[state](%1%)[right of=%2%]{\\parbox{1.5cm}{\\centering %1%}};"};
 
 string
 fileToString(const string& file)
@@ -57,7 +60,7 @@ generateHeader(const string& identifier, const string& fsmlCode)
 	return (format(HPP) % identifier % fsmlCode).str();
 }
 
-const std::string
+const string
 generateSource(const string& identifier, const ast::Machine& am)
 {
 	// Magic. TODO: make less magic, probably via a better abstract syntax.
@@ -71,6 +74,21 @@ generateSource(const string& identifier, const ast::Machine& am)
 			[](const StepTup& st){return get<2>(st);},
 			[](const StepTup& st){return get<3>(st).empty() ? get<0>(st) :
 			get<3>(st);}}})).str();
+}
+
+const string
+generateLatex(const string&, const ast::Machine& am)
+{
+	const ast::State* const init = &*find_if_not(am.states.begin(),
+			am.states.end(), [](const ast::State& s){return s.initial.empty();});
+	const ast::State* prev = init;
+	stringstream ss;
+	for (const ast::State& s : am.states) {
+		if (&s == init) continue;
+		ss << (format(NODE) % s.id % prev->id).str() << '\n';
+		prev = &s;
+	}
+	return (format(LATEX) % (am.states.size() * 5) % init->id % ss.str()).str();
 }
 
 }

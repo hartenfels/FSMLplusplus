@@ -3,7 +3,7 @@ namespace fsml
 {
 
 Machine
-createMachine%1%()
+create%1%()
 {
     return Machine{
 		// States

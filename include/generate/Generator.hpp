@@ -11,6 +11,7 @@ const std::string generateHeader(const std::string& identifier,
 	const std::string& fsmlCode);
 const std::string generateSource(const std::string& identifier,
 	const ast::Machine& am);
+const std::string generateLatex(const std::string&, const ast::Machine& am);
 
 }
 #endif // FSML_GENERATOR_HPP

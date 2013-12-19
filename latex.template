@@ -5,27 +5,21 @@
 \usepackage{pgf}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{verbatim}
 
 \begin{document}
 \begin{center}
-\begin{tikzpicture}[->,shorten >=1pt,node distance=4,5cm, semithick]
+\begin{tikzpicture}[->,shorten >=1pt,node distance=4.5cm, semithick]
 
 \tikzstyle{initial}= [fill=gray!50!white,text=black]
 
 
-\node[initial,state](%2%){\parbox{1,5cm}{\centering %2%}};
-	BIFI_3  
-  
-  ;
-  
+\node[initial,state](%2%){\parbox{1.5cm}{\centering %2%}};
+%3%
+
 \tikzstyle{every node}=[font=\footnotesize]
 
-\path BIFI_6 	
-        ;
-  
 \end{tikzpicture}
 \end{center}
 \end{document}
-

@@ -8,7 +8,7 @@ namespace fsml
 
 %2%
 @return An fsml::Machine corresponding to the FSML code it was generated from.*/
-Machine createMachine%1%();
+Machine create%1%();
 
 }
 #endif // FSML_GENERATE%1%_HPP

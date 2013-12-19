@@ -6,29 +6,32 @@
 #include <iostream>
 #include <iterator>
 #include <string>
+#include <boost/xpressive/xpressive.hpp>
 
 int
 main(int argc, const char* argv[])
 {
-	using namespace std;
-	using namespace fsml;
+	using namespace std; using namespace fsml; using namespace boost::xpressive;
 	cout << "FSML++\n";
 	if (argc != 2)
 		cout << "USAGE: fsmlpp SOURCE\n";
 	else {
-		cout << "Opening " << argv[1] << "...";
-		const string s{fsml::fileToString(argv[1])};
+		const string fileArg{argv[1]};
+		cout << "Opening " << fileArg << "...";
+		const string s{fsml::fileToString(fileArg)};
 		cout << "OK\nParsing...";
-		const ast::Machine am = parser::parse<string::const_iterator>(s.begin(), s.end());
+		const ast::Machine am(parser::parse<string::const_iterator>(s.begin(),
+				s.end()));
 		cout << "OK\nValidating...";
 		Machine machine{validator::validate(am)};
 		cout << "OK\nGenerating:\n";
-		const string i{to_string(time(nullptr))};
-		cout << "\tMachine" << i << ".hpp...";
-		ofstream("Machine" + i + ".hpp") << generateHeader(i, s);
-		cout << "OK\n\tMachine" << i << ".cpp...";
-		ofstream("Machine" + i + ".cpp") << generateSource(i, am);
+		const string i{regex_replace(fileArg, sregex{~alpha}, string{})};
+		cout << '\t' << i << ".hpp...";
+		ofstream(i + ".hpp") << generateHeader(i, s);
+		cout << "OK\n\t" << i << ".cpp...";
+		ofstream(i + ".cpp") << generateSource(i, am);
 		cout << "OK\nDone.\n";
+		cout << generateLatex(i, am);
 	}
 }
 
