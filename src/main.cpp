@@ -49,10 +49,10 @@ main(int argc, const char* argv[])
 		const string fileArg{argv[1]};
 		cout << "Opening " << fileArg << "...";
 		const string s{fileToString(fileArg)};
-		cout << "OK\nParsing and flattening...";
-		const FlatMachine fm{parser::parse<string::const_iterator>(s.begin(), s.end())};
+		cout << "OK\nParsing...";
+		const FlatMachine fm{parser::parse<string::const_iterator>(s.begin(), s.end(), fileArg)};
 		cout << "OK\nValidating...";
-		Machine machine{fm.states, fm.initials, fm.steps};
+		Machine machine{fm.initials, fm.states, fm.steps};
 		cout << "OK\nGenerating:\n";
 		const string i{regex_replace(fileArg, sregex{~alpha}, string{})};
 		cout << '\t' << i << ".hpp...";

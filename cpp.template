@@ -1,20 +1,21 @@
-#include "generate/Generate%1%.hpp"
+#include "%1%.hpp"
 namespace fsml
-{
+{ using std::vector; using std::string;
 
 Machine
 create%1%()
 {
     return Machine{
 		// Initial States
-		{{
-%2%		}},
+		vector<string>{
+%2%		},
 		// Other States
-		{{
-%3%		}},
-		// Steps
-		{{
-%4%		}}};
+		vector<string>{
+%3%		},
+		// Transitions
+		vector<FlatStep>{
+%4%		}
+	};
 }
 
 }

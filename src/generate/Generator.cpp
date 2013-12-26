@@ -46,7 +46,7 @@ generateSource(const string& identifier, const FlatMachine& fm)
 	const vector<string> v(fm.steps.begin(), fm.steps.end());
 	karma::generate(back_insert_iterator<string>(steps),
 			*("\t\t" << +karma::char_ << ",\n"), v);
-	return (format(CPP) % identifier % (format(STATE) %	fm.initials[0]) %
+	return (format(CPP) % identifier % (format(STATE) % fm.initials[0]) %
 			states % steps).str();
 }
 

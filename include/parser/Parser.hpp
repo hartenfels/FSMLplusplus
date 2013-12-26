@@ -3,6 +3,7 @@
 #include "parser/Machine.hpp"
 #include "parser/State.hpp"
 #include "parser/Step.hpp"
+#include "fsml/Exceptions.hpp"
 #include <boost/spirit/include/qi.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <string>
@@ -50,14 +51,14 @@ struct FsmlGrammar :
 };
 
 template<typename Iterator>
-ast::Machine parse(Iterator s, const Iterator& e)
+ast::Machine parse(Iterator s, const Iterator& e, const std::string& f)
 {
 	ast::Machine m;
 	if (phrase_parse(s, e, FsmlGrammar<Iterator>(), fsmlcs::space, m.states) &&
 			s == e) {
 		return m;
 	}
-	throw 0;
+	throw fsml::exception::ParserException(f);
 }
 
 }}

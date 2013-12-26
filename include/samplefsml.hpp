@@ -1,5 +1,5 @@
-#ifndef FSML_GENERATEsamplefsml_HPP
-#define FSML_GENERATEsamplefsml_HPP
+#ifndef FSML_samplefsml_HPP
+#define FSML_samplefsml_HPP
 #include "fsml/Machine.hpp"
 namespace fsml
 {
@@ -25,4 +25,4 @@ state exception {
 Machine createsamplefsml();
 
 }
-#endif // FSML_GENERATEsamplefsml_HPP
+#endif // FSML_samplefsml_HPP

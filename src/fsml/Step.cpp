@@ -7,7 +7,7 @@ namespace fsml
 Step::Step(State* const t, Action* const a) :
 	target(t), action(a) {}
 
-State* const
+State*
 Step::invoke()
 {
 	if (action)
@@ -15,7 +15,7 @@ Step::invoke()
 	return target;
 }
 
-const State* const
+const State*
 Step::getTarget() const
 {
 	return target;

@@ -17,7 +17,7 @@ const std::string generateLatex(const std::string& init,
 	const std::vector<StepTup>& other);
 
 template <typename OutputIterator>
-const bool generateKarma(OutputIterator sink, const std::string& identifier,
+bool generateKarma(OutputIterator sink, const std::string& identifier,
 		const std::vector<std::string>& states)
 {
 	using boost::spirit::karma::generate;

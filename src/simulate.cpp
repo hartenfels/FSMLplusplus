@@ -1,4 +1,4 @@
-#include "generate/Machine1386937547.hpp"
+#include "samplefsml.hpp"
 #include <iostream>
 #include <string>
 using namespace fsml; using namespace std;
@@ -7,7 +7,7 @@ int
 main()
 {
 	// Construct FSM
-	Machine m{createMachine1386937547()};
+	Machine m{createsamplefsml()};
 	// Register some functions
 	m.registerAt("alarm",   [](){cout << "action: alarm\n";});
 	m.registerAt("collect", [](){cout << "action: collect\n";});

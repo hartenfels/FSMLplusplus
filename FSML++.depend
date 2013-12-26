@@ -35668,29 +35668,29 @@
 	<functional>
 	<string>
 
-1387480121 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Machine.cpp
+1388094600 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Machine.cpp
 	"fsml/Machine.hpp"
-	"validator/Exception.hpp"
+	"fsml/Exceptions.hpp"
 	<algorithm>
 	<functional>
-	<unordered_set>
 	<boost/format.hpp>
 
-1387480206 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/Machine.hpp
+1388094628 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/Machine.hpp
 	"fsml/Action.hpp"
 	"fsml/State.hpp"
 	"parser/FlatMachine.hpp"
 	<string>
 	<tuple>
 	<unordered_map>
+	<unordered_set>
 	<vector>
 
-1386940180 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/State.hpp
+1388016245 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/State.hpp
 	"fsml/Step.hpp"
 	<string>
 	<unordered_map>
 
-1386940019 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/Step.hpp
+1388016236 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/Step.hpp
 
 1386376545 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/validator/Exception.hpp
 	<string>
@@ -37286,11 +37286,11 @@
 
 1386875626 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/format/detail/unset_macros.hpp
 
-1386940189 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/State.cpp
+1388087237 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/State.cpp
 	"fsml/State.hpp"
-	"validator/Exception.hpp"
+	"fsml/Exceptions.hpp"
 
-1386940029 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Step.cpp
+1388016429 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Step.cpp
 	"fsml/Step.hpp"
 	"fsml/Action.hpp"
 	"fsml/State.hpp"
@@ -37305,12 +37305,12 @@
 1386937547 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/generate/Machine1386937547.hpp
 	"fsml/Machine.hpp"
 
-1386940761 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/simulate.cpp
-	"generate/Machine1386937547.hpp"
+1388087470 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/simulate.cpp
+	"samplefsml.hpp"
 	<iostream>
 	<string>
 
-1387474759 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/main.cpp
+1388089345 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/main.cpp
 	"parser/Parser.hpp"
 	"parser/NewParser.hpp"
 	"parser/FlatMachine.hpp"
@@ -37322,10 +37322,11 @@
 	<string>
 	<boost/xpressive/xpressive.hpp>
 
-1387471613 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/parser/Parser.hpp
+1388015582 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/parser/Parser.hpp
 	"parser/Machine.hpp"
 	"parser/State.hpp"
 	"parser/Step.hpp"
+	"fsml/Exceptions.hpp"
 	<boost/spirit/include/qi.hpp>
 	<boost/fusion/include/adapt_struct.hpp>
 	<string>
@@ -47443,12 +47444,12 @@
 	"fsml/Machine.hpp"
 	"parser/Machine.hpp"
 
-1387474606 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/generate/Generator.hpp
+1388016261 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/generate/Generator.hpp
 	"fsml/Machine.hpp"
 	"parser/FlatMachine.hpp"
 	<boost/spirit/include/karma.hpp>
 
-1387483060 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/generate/Generator.cpp
+1388089316 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/generate/Generator.cpp
 	"generate/Generator.hpp"
 	"parser/State.hpp"
 	<array>
@@ -50024,4 +50025,53 @@
 
 1387482918 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/parser/FlatMachine.hpp
 	"parser/Machine.hpp"
+
+1388006149 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/exception
+
+1388097895 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/Exceptions.hpp
+	<stdexcept>
+	<vector>
+
+1388097902 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Exceptions.cpp
+	"fsml/Exceptions.hpp"
+	<sstream>
+	<boost/format.hpp>
+
+1388087364 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/samplefsml.hpp
+	"fsml/Machine.hpp"
+
+1388089463 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/samplefsml.cpp
+	"samplefsml.hpp"
+
+1388089490 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/samplefsml.hpp
+	"fsml/Machine.hpp"
+
+1388089345 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/main.cpp
+	"parser/Parser.hpp"
+	"parser/NewParser.hpp"
+	"parser/FlatMachine.hpp"
+	"generate/Generator.hpp"
+	<algorithm>
+	<fstream>
+	<iostream>
+	<iterator>
+	<string>
+	<boost/xpressive/xpressive.hpp>
+
+1388098093 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/InputOutput.cpp
+	"fsml/InputOutput.hpp"
+	"fsml/Exceptions.hpp"
+	"parser/Parser.hpp"
+	<fstream>
+	<sstream>
+
+1388097534 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/InputOutput.hpp
+	"Machine.hpp"
+
+1388097138 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test.cpp
+	"fsml/Exceptions.hpp"
+	"fsml/InputOutput.hpp"
+	"parser/Parser.hpp"
+	<iterator>
+	<gtest/gtest.h>
 

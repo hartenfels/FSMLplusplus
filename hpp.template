@@ -1,5 +1,5 @@
-#ifndef FSML_GENERATE%1%_HPP
-#define FSML_GENERATE%1%_HPP
+#ifndef FSML_%1%_HPP
+#define FSML_%1%_HPP
 #include "fsml/Machine.hpp"
 namespace fsml
 {
@@ -11,4 +11,4 @@ namespace fsml
 Machine create%1%();
 
 }
-#endif // FSML_GENERATE%1%_HPP
+#endif // FSML_%1%_HPP

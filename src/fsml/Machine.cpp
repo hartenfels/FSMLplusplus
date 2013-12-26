@@ -1,28 +1,37 @@
 #include "fsml/Machine.hpp"
-#include "validator/Exception.hpp"
+#include "fsml/Exceptions.hpp"
 #include <algorithm>
 #include <functional>
-#include <unordered_set>
 #include <boost/format.hpp>
 namespace fsml
-{ using namespace std; using boost::format;
+{ using namespace std; using namespace fsml::exception; using boost::format;
 
-Machine::Machine(const vector<string>& states, const vector<string>& initials,
+Machine::Machine(const FlatMachine& fm) :
+	Machine(fm.initials, fm.states, fm.steps) {}
+
+Machine::Machine(const vector<string>& initials, const vector<string>& states,
 		const vector<FlatStep>& steps)
 {
 	if (initials.size() < 1)
-		throw validator::Exception(validator::NO_INITIAL);
+		throw InitialStateException{};
 	else if (initials.size() > 1)
-		throw validator::Exception(validator::INITIALS);
+		throw InitialStateException{initials};
 	current = &(*stateMap.insert(pair<string, State>(initials[0],
 			State(initials[0]))).first).second;
 	for (const string& s : states)
 		if (!stateMap.insert(pair<string, State>(s, State(s))).second)
-			throw validator::Exception((format(validator::DISTINCT) % s).str());
+			throw UniqueException{s};
 	for (const FlatStep& s : steps)
 		addStep(s.source, s.input, s.action, s.target);
-	if (reachableFrom(current) < stateMap.size())
-		throw validator::Exception(validator::REACHABLE);
+	const unordered_set<const State*> reachable{reachableFrom(current)};
+	if (reachable.size() < stateMap.size())
+		throw ReachableException{[&](){
+			vector<string> unreachable;
+			for (const auto& p : stateMap)
+				if (reachable.find(&p.second) == reachable.end())
+					unreachable.push_back(p.second.getId());
+			return unreachable;
+		}()};
 }
 
 Machine&
@@ -32,19 +41,17 @@ Machine::operator<<(const string& input)
 	return *this;
 }
 
-const size_t
+const unordered_set<const State*>
 Machine::reachableFrom(const State* const start) const
 {
     vector<const State*> left{start};
     unordered_set<const State*> reachable{start};
     left.reserve(stateMap.size());
 	for (vector<const State*>::size_type i{0}; i < left.size(); ++i)
-		for (const auto& stepPair : left[i]->getSteps()) {
-			const State* target{stepPair.second.getTarget()};
-			if (reachable.insert(target).second)
-				left.push_back(target);
-		}
-	return left.size();
+		for (const auto& stepPair : left[i]->getSteps())
+			if (reachable.insert(stepPair.second.getTarget()).second)
+				left.push_back(stepPair.second.getTarget());
+	return reachable;
 }
 
 void
@@ -68,13 +75,11 @@ Machine::addStep(const string& s, const string& i, const string& a,
 	State* const dst{[&](){
 				const auto it = stateMap.find(t);
 				if (it == stateMap.end())
-					throw validator::Exception(
-							(format(validator::RESOLVABLE) % t % s).str());
+					throw ResolvableException{t, s};
 				return &it->second;
 			}()};
 	if (!src->addStep(i, Step(dst, a.empty() ? nullptr : &actionMap[a])))
-		throw validator::Exception(
-				(format(validator::DETERMINISTIC) % i % s).str());
+		throw DeterministicException{i, s};
 }
 
 }

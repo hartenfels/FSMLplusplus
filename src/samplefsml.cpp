@@ -1,22 +1,22 @@
-#include "generate/Generatesamplefsml.hpp"
+#include "samplefsml.hpp"
 namespace fsml
-{
+{ using std::vector; using std::string;
 
 Machine
 createsamplefsml()
 {
     return Machine{
 		// Initial States
-		{{
+		vector<string>{
 		"locked",
-		}},
+		},
 		// Other States
-		{{
+		vector<string>{
 		"unlocked",
 		"exception",
-		}},
-		// Steps
-		{{
+		},
+		// Transitions
+		vector<FlatStep>{
 		FlatStep("locked", "ticket", "collect", "unlocked"),
 		FlatStep("locked", "pass", "alarm", "exception"),
 		FlatStep("unlocked", "ticket", "eject", "unlocked"),
@@ -25,7 +25,8 @@ createsamplefsml()
 		FlatStep("exception", "pass", "", "exception"),
 		FlatStep("exception", "mute", "", "exception"),
 		FlatStep("exception", "release", "", "locked"),
-		}}};
+		}
+	};
 }
 
 }

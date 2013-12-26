@@ -1,20 +1,23 @@
 #include "fsml/State.hpp"
-#include "validator/Exception.hpp"
+#include "fsml/Exceptions.hpp"
 namespace fsml
-{ using namespace std;
+{ using namespace std; using namespace fsml::exception;
 
 State::State(const string& i) : id{i} {}
 
-const bool
+bool
 State::addStep(const string& input, const Step& step)
 {
 	return steps.insert(pair<string, Step>(input, step)).second;
 }
 
-State* const
+State*
 State::step(const string& input)
 {
-	return steps.at(input).invoke();
+	const auto it = steps.find(input);
+	if (it == steps.end())
+		throw InvalidInputException(getId(), input);
+	return it->second.invoke();
 }
 
 const string&
