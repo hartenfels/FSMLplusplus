@@ -28,23 +28,10 @@ main(int argc, const char* argv[])
 		const string i{regex_replace(fileArg, sregex{~alpha}, string{})};
 		cout << '\t' << i << ".hpp...";
 		ofstream(i + ".hpp") << generateCode(i, s, fm);
-/*		cout << "OK\n\t" << i << ".tex...";
-
-		auto it = find_if_not(am.states.begin(), am.states.end(),
-				[](const ast::State& s){return s.initial.empty();});
-		vector<string> st;
-		st.reserve(am.states.size() - 1);
-		for_each(am.states.begin(), it, [&](const ast::State& s){st.push_back(s.id);});
-		for_each(next(it), am.states.end(), [&](const ast::State& s){st.push_back(s.id);});
-		vector<StepTup> self, other;
-		for (const ast::State& asta : am.states)
-			for (const ast::Step& aste : asta.steps)
-				if (aste.target.empty() || aste.target == asta.id)
-					self.push_back(StepTup(asta.id, aste.input, aste.action, asta.id));
-				else
-					other.push_back(StepTup(asta.id, aste.input, aste.action, aste.target));
-
-		ofstream(i + ".tex") << generateLatex(it->id, st, self, other);*/
+		cout << "OK\n\t" << i << ".tex...";
+		ofstream(i + ".tex") << generateLatex(fm);
+		cout << "OK\n\t" << i << ".dot...";
+		ofstream(i + ".dot") << generateDot(i, fm);
 		cout << "OK\nDone.\n";
 	}
 	return 0;

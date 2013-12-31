@@ -6,7 +6,6 @@
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <string>
 #include <vector>
-
 namespace fsml
 {
 
@@ -33,18 +32,14 @@ struct AstMachine
 
 BOOST_FUSION_ADAPT_STRUCT(fsml::AstState, (std::string, initial) (std::string, id)
 		(std::vector<fsml::AstStep>, steps))
-
 BOOST_FUSION_ADAPT_STRUCT(fsml::AstStep, (std::string, input)(std::string, action)
 		(std::string, target))
 
 namespace fsml
-{
+{ namespace qi = boost::spirit::qi; namespace fsmlcs = boost::spirit::ascii;
 
-namespace qi = boost::spirit::qi;
-namespace fsmlcs = boost::spirit::ascii;
 template<typename Iterator>
-struct FsmlGrammar :
-	qi::grammar<Iterator, std::vector<AstState>(), fsmlcs::space_type>
+struct FsmlGrammar : qi::grammar<Iterator, std::vector<AstState>(), fsmlcs::space_type>
 {
 	FsmlGrammar() :
 		FsmlGrammar::base_type(fsm)

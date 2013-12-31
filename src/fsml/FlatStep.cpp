@@ -12,4 +12,10 @@ FlatStep::operator string() const
 			target).str();
 }
 
+const string
+FlatStep::getStepText() const
+{
+	return action.empty() ? input : input + '/' + action;
+}
+
 }

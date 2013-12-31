@@ -8,7 +8,9 @@ struct FlatStep {
 	FlatStep(const std::string& source, const std::string& input,
 			const std::string& action, const std::string& target);
 	~FlatStep() = default;
+
 	operator std::string() const;
+	const std::string getStepText() const;
 
     std::string source;
     std::string input;

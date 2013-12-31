@@ -4,14 +4,11 @@
 #include "fsml/FlatMachine.hpp"
 #include "fsml/State.hpp"
 #include <string>
-#include <tuple>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
 namespace fsml
 {
-
-typedef std::tuple<std::string, std::string, std::string, std::string> StepTup;
 
 class Machine
 {
@@ -20,13 +17,19 @@ public:
 	Machine(const std::vector<std::string>& initials,
 		const std::vector<std::string>& states,
 		const std::vector<FlatStep>& steps);
+
 	virtual ~Machine() = default;
+
 	virtual Machine& operator<<(const std::string& input);
+
 	virtual const std::unordered_set<const State*>
 		reachableFrom(const State* const start) const;
+
 	virtual void registerAt(const std::string& action,
 		const ActionFunction& func);
+
 	virtual const State& getCurrentState() const;
+
 protected:
 	void addStep(const std::string& sourceId, const std::string& input,
 		const std::string& actionId, const std::string& targetId);
