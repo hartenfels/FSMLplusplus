@@ -1,8 +1,8 @@
 #ifndef FSML_MACHINE_HPP
 #define FSML_MACHINE_HPP
 #include "fsml/Action.hpp"
+#include "fsml/FlatMachine.hpp"
 #include "fsml/State.hpp"
-#include "parser/FlatMachine.hpp"
 #include <string>
 #include <tuple>
 #include <unordered_map>

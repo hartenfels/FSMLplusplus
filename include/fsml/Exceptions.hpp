@@ -2,7 +2,7 @@
 #define FSML_EXCEPTIONS_HPP
 #include <stdexcept>
 #include <vector>
-namespace fsml { namespace exception
+namespace fsml
 {
 
 struct DeterministicException : std::runtime_error
@@ -19,7 +19,6 @@ struct FileReadException : std::runtime_error
 
 struct InitialStateException : std::runtime_error
 {
-	InitialStateException();
 	InitialStateException(const std::vector<std::string>& states);
 	virtual ~InitialStateException() noexcept = default;
 };
@@ -54,5 +53,5 @@ struct UniqueException : std::runtime_error
 	virtual ~UniqueException() noexcept = default;
 };
 
-}}
+}
 #endif // FSML_EXCEPTIONS_HPP

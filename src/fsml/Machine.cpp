@@ -4,7 +4,7 @@
 #include <functional>
 #include <boost/format.hpp>
 namespace fsml
-{ using namespace std; using namespace fsml::exception; using boost::format;
+{ using namespace std; using boost::format;
 
 Machine::Machine(const FlatMachine& fm) :
 	Machine(fm.initials, fm.states, fm.steps) {}
@@ -12,9 +12,7 @@ Machine::Machine(const FlatMachine& fm) :
 Machine::Machine(const vector<string>& initials, const vector<string>& states,
 		const vector<FlatStep>& steps)
 {
-	if (initials.size() < 1)
-		throw InitialStateException{};
-	else if (initials.size() > 1)
+	if (initials.size() != 1)
 		throw InitialStateException{initials};
 	current = &(*stateMap.insert(pair<string, State>(initials[0],
 			State(initials[0]))).first).second;
@@ -73,11 +71,11 @@ Machine::addStep(const string& s, const string& i, const string& a,
 {
 	State* const src{&stateMap.at(s)};
 	State* const dst{[&](){
-				const auto it = stateMap.find(t);
-				if (it == stateMap.end())
-					throw ResolvableException{t, s};
-				return &it->second;
-			}()};
+		const auto it = stateMap.find(t);
+		if (it == stateMap.end())
+			throw ResolvableException{t, s};
+		return &it->second;
+	}()};
 	if (!src->addStep(i, Step(dst, a.empty() ? nullptr : &actionMap[a])))
 		throw DeterministicException{i, s};
 }

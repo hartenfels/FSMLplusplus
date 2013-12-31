@@ -1,42 +1,13 @@
-#include "parser/Parser.hpp"
-#include "parser/NewParser.hpp"
-#include "parser/FlatMachine.hpp"
-#include "generate/Generator.hpp"
+#include "fsml/FlatMachine.hpp"
+#include "fsml/Generator.hpp"
+#include "fsml/InputOutput.hpp"
+#include "fsml/Parser.hpp"
 #include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <iterator>
 #include <string>
 #include <boost/xpressive/xpressive.hpp>
-
-/*int
-miin()
-{
-	using namespace std; using namespace fsml;
-	const string s{fileToString("sample.fsml")};
-	parser::newParse<string::const_iterator>(s.begin(), s.end());
-	return 0;
-}
-
-int
-muin()
-{
-	using namespace std; using namespace fsml;
-	const string s{fileToString("sample.fsml")};
-	const ast::Machine am(parser::parse<string::const_iterator>(s.begin(),
-			s.end()));
-	Machine m{validator::validate(am)};
-	vector<string> ids;
-	ids.reserve(am.states.size());
-	transform(am.states.begin(), am.states.end(), back_inserter(ids),
-			[](const ast::State& s){return s.id;});
-	std::string generated;
-	std::back_insert_iterator<std::string> sink(generated);
-	if (!generateKarma(sink, "SampleFsml", ids))
-		throw 0;
-	cout << generated;
-	return 0;
-}*/
 
 int
 main(int argc, const char* argv[])
@@ -48,17 +19,15 @@ main(int argc, const char* argv[])
 	else {
 		const string fileArg{argv[1]};
 		cout << "Opening " << fileArg << "...";
-		const string s{fileToString(fileArg)};
+		const string s{readFile(fileArg)};
 		cout << "OK\nParsing...";
-		const FlatMachine fm{parser::parse<string::const_iterator>(s.begin(), s.end(), fileArg)};
+		const FlatMachine fm{parse<string::const_iterator>(s.begin(), s.end(), fileArg)};
 		cout << "OK\nValidating...";
 		Machine machine{fm.initials, fm.states, fm.steps};
 		cout << "OK\nGenerating:\n";
 		const string i{regex_replace(fileArg, sregex{~alpha}, string{})};
 		cout << '\t' << i << ".hpp...";
-		ofstream(i + ".hpp") << generateHeader(i, s);
-		cout << "OK\n\t" << i << ".cpp...";
-		ofstream(i + ".cpp") << generateSource(i, fm);
+		ofstream(i + ".hpp") << generateCode(i, s, fm);
 /*		cout << "OK\n\t" << i << ".tex...";
 
 		auto it = find_if_not(am.states.begin(), am.states.end(),

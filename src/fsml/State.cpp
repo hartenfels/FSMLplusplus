@@ -1,7 +1,7 @@
 #include "fsml/State.hpp"
 #include "fsml/Exceptions.hpp"
 namespace fsml
-{ using namespace std; using namespace fsml::exception;
+{ using namespace std;
 
 State::State(const string& i) : id{i} {}
 

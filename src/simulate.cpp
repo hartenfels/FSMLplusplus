@@ -1,13 +1,13 @@
-#include "samplefsml.hpp"
+#include "SampleFsml.hpp"
 #include <iostream>
 #include <string>
-using namespace fsml; using namespace std;
 
 int
 main()
 {
+	using namespace fsml; using namespace std;
 	// Construct FSM
-	Machine m{createsamplefsml()};
+	Machine m{createSampleFsml()};
 	// Register some functions
 	m.registerAt("alarm",   [](){cout << "action: alarm\n";});
 	m.registerAt("collect", [](){cout << "action: collect\n";});

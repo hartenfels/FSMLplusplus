@@ -8,7 +8,20 @@ namespace fsml
 
 %2%
 @return An fsml::Machine corresponding to the FSML code it was generated from.*/
-Machine create%1%();
+Machine create%3%()
+{
+    return Machine{
+		// Initial States
+		std::vector<std::string>{
+%4%		},
+		// Other States
+		std::vector<std::string>{
+%5%		},
+		// Transitions
+		std::vector<FlatStep>{
+%6%		}
+	};
+}
 
 }
 #endif // FSML_%1%_HPP
