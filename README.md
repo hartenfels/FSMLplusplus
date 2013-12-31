@@ -12,6 +12,10 @@ It also depends on Boost, which is provided in the lib folder to be linked stati
 
 There is a Makefile for gcc provided, which will place compiled binaries into a folder called bin/. Enter ``make debug`` or ``make release`` to build a debug or fully-optimized executable. Use ``make simulation`` to build the sample interactive simulation. If you have Google's gtest unit testing library and pthread installed, use ``make test`` to build the unit test. ``make`` by itself will build everything.
 
+Bash Script
+-----------
+There is a bash script called ``buildnrun.sh`` provided. It will make the release build, generate C++, LaTeX and Dot code, and finally run pdflatex and graphviz to yield two different PDF files.
+
 Run FSML++
 ----------
 The syntax for running the program is ``fsmlpp SOURCE``, where SOURCE is the path to a file containing FSML code.
