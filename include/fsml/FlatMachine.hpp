@@ -2,6 +2,7 @@
 #define FSML_FLATMACHINE_HPP
 #include "fsml/FlatStep.hpp"
 #include <string>
+#include <map>
 #include <vector>
 namespace fsml
 {
@@ -14,6 +15,7 @@ struct FlatMachine {
 	std::vector<std::string> states;
 	std::vector<std::string> initials;
 	std::vector<FlatStep> steps;
+	std::map<std::pair<std::string, std::string>, std::vector<FlatStep>> stepMap;
 };
 
 }

@@ -1,6 +1,7 @@
 #include "fsml/Generator.hpp"
 #include "fsml/InputOutput.hpp"
 #include <sstream>
+#include <tuple>
 #include <boost/format.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/spirit/include/karma.hpp>
@@ -14,8 +15,10 @@ static constexpr char STEP[]{"\t\tStepTup(\"%1%\", \"%2%\", \"%3%\", \"%4%\"),\n
 static const string LATEX{readFile("latex.template")};
 static constexpr char NODE[]
 		{"\\node[state](%1%)[right of=%2%]{\\parbox{1.5cm}{\\centering %1%}};\n"};
-static constexpr char SELF[]{"(%1%)edge[loop]node{%2%}(%1%)\n"};
-static constexpr char OTHER[]{"(%1%)edge[bend left]node{%2%}(%3%)\n"};
+static constexpr char SELF[]
+		{"(%1%)edge[loop]node{\\parbox{1cm}{\\centering %2%}}(%3%)\n"};
+static constexpr char OTHER[]
+		{"(%1%)edge[bend left]node{\\parbox{1cm}{\\centering %2%}}(%3%)\n"};
 static const string DOT{readFile("dot.template")};
 static constexpr char ARROW[]{"\t%1% -> %2% [label=\" %3% \"];\n"};
 
@@ -45,10 +48,13 @@ generateLatex(const FlatMachine& fm)
 	}
 	// Paths
 	stringstream paths;
-	for (const FlatStep& fs : fm.steps)
-		paths << (fs.source == fs.target ?
-				(format(SELF) % fs.source % fs.getStepText()).str() :
-				(format(OTHER) % fs.source % fs.getStepText() % fs.target).str());
+	for (auto it = fm.stepMap.begin(); it != fm.stepMap.end(); it = next(it)) {
+        stringstream transition;
+        for (const FlatStep& fs : it->second)
+			transition << "\\contour{white}{" << fs.getStepText() << "} ";
+		paths << ((it->first.first == it->first.second ? format(SELF) : format(OTHER)) %
+				it->first.first % transition.str() % it->first.second).str();
+	}
 	return (format(LATEX) % paperWidth % paperHeight % fm.initials[0] % nodes.str() %
 			paths.str()).str();
 }
