@@ -1,6 +1,6 @@
 FSML++
 ======
-FSML implementation using C++.
+FSML implementation using C++ -- see https://github.com/slebok/slepro/tree/master/languages/fsml
 
 Requirements
 ------------
