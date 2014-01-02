@@ -27,7 +27,7 @@ LIB_DEBUG = $(LIB)
 LDFLAGS_DEBUG = $(LDFLAGS)
 OBJDIR_DEBUG = obj/Debug
 DEP_DEBUG = 
-OUT_DEBUG = bin/Debug/fsmlpp
+OUT_DEBUG = bin/fsmlpp_debug
 
 INC_RELEASE = $(INC) -Iinclude -Iinclude/fsml
 CFLAGS_RELEASE = $(CFLAGS) -fexpensive-optimizations -O3
@@ -38,7 +38,7 @@ LIB_RELEASE = $(LIB)
 LDFLAGS_RELEASE = $(LDFLAGS) -s
 OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
-OUT_RELEASE = bin/Release/fsmlpp
+OUT_RELEASE = bin/fsmlpp
 
 INC_SIMULATION = $(INC) -Iinclude -Iinclude/fsml
 CFLAGS_SIMULATION = $(CFLAGS) -g
@@ -47,9 +47,9 @@ RCFLAGS_SIMULATION = $(RCFLAGS)
 LIBDIR_SIMULATION = $(LIBDIR)
 LIB_SIMULATION = $(LIB)
 LDFLAGS_SIMULATION = $(LDFLAGS)
-OBJDIR_SIMULATION = obj/Debug
+OBJDIR_SIMULATION = obj/Simulation
 DEP_SIMULATION = 
-OUT_SIMULATION = bin/Simulation/fsmlsim
+OUT_SIMULATION = bin/fsmlpp_simulation
 
 INC_TEST = $(INC) -Iinclude -Iinclude/fsml
 CFLAGS_TEST = $(CFLAGS) -g
@@ -58,9 +58,9 @@ RCFLAGS_TEST = $(RCFLAGS)
 LIBDIR_TEST = $(LIBDIR)
 LIB_TEST = $(LIB)
 LDFLAGS_TEST = $(LDFLAGS) -lgtest -lpthread
-OBJDIR_TEST = obj/Debug
+OBJDIR_TEST = obj/Test
 DEP_TEST = 
-OUT_TEST = bin/Test/fsmlpptest
+OUT_TEST = bin/fsmlpp_test
 
 OBJ_DEBUG = $(OBJDIR_DEBUG)/src/fsml/Action.o $(OBJDIR_DEBUG)/src/main.o $(OBJDIR_DEBUG)/src/fsml/Step.o $(OBJDIR_DEBUG)/src/fsml/State.o $(OBJDIR_DEBUG)/src/fsml/Machine.o $(OBJDIR_DEBUG)/src/fsml/InputOutput.o $(OBJDIR_DEBUG)/src/fsml/Generator.o $(OBJDIR_DEBUG)/src/fsml/FlatStep.o $(OBJDIR_DEBUG)/src/fsml/FlatMachine.o $(OBJDIR_DEBUG)/src/fsml/Exceptions.o
 
@@ -75,7 +75,7 @@ all: debug release simulation test
 clean: clean_debug clean_release clean_simulation clean_test
 
 before_debug: 
-	test -d bin/Debug || mkdir -p bin/Debug
+	test -d bin || mkdir -p bin
 	test -d $(OBJDIR_DEBUG)/src/fsml || mkdir -p $(OBJDIR_DEBUG)/src/fsml
 	test -d $(OBJDIR_DEBUG)/src || mkdir -p $(OBJDIR_DEBUG)/src
 
@@ -118,12 +118,12 @@ $(OBJDIR_DEBUG)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 
 clean_debug: 
 	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
-	rm -rf bin/Debug
+	rm -rf bin
 	rm -rf $(OBJDIR_DEBUG)/src/fsml
 	rm -rf $(OBJDIR_DEBUG)/src
 
 before_release: 
-	test -d bin/Release || mkdir -p bin/Release
+	test -d bin || mkdir -p bin
 	test -d $(OBJDIR_RELEASE)/src/fsml || mkdir -p $(OBJDIR_RELEASE)/src/fsml
 	test -d $(OBJDIR_RELEASE)/src || mkdir -p $(OBJDIR_RELEASE)/src
 
@@ -166,12 +166,12 @@ $(OBJDIR_RELEASE)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
-	rm -rf bin/Release
+	rm -rf bin
 	rm -rf $(OBJDIR_RELEASE)/src/fsml
 	rm -rf $(OBJDIR_RELEASE)/src
 
 before_simulation: 
-	test -d bin/Simulation || mkdir -p bin/Simulation
+	test -d bin || mkdir -p bin
 	test -d $(OBJDIR_SIMULATION)/src/fsml || mkdir -p $(OBJDIR_SIMULATION)/src/fsml
 	test -d $(OBJDIR_SIMULATION)/src || mkdir -p $(OBJDIR_SIMULATION)/src
 
@@ -214,12 +214,12 @@ $(OBJDIR_SIMULATION)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 
 clean_simulation: 
 	rm -f $(OBJ_SIMULATION) $(OUT_SIMULATION)
-	rm -rf bin/Simulation
+	rm -rf bin
 	rm -rf $(OBJDIR_SIMULATION)/src/fsml
 	rm -rf $(OBJDIR_SIMULATION)/src
 
 before_test: 
-	test -d bin/Test || mkdir -p bin/Test
+	test -d bin || mkdir -p bin
 	test -d $(OBJDIR_TEST)/src/fsml || mkdir -p $(OBJDIR_TEST)/src/fsml
 	test -d $(OBJDIR_TEST)/src || mkdir -p $(OBJDIR_TEST)/src
 
@@ -262,7 +262,7 @@ $(OBJDIR_TEST)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 
 clean_test: 
 	rm -f $(OBJ_TEST) $(OUT_TEST)
-	rm -rf bin/Test
+	rm -rf bin
 	rm -rf $(OBJDIR_TEST)/src/fsml
 	rm -rf $(OBJDIR_TEST)/src
 

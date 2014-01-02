@@ -1,6 +1,0 @@
-digraph abc {
-	graph [rankdir=LR];
-	a -> b;
-	b -> c;
-	b -> d;
-}

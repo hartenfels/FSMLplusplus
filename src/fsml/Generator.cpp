@@ -9,17 +9,17 @@ namespace fsml
 {using namespace std; using boost::format; using boost::to_upper_copy;
 namespace karma = boost::spirit::karma; namespace fsmlcs = boost::spirit::ascii;
 
-static const string CODE{readFile("hpp.template")};
+static const string CODE{readFile("templates/hpp.template")};
 static constexpr char STATE[]{"\t\t\"%1%\",\n"};
 static constexpr char STEP[]{"\t\tStepTup(\"%1%\", \"%2%\", \"%3%\", \"%4%\"),\n"};
-static const string LATEX{readFile("latex.template")};
+static const string LATEX{readFile("templates/latex.template")};
 static constexpr char NODE[]
 		{"\\node[state](%1%)[right of=%2%]{\\parbox{1.5cm}{\\centering %1%}};\n"};
 static constexpr char SELF[]
 		{"(%1%)edge[loop]node{\\parbox{1cm}{\\centering %2%}}(%3%)\n"};
 static constexpr char OTHER[]
 		{"(%1%)edge[bend left]node{\\parbox{1cm}{\\centering %2%}}(%3%)\n"};
-static const string DOT{readFile("dot.template")};
+static const string DOT{readFile("templates/dot.template")};
 static constexpr char ARROW[]{"\t%1% -> %2% [label=\" %3% \"];\n"};
 
 const string

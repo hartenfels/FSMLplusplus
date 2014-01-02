@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/fsmlpp" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/fsmlpp_debug" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -18,7 +18,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/fsmlpp" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/fsmlpp" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -33,8 +33,8 @@
 				</Linker>
 			</Target>
 			<Target title="Simulation">
-				<Option output="bin/Simulation/fsmlsim" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="bin/fsmlpp_simulation" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Simulation/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -44,8 +44,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Test">
-				<Option output="bin/Test/fsmlpptest" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="bin/fsmlpp_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Test/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
