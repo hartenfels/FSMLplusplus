@@ -1,13 +1,12 @@
 #include "fsml/Generator.hpp"
 #include "fsml/InputOutput.hpp"
 #include <sstream>
-#include <tuple>
 #include <boost/format.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/spirit/include/karma.hpp>
 namespace fsml
 {using namespace std; using boost::format; using boost::to_upper_copy;
-namespace karma = boost::spirit::karma; namespace fsmlcs = boost::spirit::ascii;
+namespace karma = boost::spirit::karma;
 
 static const string CODE{readFile("templates/hpp.template")};
 static constexpr char STATE[]{"\t\t\"%1%\",\n"};
@@ -28,7 +27,7 @@ generateCode(const string& name, const string& fsmlCode, const FlatMachine& fm)
 	string states, steps;
 	const vector<string> v(fm.steps.begin(), fm.steps.end());
 	karma::generate(back_insert_iterator<string>(states),
-			*("\t\t\"" << +fsmlcs::alpha << "\",\n"), fm.states);
+			*("\t\t\"" << +karma::char_ << "\",\n"), fm.states);
 	karma::generate(back_insert_iterator<string>(steps),
 			*("\t\t" << +karma::char_ << ",\n"), v);
 	return (format(CODE) % to_upper_copy(name) % fsmlCode % name %

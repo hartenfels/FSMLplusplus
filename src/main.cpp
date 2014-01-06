@@ -23,7 +23,7 @@ main(int argc, const char* argv[])
 		cout << "OK\nParsing...";
 		const FlatMachine fm{parse<string::const_iterator>(s.begin(), s.end(), fileArg)};
 		cout << "OK\nValidating...";
-		Machine machine{fm.initials, fm.states, fm.steps};
+		Machine machine{fm};
 		cout << "OK\nGenerating:\n";
 		const string i{regex_replace(fileArg, sregex{~alpha}, string{})};
 		cout << '\t' << i << ".hpp...";

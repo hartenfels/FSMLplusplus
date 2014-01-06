@@ -14,10 +14,9 @@ Machine::Machine(const vector<string>& initials, const vector<string>& states,
 {
 	if (initials.size() != 1)
 		throw InitialStateException{initials};
-	current = &(*stateMap.insert(pair<string, State>(initials[0],
-			State(initials[0]))).first).second;
+	current = &(*stateMap.insert({initials[0], State{initials[0]}}).first).second;
 	for (const string& s : states)
-		if (!stateMap.insert(pair<string, State>(s, State(s))).second)
+		if (!stateMap.insert({s, State{s}}).second)
 			throw UniqueException{s};
 	for (const FlatStep& s : steps)
 		addStep(s.source, s.input, s.action, s.target);

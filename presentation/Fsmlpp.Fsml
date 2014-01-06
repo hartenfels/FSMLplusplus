@@ -1,0 +1,26 @@
+initial state FsmlCode {
+	parse -> AstMachine;
+}
+
+state AstMachine {
+	flatten -> FlatMachine;
+}
+
+state FlatMachine {
+	construct/validate -> Machine;
+	generateCode -> HPP;
+	generateLatex -> TEX;
+	generateDot -> DOT;
+}
+
+state Machine {
+}
+
+state HPP {
+}
+
+state TEX {
+}
+
+state DOT {
+}
