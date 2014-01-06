@@ -8,7 +8,7 @@ State::State(const string& i) : id{i} {}
 bool
 State::addStep(const string& input, const Step& step)
 {
-	return steps.insert(pair<string, Step>(input, step)).second;
+	return steps.insert({input, step}).second;
 }
 
 State*

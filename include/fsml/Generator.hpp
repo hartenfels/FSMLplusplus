@@ -4,12 +4,25 @@
 #include "fsml/Machine.hpp"
 namespace fsml
 {
+/**@file Contains all code generation functions.*/
 
+/**Generates usable C++ code for a header file to construct a Machine from.
+@param name File name.
+@param fsmlCode Parsed fsml code.
+@param flatMachine Flattened fsml machine.
+@return A string containing the generated code.*/
 const std::string generateCode(const std::string& name, const std::string& fsmlCode,
 	const FlatMachine& flatMachine);
 
+/**Generates Latex code for visual representation
+@param flatMachine Flattened fsml machine.
+@return A string containing the generated code.*/
 const std::string generateLatex(const FlatMachine& flatMachine);
 
+/**Generates Graphviz code for visual representation
+@param name File name.
+@param flatMachine Flattened fsml machine.
+@return A string containing the generated code.*/
 const std::string generateDot(const std::string& name, const FlatMachine& flatMachine);
 
 }

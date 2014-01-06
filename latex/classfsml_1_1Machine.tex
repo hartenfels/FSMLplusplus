@@ -1,0 +1,244 @@
+\hypertarget{classfsml_1_1Machine}{\section{fsml\-:\-:Machine Class Reference}
+\label{classfsml_1_1Machine}\index{fsml\-::\-Machine@{fsml\-::\-Machine}}
+}
+
+
+Represents a simulatable final state machine.  
+
+
+
+
+{\ttfamily \#include $<$Machine.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfsml_1_1Machine_a0666d3b6834e968bd0fe1461164de7ef}{Machine} (const \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine} \&fm)
+\begin{DoxyCompactList}\small\item\em Constructs and validates a \hyperlink{classfsml_1_1Machine}{Machine} from the given \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine}. \end{DoxyCompactList}\item 
+\hyperlink{classfsml_1_1Machine_a0c60fab103e0e65343c729ed3502ebac}{Machine} (const std\-::vector$<$ std\-::string $>$ \&initials, const std\-::vector$<$ std\-::string $>$ \&states, const std\-::vector$<$ \hyperlink{structfsml_1_1FlatStep}{Flat\-Step} $>$ \&steps)
+\begin{DoxyCompactList}\small\item\em Constructs and validates a \hyperlink{classfsml_1_1Machine}{Machine} from the given parameters. \end{DoxyCompactList}\item 
+virtual \hyperlink{classfsml_1_1Machine}{Machine} \& \hyperlink{classfsml_1_1Machine_a4c02303acf2c3bd89ffc6ceda604b02d}{operator$<$$<$} (const std\-::string \&input)
+\begin{DoxyCompactList}\small\item\em Feeds the given input into the \hyperlink{classfsml_1_1Machine}{Machine}. \end{DoxyCompactList}\item 
+virtual const \\*
+std\-::unordered\-\_\-set$<$ const \\*
+\hyperlink{classfsml_1_1State}{State} $\ast$ $>$ \hyperlink{classfsml_1_1Machine_a7d184c839fe996141a692152b9b37e0a}{reachable\-From} (const \hyperlink{classfsml_1_1State}{State} $\ast$const start) const 
+\begin{DoxyCompactList}\small\item\em Gathers the States reachable from the given \hyperlink{classfsml_1_1State}{State}. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classfsml_1_1Machine_a51b789ab95db22995529818bed9fef20}{register\-At} (const std\-::string \&action, const Action\-Function \&func)
+\begin{DoxyCompactList}\small\item\em Registers the given function with the given action. \end{DoxyCompactList}\item 
+virtual const \hyperlink{classfsml_1_1State}{State} \& \hyperlink{classfsml_1_1Machine_a5bce113183b6d59b652b33f4369bb45c}{get\-Current\-State} () const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classfsml_1_1Machine_a863ac1a16a82e0fc0a8e85553061686f}{add\-Step} (const std\-::string \&source\-Id, const std\-::string \&input, const std\-::string \&action\-Id, const std\-::string \&target\-Id)
+\begin{DoxyCompactList}\small\item\em Constructs a step from the given parameters and adds it to the source state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfsml_1_1Machine_a02a00a80f4f77625cd1fbcb2314d3c21}{std\-::unordered\-\_\-map\\*
+$<$ std\-::string, \hyperlink{classfsml_1_1Action}{Action} $>$ \hyperlink{classfsml_1_1Machine_a02a00a80f4f77625cd1fbcb2314d3c21}{action\-Map}}\label{classfsml_1_1Machine_a02a00a80f4f77625cd1fbcb2314d3c21}
+
+\begin{DoxyCompactList}\small\item\em Maps actions to their respective name. \end{DoxyCompactList}\item 
+\hypertarget{classfsml_1_1Machine_a8d777492e8e8b0e79b041444f386c319}{std\-::unordered\-\_\-map\\*
+$<$ std\-::string, \hyperlink{classfsml_1_1State}{State} $>$ \hyperlink{classfsml_1_1Machine_a8d777492e8e8b0e79b041444f386c319}{state\-Map}}\label{classfsml_1_1Machine_a8d777492e8e8b0e79b041444f386c319}
+
+\begin{DoxyCompactList}\small\item\em Maps states to their respective name. \end{DoxyCompactList}\item 
+\hypertarget{classfsml_1_1Machine_a8c4e7bc3c75c8b40a28d0b33a457be9d}{\hyperlink{classfsml_1_1State}{State} $\ast$ \hyperlink{classfsml_1_1Machine_a8c4e7bc3c75c8b40a28d0b33a457be9d}{current}}\label{classfsml_1_1Machine_a8c4e7bc3c75c8b40a28d0b33a457be9d}
+
+\begin{DoxyCompactList}\small\item\em The current \hyperlink{classfsml_1_1State}{State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a simulatable final state machine. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfsml_1_1Machine_a0666d3b6834e968bd0fe1461164de7ef}{\index{fsml\-::\-Machine@{fsml\-::\-Machine}!Machine@{Machine}}
+\index{Machine@{Machine}!fsml::Machine@{fsml\-::\-Machine}}
+\subsubsection[{Machine}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-Machine\-::\-Machine (
+\begin{DoxyParamCaption}
+\item[{const {\bf Flat\-Machine} \&}]{fm}
+\end{DoxyParamCaption}
+)}}\label{classfsml_1_1Machine_a0666d3b6834e968bd0fe1461164de7ef}
+
+
+Constructs and validates a \hyperlink{classfsml_1_1Machine}{Machine} from the given \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fm} & The \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classfsml_1_1Machine}{Machine} corresponding to the given \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine}, if it is valid. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{structfsml_1_1InitialStateException}{Initial\-State\-Exception}} & if no or more then one inital state is given. \\
+\hline
+{\em \hyperlink{structfsml_1_1UniqueException}{Unique\-Exception}} & if a state is defined more than once. \\
+\hline
+{\em \hyperlink{structfsml_1_1ReachableException}{Reachable\-Exception}} & if a state is not reachable from intial state. \\
+\hline
+{\em \hyperlink{structfsml_1_1ResolvableException}{Resolvable\-Exception}} & if target state in a transition does not exist. \\
+\hline
+{\em \hyperlink{structfsml_1_1DeterministicException}{Deterministic\-Exception}} & if an input in a state is not distinct. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classfsml_1_1Machine_a0c60fab103e0e65343c729ed3502ebac}{\index{fsml\-::\-Machine@{fsml\-::\-Machine}!Machine@{Machine}}
+\index{Machine@{Machine}!fsml::Machine@{fsml\-::\-Machine}}
+\subsubsection[{Machine}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-Machine\-::\-Machine (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{initials, }
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{states, }
+\item[{const std\-::vector$<$ {\bf Flat\-Step} $>$ \&}]{steps}
+\end{DoxyParamCaption}
+)}}\label{classfsml_1_1Machine_a0c60fab103e0e65343c729ed3502ebac}
+
+
+Constructs and validates a \hyperlink{classfsml_1_1Machine}{Machine} from the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initials} & The initial states. \\
+\hline
+{\em states} & The non-\/inital states. \\
+\hline
+{\em steps} & The transitions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classfsml_1_1Machine}{Machine} corresponding to the given parameters, if they are valid. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{structfsml_1_1InitialStateException}{Initial\-State\-Exception}} & if no or more then one inital state is given. \\
+\hline
+{\em \hyperlink{structfsml_1_1UniqueException}{Unique\-Exception}} & if a state is defined more than once. \\
+\hline
+{\em \hyperlink{structfsml_1_1ReachableException}{Reachable\-Exception}} & if a state is not reachable from intial state. \\
+\hline
+{\em \hyperlink{structfsml_1_1ResolvableException}{Resolvable\-Exception}} & if target state in a transition does not exist. \\
+\hline
+{\em \hyperlink{structfsml_1_1DeterministicException}{Deterministic\-Exception}} & if an input in a state is not distinct. \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfsml_1_1Machine_a863ac1a16a82e0fc0a8e85553061686f}{\index{fsml\-::\-Machine@{fsml\-::\-Machine}!add\-Step@{add\-Step}}
+\index{add\-Step@{add\-Step}!fsml::Machine@{fsml\-::\-Machine}}
+\subsubsection[{add\-Step}]{\setlength{\rightskip}{0pt plus 5cm}void fsml\-::\-Machine\-::add\-Step (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{source\-Id, }
+\item[{const std\-::string \&}]{input, }
+\item[{const std\-::string \&}]{action\-Id, }
+\item[{const std\-::string \&}]{target\-Id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classfsml_1_1Machine_a863ac1a16a82e0fc0a8e85553061686f}
+
+
+Constructs a step from the given parameters and adds it to the source state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sourc\-Id} & The source state's name. \\
+\hline
+{\em input} & The input name. \\
+\hline
+{\em action\-Id} & The action name. \\
+\hline
+{\em target\-Id} & The target state's name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{structfsml_1_1ResolvableException}{Resolvable\-Exception}} & if target does not exist. \\
+\hline
+{\em \hyperlink{structfsml_1_1DeterministicException}{Deterministic\-Exception}} & if there is more than one possible transition for the given input. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classfsml_1_1Machine_a5bce113183b6d59b652b33f4369bb45c}{\index{fsml\-::\-Machine@{fsml\-::\-Machine}!get\-Current\-State@{get\-Current\-State}}
+\index{get\-Current\-State@{get\-Current\-State}!fsml::Machine@{fsml\-::\-Machine}}
+\subsubsection[{get\-Current\-State}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf State} \& fsml\-::\-Machine\-::get\-Current\-State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1Machine_a5bce113183b6d59b652b33f4369bb45c}
+\begin{DoxyReturn}{Returns}
+The current \hyperlink{classfsml_1_1State}{State}. 
+\end{DoxyReturn}
+\hypertarget{classfsml_1_1Machine_a4c02303acf2c3bd89ffc6ceda604b02d}{\index{fsml\-::\-Machine@{fsml\-::\-Machine}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!fsml::Machine@{fsml\-::\-Machine}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Machine} \& fsml\-::\-Machine\-::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1Machine_a4c02303acf2c3bd89ffc6ceda604b02d}
+
+
+Feeds the given input into the \hyperlink{classfsml_1_1Machine}{Machine}. 
+
+The current \hyperlink{classfsml_1_1State}{State} will attempt to execute the corresponding transition and change the current \hyperlink{classfsml_1_1State}{State}. If an action is triggered, the registered function will be called, if it exists. 
+\begin{DoxyParams}{Parameters}
+{\em input} & The input name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{classfsml_1_1Machine}{Machine} itself so that input can be chained. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{structfsml_1_1InvalidInputException}{Invalid\-Input\-Exception}} & if the current \hyperlink{classfsml_1_1State}{State} cannot handle the input. The current \hyperlink{classfsml_1_1State}{State} will not be changed. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classfsml_1_1Machine_a7d184c839fe996141a692152b9b37e0a}{\index{fsml\-::\-Machine@{fsml\-::\-Machine}!reachable\-From@{reachable\-From}}
+\index{reachable\-From@{reachable\-From}!fsml::Machine@{fsml\-::\-Machine}}
+\subsubsection[{reachable\-From}]{\setlength{\rightskip}{0pt plus 5cm}const unordered\-\_\-set$<$ const {\bf State} $\ast$ $>$ fsml\-::\-Machine\-::reachable\-From (
+\begin{DoxyParamCaption}
+\item[{const {\bf State} $\ast$const}]{start}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1Machine_a7d184c839fe996141a692152b9b37e0a}
+
+
+Gathers the States reachable from the given \hyperlink{classfsml_1_1State}{State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The \hyperlink{classfsml_1_1State}{State} from which to start from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An unordered set of states reachable from start. 
+\end{DoxyReturn}
+\hypertarget{classfsml_1_1Machine_a51b789ab95db22995529818bed9fef20}{\index{fsml\-::\-Machine@{fsml\-::\-Machine}!register\-At@{register\-At}}
+\index{register\-At@{register\-At}!fsml::Machine@{fsml\-::\-Machine}}
+\subsubsection[{register\-At}]{\setlength{\rightskip}{0pt plus 5cm}void fsml\-::\-Machine\-::register\-At (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{action, }
+\item[{const Action\-Function \&}]{func}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1Machine_a51b789ab95db22995529818bed9fef20}
+
+
+Registers the given function with the given action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & The action name. \\
+\hline
+{\em func} & The function to register. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\-\_\-of\-\_\-range} & if the action does not exist. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/fsml/Machine.\-hpp\item 
+src/fsml/Machine.\-cpp\end{DoxyCompactItemize}

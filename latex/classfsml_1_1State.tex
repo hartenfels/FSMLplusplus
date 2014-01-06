@@ -1,0 +1,136 @@
+\hypertarget{classfsml_1_1State}{\section{fsml\-:\-:State Class Reference}
+\label{classfsml_1_1State}\index{fsml\-::\-State@{fsml\-::\-State}}
+}
+
+
+Represents a \hyperlink{classfsml_1_1Machine}{Machine}'s state.  
+
+
+
+
+{\ttfamily \#include $<$State.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfsml_1_1State_a8aa7803bfefbd8c846ebd8cb81f824ac}{State} (const std\-::string \&\hyperlink{classfsml_1_1State_a4acc37de347d0e4a66d6470a4d6ebcf7}{id})
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classfsml_1_1State}{State} with the given id. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classfsml_1_1State_a0a28f6f4a995313d9bc85d1fdf51fb9b}{add\-Step} (const std\-::string \&input, const \hyperlink{classfsml_1_1Step}{Step} \&\hyperlink{classfsml_1_1State_a0c7aafd6216a785c159e70f00a12d3f8}{step})
+\begin{DoxyCompactList}\small\item\em Attemps to add the given transition to this \hyperlink{classfsml_1_1State}{State}. \end{DoxyCompactList}\item 
+virtual \hyperlink{classfsml_1_1State}{State} $\ast$ \hyperlink{classfsml_1_1State_a0c7aafd6216a785c159e70f00a12d3f8}{step} (const std\-::string \&input)
+\begin{DoxyCompactList}\small\item\em Attempts to execute the transition corresponding to the given input. \end{DoxyCompactList}\item 
+virtual const std\-::string \& \hyperlink{classfsml_1_1State_af13128f0b9cdf6433f4307bb16159477}{get\-Id} () const 
+\item 
+virtual const \\*
+std\-::unordered\-\_\-map\\*
+$<$ std\-::string, \hyperlink{classfsml_1_1Step}{Step} $>$ \& \hyperlink{classfsml_1_1State_ad96fe3074f0c3d8bd3dcb9a7cd7e25ed}{get\-Steps} () const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfsml_1_1State_a4acc37de347d0e4a66d6470a4d6ebcf7}{const std\-::string \hyperlink{classfsml_1_1State_a4acc37de347d0e4a66d6470a4d6ebcf7}{id}}\label{classfsml_1_1State_a4acc37de347d0e4a66d6470a4d6ebcf7}
+
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classfsml_1_1State}{State}'s id. \end{DoxyCompactList}\item 
+\hypertarget{classfsml_1_1State_af9c12ff54dd9712d43b3a10609445642}{std\-::unordered\-\_\-map\\*
+$<$ std\-::string, \hyperlink{classfsml_1_1Step}{Step} $>$ \hyperlink{classfsml_1_1State_af9c12ff54dd9712d43b3a10609445642}{steps}}\label{classfsml_1_1State_af9c12ff54dd9712d43b3a10609445642}
+
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classfsml_1_1State}{State}'s transitions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a \hyperlink{classfsml_1_1Machine}{Machine}'s state. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfsml_1_1State_a8aa7803bfefbd8c846ebd8cb81f824ac}{\index{fsml\-::\-State@{fsml\-::\-State}!State@{State}}
+\index{State@{State}!fsml::State@{fsml\-::\-State}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-State\-::\-State (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{id}
+\end{DoxyParamCaption}
+)}}\label{classfsml_1_1State_a8aa7803bfefbd8c846ebd8cb81f824ac}
+
+
+Constructs a new \hyperlink{classfsml_1_1State}{State} with the given id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The \hyperlink{classfsml_1_1State}{State}'s name. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfsml_1_1State_a0a28f6f4a995313d9bc85d1fdf51fb9b}{\index{fsml\-::\-State@{fsml\-::\-State}!add\-Step@{add\-Step}}
+\index{add\-Step@{add\-Step}!fsml::State@{fsml\-::\-State}}
+\subsubsection[{add\-Step}]{\setlength{\rightskip}{0pt plus 5cm}bool fsml\-::\-State\-::add\-Step (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{input, }
+\item[{const {\bf Step} \&}]{step}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1State_a0a28f6f4a995313d9bc85d1fdf51fb9b}
+
+
+Attemps to add the given transition to this \hyperlink{classfsml_1_1State}{State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The input name. \\
+\hline
+{\em step} & The transition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, if transition with the same input already exists, true otherwise. 
+\end{DoxyReturn}
+\hypertarget{classfsml_1_1State_af13128f0b9cdf6433f4307bb16159477}{\index{fsml\-::\-State@{fsml\-::\-State}!get\-Id@{get\-Id}}
+\index{get\-Id@{get\-Id}!fsml::State@{fsml\-::\-State}}
+\subsubsection[{get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}const string \& fsml\-::\-State\-::get\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1State_af13128f0b9cdf6433f4307bb16159477}
+\begin{DoxyReturn}{Returns}
+This \hyperlink{classfsml_1_1State}{State}'s name. 
+\end{DoxyReturn}
+\hypertarget{classfsml_1_1State_ad96fe3074f0c3d8bd3dcb9a7cd7e25ed}{\index{fsml\-::\-State@{fsml\-::\-State}!get\-Steps@{get\-Steps}}
+\index{get\-Steps@{get\-Steps}!fsml::State@{fsml\-::\-State}}
+\subsubsection[{get\-Steps}]{\setlength{\rightskip}{0pt plus 5cm}const unordered\-\_\-map$<$ string, {\bf Step} $>$ \& fsml\-::\-State\-::get\-Steps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1State_ad96fe3074f0c3d8bd3dcb9a7cd7e25ed}
+\begin{DoxyReturn}{Returns}
+This \hyperlink{classfsml_1_1State}{State}'s transitions. 
+\end{DoxyReturn}
+\hypertarget{classfsml_1_1State_a0c7aafd6216a785c159e70f00a12d3f8}{\index{fsml\-::\-State@{fsml\-::\-State}!step@{step}}
+\index{step@{step}!fsml::State@{fsml\-::\-State}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} $\ast$ fsml\-::\-State\-::step (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1State_a0c7aafd6216a785c159e70f00a12d3f8}
+
+
+Attempts to execute the transition corresponding to the given input. 
+
+If an action is triggered, the registered function will be called, if it exists. 
+\begin{DoxyParams}{Parameters}
+{\em input} & The input name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The target \hyperlink{classfsml_1_1State}{State} of the executed transition. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{structfsml_1_1InvalidInputException}{Invalid\-Input\-Exception}} & if the input cannot be handled. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/fsml/State.\-hpp\item 
+src/fsml/State.\-cpp\end{DoxyCompactItemize}

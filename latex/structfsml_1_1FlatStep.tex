@@ -1,0 +1,99 @@
+\hypertarget{structfsml_1_1FlatStep}{\section{fsml\-:\-:Flat\-Step Struct Reference}
+\label{structfsml_1_1FlatStep}\index{fsml\-::\-Flat\-Step@{fsml\-::\-Flat\-Step}}
+}
+
+
+Flat representation of a transition.  
+
+
+
+
+{\ttfamily \#include $<$Flat\-Step.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structfsml_1_1FlatStep_a2056fa8fd3e527dd04fffb7011fe3d16}{Flat\-Step} (const std\-::string \&\hyperlink{structfsml_1_1FlatStep_a0d750cd9f657776ffc88627a44d9fdf6}{source}, const std\-::string \&\hyperlink{structfsml_1_1FlatStep_a69f42f7f8091dff898b7944a12cb563e}{input}, const std\-::string \&\hyperlink{structfsml_1_1FlatStep_a910a78d294c31aea42fc23babd361cdb}{action}, const std\-::string \&\hyperlink{structfsml_1_1FlatStep_a2a4242c4ad9b86ce6e1fc638ed4427be}{target})
+\begin{DoxyCompactList}\small\item\em Constructs the flattened transition. \end{DoxyCompactList}\item 
+\hyperlink{structfsml_1_1FlatStep_aa855ca1535e6dbffb556ee28bd91779f}{operator std\-::string} () const 
+\begin{DoxyCompactList}\small\item\em Converts this \hyperlink{structfsml_1_1FlatStep}{Flat\-Step} to a string. \end{DoxyCompactList}\item 
+const std\-::string \hyperlink{structfsml_1_1FlatStep_a264b67de20cbd29b079aa46cc332f336}{get\-Step\-Text} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structfsml_1_1FlatStep_a0d750cd9f657776ffc88627a44d9fdf6}{std\-::string \hyperlink{structfsml_1_1FlatStep_a0d750cd9f657776ffc88627a44d9fdf6}{source}}\label{structfsml_1_1FlatStep_a0d750cd9f657776ffc88627a44d9fdf6}
+
+\begin{DoxyCompactList}\small\item\em The source state. \end{DoxyCompactList}\item 
+\hypertarget{structfsml_1_1FlatStep_a69f42f7f8091dff898b7944a12cb563e}{std\-::string \hyperlink{structfsml_1_1FlatStep_a69f42f7f8091dff898b7944a12cb563e}{input}}\label{structfsml_1_1FlatStep_a69f42f7f8091dff898b7944a12cb563e}
+
+\begin{DoxyCompactList}\small\item\em The input name. \end{DoxyCompactList}\item 
+\hypertarget{structfsml_1_1FlatStep_a910a78d294c31aea42fc23babd361cdb}{std\-::string \hyperlink{structfsml_1_1FlatStep_a910a78d294c31aea42fc23babd361cdb}{action}}\label{structfsml_1_1FlatStep_a910a78d294c31aea42fc23babd361cdb}
+
+\begin{DoxyCompactList}\small\item\em The action name or empty string for no action. \end{DoxyCompactList}\item 
+\hypertarget{structfsml_1_1FlatStep_a2a4242c4ad9b86ce6e1fc638ed4427be}{std\-::string \hyperlink{structfsml_1_1FlatStep_a2a4242c4ad9b86ce6e1fc638ed4427be}{target}}\label{structfsml_1_1FlatStep_a2a4242c4ad9b86ce6e1fc638ed4427be}
+
+\begin{DoxyCompactList}\small\item\em The target state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Flat representation of a transition. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfsml_1_1FlatStep_a2056fa8fd3e527dd04fffb7011fe3d16}{\index{fsml\-::\-Flat\-Step@{fsml\-::\-Flat\-Step}!Flat\-Step@{Flat\-Step}}
+\index{Flat\-Step@{Flat\-Step}!fsml::FlatStep@{fsml\-::\-Flat\-Step}}
+\subsubsection[{Flat\-Step}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-Flat\-Step\-::\-Flat\-Step (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{source, }
+\item[{const std\-::string \&}]{input, }
+\item[{const std\-::string \&}]{action, }
+\item[{const std\-::string \&}]{target}
+\end{DoxyParamCaption}
+)}}\label{structfsml_1_1FlatStep_a2056fa8fd3e527dd04fffb7011fe3d16}
+
+
+Constructs the flattened transition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Source state. \\
+\hline
+{\em input} & Input name. \\
+\hline
+{\em action} & \hyperlink{classfsml_1_1Action}{Action} name or empty string for no action. \\
+\hline
+{\em target} & Target state or empty string for source being target. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfsml_1_1FlatStep_a264b67de20cbd29b079aa46cc332f336}{\index{fsml\-::\-Flat\-Step@{fsml\-::\-Flat\-Step}!get\-Step\-Text@{get\-Step\-Text}}
+\index{get\-Step\-Text@{get\-Step\-Text}!fsml::FlatStep@{fsml\-::\-Flat\-Step}}
+\subsubsection[{get\-Step\-Text}]{\setlength{\rightskip}{0pt plus 5cm}const string fsml\-::\-Flat\-Step\-::get\-Step\-Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{structfsml_1_1FlatStep_a264b67de20cbd29b079aa46cc332f336}
+\begin{DoxyReturn}{Returns}
+The text for the transition (input or input/action). 
+\end{DoxyReturn}
+\hypertarget{structfsml_1_1FlatStep_aa855ca1535e6dbffb556ee28bd91779f}{\index{fsml\-::\-Flat\-Step@{fsml\-::\-Flat\-Step}!operator std\-::string@{operator std\-::string}}
+\index{operator std\-::string@{operator std\-::string}!fsml::FlatStep@{fsml\-::\-Flat\-Step}}
+\subsubsection[{operator std\-::string}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-Flat\-Step\-::operator std\-::string (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{structfsml_1_1FlatStep_aa855ca1535e6dbffb556ee28bd91779f}
+
+
+Converts this \hyperlink{structfsml_1_1FlatStep}{Flat\-Step} to a string. 
+
+
+
+The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/fsml/Flat\-Step.\-hpp\item 
+src/fsml/Flat\-Step.\-cpp\end{DoxyCompactItemize}

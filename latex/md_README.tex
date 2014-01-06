@@ -1,0 +1,43 @@
+F\-S\-M\-L implementation using C++ -- see \href{https://github.com/slebok/slepro/tree/master/languages/fsml}{\tt https\-://github.\-com/slebok/slepro/tree/master/languages/fsml}
+
+\subsection*{Requirements }
+
+This program requires a compiler that supports the C++11 standard.
+
+It also depends on Boost, which is provided in the lib folder to be linked statically. There's no need to build Boost, as only header files are used.
+
+For unit testing, Google's gtest library and pthread are required.
+
+Finally, since the program generates La\-Te\-X and Dot code, you will need appropriate programs for compiling them, e.\-g. pdf\-Te\-X and Graphviz
+
+\subsection*{Build }
+
+There is a Makefile for gcc provided, which will place compiled binaries into a folder called bin.
+
+Use {\ttfamily make debug} or {\ttfamily make release} to build a debug or fully-\/optimized executable. The binaries will be called {\ttfamily fsmlpp\-\_\-debug} and {\ttfamily fsmlpp} respectively.
+
+Use {\ttfamily make simulation} to build the sample interactive simulation. If you have Google's gtest unit testing library and pthread installed. The resulting binary will be called {\ttfamily fsmlpp\-\_\-simulation}.
+
+Use {\ttfamily make test} to build the unit test, the required libraries will be attempted to be linked via {\ttfamily -\/lgtest -\/lpthread} The resulting binary will be called {\ttfamily fsmlpp\-\_\-test}.
+
+{\ttfamily make} by itself will build all targets.
+
+\subsection*{Bash Script }
+
+There is a bash script called {\ttfamily buildnrun.\-sh} provided. It will make the release build, generate C++, La\-Te\-X and Dot code for the Sample.\-Fsml, and finally run {\ttfamily pdflatex} and {\ttfamily graphviz} to yield two different P\-D\-F files.
+
+\subsection*{Run F\-S\-M\-L++ }
+
+The syntax for running the program is {\ttfamily fsmlpp S\-O\-U\-R\-C\-E}, where S\-O\-U\-R\-C\-E is the path to a file containing F\-S\-M\-L code.
+
+Note that the program will look for the template files in the present working directory, so run it from the project's root directory.
+
+The program will attempt to load the given file, parse the code inside, validate it and then generate a C++ header file, La\-Te\-X file and Dot file with an appropriate name. If any of the steps fail, an appropriate error is thrown.
+
+\subsection*{Run Test }
+
+Execute the compiled {\ttfamily fsmlpp\-\_\-test} from the project's root directory so it can find all files. No special output means that the expected errors or lack thereof occurred. Otherwise, there will be a message about each failed test.
+
+\subsection*{Run Simulation }
+
+To run the simulation, just execute the compiled {\ttfamily fsmlpp\-\_\-simulation} and enjoy the interactive simulation experience. 
