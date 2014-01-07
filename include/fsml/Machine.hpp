@@ -17,22 +17,22 @@ public:
     /**Constructs and validates a Machine from the given FlatMachine.
     @param fm The FlatMachine.
     @return A Machine corresponding to the given FlatMachine, if it is valid.
-    @throws InitialStateException if no or more then one inital state is given.
-    @throws UniqueException if a state is defined more than once.
-    @throws ReachableException if a state is not reachable from intial state.
-    @throws ResolvableException if target state in a transition does not exist.
-    @throws DeterministicException if an input in a state is not distinct.*/
+    @throw InitialStateException if no or more then one inital state is given.
+    @throw UniqueException if a state is defined more than once.
+    @throw ReachableException if a state is not reachable from intial state.
+    @throw ResolvableException if target state in a transition does not exist.
+    @throw DeterministicException if an input in a state is not distinct.*/
 	Machine(const FlatMachine& fm);
 	/**Constructs and validates a Machine from the given parameters.
     @param initials The initial states.
     @param states The non-inital states.
     @param steps The transitions.
     @return A Machine corresponding to the given parameters, if they are valid.
-    @throws InitialStateException if no or more then one inital state is given.
-    @throws UniqueException if a state is defined more than once.
-    @throws ReachableException if a state is not reachable from intial state.
-    @throws ResolvableException if target state in a transition does not exist.
-    @throws DeterministicException if an input in a state is not distinct.*/
+    @throw InitialStateException if no or more then one inital state is given.
+    @throw UniqueException if a state is defined more than once.
+    @throw ReachableException if a state is not reachable from intial state.
+    @throw ResolvableException if target state in a transition does not exist.
+    @throw DeterministicException if an input in a state is not distinct.*/
 	Machine(const std::vector<std::string>& initials,
 		const std::vector<std::string>& states,
 		const std::vector<FlatStep>& steps);
@@ -43,7 +43,7 @@ public:
     If an action is triggered, the registered function will be called, if it exists.
     @param input The input name.
     @return The Machine itself so that input can be chained.
-    @throws InvalidInputException if the current State cannot handle the input. The
+    @throw InvalidInputException if the current State cannot handle the input. The
     current State will not be changed.*/
 	virtual Machine& operator<<(const std::string& input);
 
@@ -56,7 +56,7 @@ public:
     /**Registers the given function with the given action.
     @param action The action name.
     @param func The function to register.
-    @throws out_of_range if the action does not exist.*/
+    @throw out_of_range if the action does not exist.*/
 	virtual void registerAt(const std::string& action,
 		const ActionFunction& func);
 
@@ -69,8 +69,8 @@ protected:
     @param input The input name.
     @param actionId The action name.
     @param targetId The target state's name.
-    @throws ResolvableException if target does not exist.
-    @throws DeterministicException if there is more than one possible transition for the
+    @throw ResolvableException if target does not exist.
+    @throw DeterministicException if there is more than one possible transition for the
     given input.*/
 	void addStep(const std::string& sourceId, const std::string& input,
 		const std::string& actionId, const std::string& targetId);

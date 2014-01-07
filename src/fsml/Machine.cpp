@@ -12,17 +12,23 @@ Machine::Machine(const FlatMachine& fm) :
 Machine::Machine(const vector<string>& initials, const vector<string>& states,
 		const vector<FlatStep>& steps)
 {
+	// The initials vector must have exactly one state, which is the initial state
 	if (initials.size() != 1)
 		throw InitialStateException{initials};
+	// Insert initial state and set current state to it
 	current = &(*stateMap.insert({initials[0], State{initials[0]}}).first).second;
+	// Add all other states, throw on duplicate
 	for (const string& s : states)
 		if (!stateMap.insert({s, State{s}}).second)
 			throw UniqueException{s};
+	// Add all steps
 	for (const FlatStep& s : steps)
 		addStep(s.source, s.input, s.action, s.target);
+	// Gather states reachable from the initial (current) state
 	const unordered_set<const State*> reachable{reachableFrom(current)};
 	if (reachable.size() < stateMap.size())
 		throw ReachableException{[&](){
+			// Collect unreachable states for error message via reachable \ stateMap
 			vector<string> unreachable;
 			for (const auto& p : stateMap)
 				if (reachable.find(&p.second) == reachable.end())
@@ -44,9 +50,13 @@ Machine::reachableFrom(const State* const start) const
     vector<const State*> left{start};
     unordered_set<const State*> reachable{start};
     left.reserve(stateMap.size());
+    // Iterate through the left, which grows as more reachable states are found
 	for (vector<const State*>::size_type i{0}; i < left.size(); ++i)
+		// Iterate through all transitions of each reachable state
 		for (const auto& stepPair : left[i]->getSteps())
+			// All targets of reachable states are reachable
 			if (reachable.insert(stepPair.second.getTarget()).second)
+				// If the state wasn't reachable already, add it to left to be processed
 				left.push_back(stepPair.second.getTarget());
 	return reachable;
 }

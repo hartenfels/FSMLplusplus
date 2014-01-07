@@ -25,13 +25,14 @@ main(int argc, const char* argv[])
 		cout << "OK\nValidating...";
 		Machine machine{fm};
 		cout << "OK\nGenerating:\n";
+		// Strip string of all special chars so it can be used as an identifier
 		const string i{regex_replace(fileArg, sregex{~alpha}, string{})};
 		cout << '\t' << i << ".hpp...";
-		ofstream(i + ".hpp") << generateCode(i, s, fm);
+		writeFile(i + ".hpp", generateCode(i, s, fm));
 		cout << "OK\n\t" << i << ".tex...";
-		ofstream(i + ".tex") << generateLatex(fm);
+		writeFile(i + ".tex", generateLatex(fm));
 		cout << "OK\n\t" << i << ".dot...";
-		ofstream(i + ".dot") << generateDot(i, fm);
+		writeFile(i + ".dot", generateDot(i, fm));
 		cout << "OK\nDone.\n";
 	}
 	return 0;

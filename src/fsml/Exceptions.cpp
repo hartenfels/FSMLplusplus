@@ -4,9 +4,11 @@
 namespace fsml
 { using namespace std; using boost::format;
 
+// Format strings for exceptions
 static constexpr char DETERMINISTIC[]{"Constraint violation - input \"%1%\" in state "
 		"\"%2%\" is not deterministic."};
 static constexpr char FILE_READ[]{"Error reading file \"%1%\"."};
+static constexpr char FILE_WRITE[]{"Error writing file \"%1%\"."};
 static constexpr char INITIAL_STATE_MISSING[]
 		{"Constraint violation - missing an initial state."};
 static constexpr char INITIAL_STATES[]
@@ -20,6 +22,10 @@ static constexpr char RESOLVABLE[]{"Constraint violation - target \"%1%\" in sta
 		"\"%2%\" is not resolvable."};
 static constexpr char UNIQUE[]{"Constraint violation - state \"%1%\" is not unique."};
 
+/**Convenience function to create a comma-separated string from a vector of string.
+@param v The vector of string of size >= 1.
+@return A string containing each string from the vector, separated with commas.
+@throw out_of_range if the given vector has size 0.*/
 static string
 stringListFromVector(const vector<string>& v)
 {
@@ -35,6 +41,9 @@ DeterministicException::DeterministicException(const string& i, const string& s)
 
 FileReadException::FileReadException(const string& f) :
 	runtime_error((format(FILE_READ) % f).str()) {}
+
+FileWriteException::FileWriteException(const string& f) :
+	runtime_error((format(FILE_WRITE) % f).str()) {}
 
 InitialStateException::InitialStateException(const vector<string>& s) :
 	runtime_error(s.empty() ? INITIAL_STATE_MISSING : (format(INITIAL_STATES) %

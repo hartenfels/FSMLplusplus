@@ -8,9 +8,11 @@ namespace fsml
 {using namespace std; using boost::format; using boost::to_upper_copy;
 namespace karma = boost::spirit::karma;
 
+// Templates for C++
 static const string CODE{readFile("templates/hpp.template")};
 static constexpr char STATE[]{"\t\t\"%1%\",\n"};
 static constexpr char STEP[]{"\t\tStepTup(\"%1%\", \"%2%\", \"%3%\", \"%4%\"),\n"};
+// Templates for LaTeX
 static const string LATEX{readFile("templates/latex.template")};
 static constexpr char NODE[]
 		{"\\node[state](%1%)[right of=%2%]{\\parbox{1.5cm}{\\centering %1%}};\n"};
@@ -18,6 +20,7 @@ static constexpr char SELF[]
 		{"(%1%)edge[loop]node{\\parbox{1cm}{\\centering %2%}}(%3%)\n"};
 static constexpr char OTHER[]
 		{"(%1%)edge[bend left]node{\\parbox{1cm}{\\centering %2%}}(%3%)\n"};
+// Templates for Graphviz
 static const string DOT{readFile("templates/dot.template")};
 static constexpr char ARROW[]{"\t%1% -> %2% [label=\" %3% \"];\n"};
 
@@ -25,9 +28,12 @@ const string
 generateCode(const string& name, const string& fsmlCode, const FlatMachine& fm)
 {
 	string states, steps;
+	// Convert vector of FlatStates to vector of string
 	const vector<string> v(fm.steps.begin(), fm.steps.end());
+	// Use Karma to fill string with states...
 	karma::generate(back_insert_iterator<string>(states),
 			*("\t\t\"" << +karma::char_ << "\",\n"), fm.states);
+	// ...and transitions
 	karma::generate(back_insert_iterator<string>(steps),
 			*("\t\t" << +karma::char_ << ",\n"), v);
 	return (format(CODE) % to_upper_copy(name) % fsmlCode % name %
@@ -39,6 +45,7 @@ generateLatex(const FlatMachine& fm)
 {
 	size_t paperWidth = (fm.states.size() + 1) * 5, paperHeight = 6 + fm.states.size();
 	// Nodes
+	// rightOf is needed to tell the nodes their position
 	const string* rightOf{&fm.initials.at(0)};
 	stringstream nodes;
 	for (const string& s : fm.states) {
@@ -51,6 +58,7 @@ generateLatex(const FlatMachine& fm)
         stringstream transition;
         for (const FlatStep& fs : it->second)
 			transition << "\\contour{white}{" << fs.getStepText() << "} ";
+		// Depending on if source and target being identical, we need different templates
 		paths << ((it->first.first == it->first.second ? format(SELF) : format(OTHER)) %
 				it->first.first % transition.str() % it->first.second).str();
 	}

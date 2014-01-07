@@ -26,6 +26,7 @@ state Machine {
 }
 
 state HPP {
+	construct/validate -> Machine;
 }
 
 state TEX {
@@ -59,6 +60,7 @@ Machine createFsmlppFsml()
 		{"FlatMachine", "generateCode", "", "HPP"},
 		{"FlatMachine", "generateLatex", "", "TEX"},
 		{"FlatMachine", "generateDot", "", "DOT"},
+		{"HPP", "construct", "validate", "Machine"},
 		}
 	};
 }

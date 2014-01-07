@@ -7,14 +7,23 @@ namespace fsml
 { using namespace std;
 
 string
-readFile(const string& file)
+readFile(const string& f)
 {
 	stringstream ss;
-	ifstream stream(file);
+	ifstream stream(f);
 	if (!stream)
-		throw FileReadException{file};
+		throw FileReadException{f};
 	ss << stream.rdbuf();
 	return ss.str();
+}
+
+void
+writeFile(const string& f, const string& c)
+{
+	ofstream out{f};
+	out << c;
+	if (!out)
+		throw FileWriteException{f};
 }
 
 Machine

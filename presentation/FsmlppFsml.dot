@@ -7,4 +7,5 @@ digraph FsmlppFsml {
 	FlatMachine -> HPP [label=" generateCode "];
 	FlatMachine -> TEX [label=" generateLatex "];
 	FlatMachine -> DOT [label=" generateDot "];
+	HPP -> Machine [label=" construct/validate "];
 }

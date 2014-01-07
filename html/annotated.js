@@ -4,6 +4,7 @@ var annotated =
       [ "Action", "classfsml_1_1Action.html", "classfsml_1_1Action" ],
       [ "DeterministicException", "structfsml_1_1DeterministicException.html", "structfsml_1_1DeterministicException" ],
       [ "FileReadException", "structfsml_1_1FileReadException.html", "structfsml_1_1FileReadException" ],
+      [ "FileWriteException", "structfsml_1_1FileWriteException.html", "structfsml_1_1FileWriteException" ],
       [ "InitialStateException", "structfsml_1_1InitialStateException.html", "structfsml_1_1InitialStateException" ],
       [ "InvalidInputException", "structfsml_1_1InvalidInputException.html", "structfsml_1_1InvalidInputException" ],
       [ "ParserException", "structfsml_1_1ParserException.html", "structfsml_1_1ParserException" ],

@@ -10,6 +10,7 @@ var hierarchy =
     [ "runtime_error", null, [
       [ "fsml::DeterministicException", "structfsml_1_1DeterministicException.html", null ],
       [ "fsml::FileReadException", "structfsml_1_1FileReadException.html", null ],
+      [ "fsml::FileWriteException", "structfsml_1_1FileWriteException.html", null ],
       [ "fsml::InitialStateException", "structfsml_1_1InitialStateException.html", null ],
       [ "fsml::InvalidInputException", "structfsml_1_1InvalidInputException.html", null ],
       [ "fsml::ParserException", "structfsml_1_1ParserException.html", null ],

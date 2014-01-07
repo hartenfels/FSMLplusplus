@@ -17,6 +17,7 @@ state Machine {
 }
 
 state HPP {
+	construct/validate -> Machine;
 }
 
 state TEX {
