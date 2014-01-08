@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.6.4)  8 JAN 2014 15:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.6.4)  8 JAN 2014 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1082,12 +1082,12 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 67.
+LaTeX Font Info:    Try loading font information for U+msa on input line 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 67.
+LaTeX Font Info:    Try loading font information for U+msb on input line 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -1098,7 +1098,7 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 File: res/Structuredot.pdf Graphic file (type pdf)
 
 <use res/Structuredot.pdf>
-Package pdftex.def Info: res/Structuredot.pdf used on input line 77.
+Package pdftex.def Info: res/Structuredot.pdf used on input line 78.
 (pdftex.def)             Requested size: 245.35497pt x 204.88405pt.
  [4
 
@@ -1111,6 +1111,9 @@ Package pdftex.def Info: res/Structuredot.pdf used on input line 77.
 ] [8
 
 ]
+[9
+
+]
 \tf@nav=\write6
 \openout6 = `FSMLplusplus.nav'.
 
@@ -1120,12 +1123,11 @@ Package pdftex.def Info: res/Structuredot.pdf used on input line 77.
 \tf@snm=\write8
 \openout8 = `FSMLplusplus.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
-
-(./FSMLplusplus.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
+ (./FSMLplusplus.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `FSMLplusplus.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1133,16 +1135,16 @@ Package rerunfilecheck Info: File `FSMLplusplus.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 131.
  ) 
 Here is how much of TeX's memory you used:
- 15949 strings out of 495007
- 294435 string characters out of 3179691
- 368489 words of memory out of 3000000
- 18730 multiletter control sequences out of 15000+200000
+ 15954 strings out of 495007
+ 294486 string characters out of 3179691
+ 370489 words of memory out of 3000000
+ 18733 multiletter control sequences out of 15000+200000
  13639 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 49i,16n,53p,428b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,16n,53p,1312b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texl
@@ -1151,10 +1153,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on FSMLplusplus.pdf (8 pages, 93779 bytes).
+Output written on FSMLplusplus.pdf (9 pages, 100909 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
+ 132 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
