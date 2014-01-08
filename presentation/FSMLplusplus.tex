@@ -1,0 +1,108 @@
+\documentclass[12pt,slidestop,handout]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{german}
+\usepackage{graphicx}
+\beamertemplatenavigationsymbolsempty
+\usetheme{Boadilla}
+\usecolortheme{whale}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\defbeamertemplate*{footline}{my infolines theme} {
+\leavevmode
+\hbox{
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
+\usebeamerfont{author in head/foot}\insertshortauthor
+\end{beamercolorbox}
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+\usebeamerfont{title in head/foot}\insertshorttitle
+\end{beamercolorbox}
+\begin{beamercolorbox}[wd=.309\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}
+\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}}
+\vskip0pt
+}
+\newcounter{FrameCounter}
+\newcommand{\nextframe}[0]{\stepcounter{FrameCounter}}
+\newcommand{\framecount}[1]{\frametitle{\arabic{FrameCounter}. {#1}}}
+\newcommand{\fitem}{\vfill\item}
+\newcommand{\TikZ}{Ti\textit{k}Z}
+
+\title{FSML++}
+\author{Carsten Hartenfels \and Benjamin Haßel}
+\date{2014-01-09}
+
+\begin{document}
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contents}
+	\pause
+	\begin{enumerate}[<+->]
+		\fitem Overview
+		\fitem Program Structure
+		\fitem C++ and Boost
+		\fitem Boost.Spirit.Qi
+		\fitem Boost.Format
+		\fitem Questions and Answers
+	\end{enumerate}\vfill
+\end{frame}
+
+\nextframe
+\begin{frame}
+	\framecount{Overview}\pause
+	\begin{itemize}[<+->]
+		\fitem Language: C++
+		\fitem Parser: Boost.Spirit.Qi
+		\fitem Generator: Boost.Format
+		\begin{itemize}[<+->]
+			\fitem C++ header file
+			\fitem \LaTeX/\TikZ\ file
+			\fitem Graphviz/Dot file
+		\end{itemize}
+		\fitem Testing: Google gtest
+	\end{itemize}\vfill
+\end{frame}
+
+\nextframe
+\begin{frame}
+	\framecount{Program Structure}\pause
+	\vfill
+	\begin{center}
+		\includegraphics[scale=0.42]{res/Structuredot.pdf}
+	\end{center}
+	\vfill
+\end{frame}
+
+\nextframe
+\begin{frame}
+	\framecount{C++ and Boost}\pause
+	\begin{itemize}[<+->]
+	\end{itemize}\vfill
+\end{frame}
+
+\nextframe
+\begin{frame}
+	\framecount{Boost.Spirit.Qi}\pause
+	\begin{itemize}[<+->]
+	\end{itemize}\vfill
+\end{frame}
+
+\nextframe
+\begin{frame}
+	\framecount{Boost.Format}\pause
+	\begin{itemize}[<+->]
+	\end{itemize}\vfill
+\end{frame}
+
+\nextframe
+\begin{frame}
+	\framecount{Questions and Answers}
+	\begin{center}\vspace{54pt}
+		{\Huge Thank You All For Listening}\\\vspace{54.35pt}
+		GitHub: \url{https://github.com/hartenfels/FSMLplusplus/}
+	\end{center}
+\end{frame}
+\end{document}
