@@ -32,8 +32,7 @@ stringListFromVector(const vector<string>& v)
 {
 	stringstream ss;
 	ss << '"' << v.at(0) << '"';
-	for_each(next(v.begin()), v.end(),
-			[&](const string& s){ss << ", \"" << s << '"';});
+	for_each(next(v.begin()), v.end(), [&](const string& s){ss << ", \"" << s << '"';});
 	return ss.str();
 }
 
