@@ -1,8 +1,9 @@
 #include "fsml/Exceptions.hpp"
 #include <sstream>
 #include <boost/format.hpp>
+#include <boost/spirit/include/karma.hpp>
 namespace fsml
-{ using namespace std; using boost::format;
+{ using namespace std; using boost::format; namespace karma = boost::spirit::karma;
 
 // Format strings for exceptions
 static constexpr char DETERMINISTIC[]{"Constraint violation - input \"%1%\" in state "

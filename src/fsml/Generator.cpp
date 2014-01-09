@@ -55,12 +55,12 @@ generateLatex(const FlatMachine& fm)
 	// Paths
 	stringstream paths;
 	for (auto it = fm.stepMap.begin(); it != fm.stepMap.end(); it = next(it)) {
-        stringstream transition;
-        for (const FlatStep& fs : it->second)
-			transition << "\\contour{white}{" << fs.getStepText() << "} ";
+        string transition;
+		karma::generate(back_insert_iterator<string>(transition),
+			*("\\contour{white}{" << +karma::char_ << "} "), it->second);
 		// Depending on if source and target being identical, we need different templates
 		paths << ((it->first.first == it->first.second ? format(SELF) : format(OTHER)) %
-				it->first.first % transition.str() % it->first.second).str();
+				it->first.first % transition % it->first.second).str();
 	}
 	return (format(LATEX) % paperWidth % paperHeight % fm.initials[0] % nodes.str() %
 			paths.str()).str();

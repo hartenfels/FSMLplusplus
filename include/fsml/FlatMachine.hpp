@@ -23,7 +23,7 @@ struct FlatMachine
 	///The transitions.
 	std::vector<FlatStep> steps;
 	///Map from pair of states (source, target) to transitions.
-	std::map<std::pair<std::string, std::string>, std::vector<FlatStep>> stepMap;
+	std::map<std::pair<std::string, std::string>, std::vector<std::string>> stepMap;
 };
 
 }

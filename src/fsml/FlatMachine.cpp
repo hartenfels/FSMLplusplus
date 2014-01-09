@@ -13,7 +13,7 @@ FlatMachine::FlatMachine(const AstMachine* const am)
 			steps.push_back(fs);
 			// This will construct a new vector of FlatStep
 			// if the source/target pair not yet in the map.
-			stepMap[{fs.source, fs.target}].push_back(fs);
+			stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
 		}
 	}
 }
