@@ -11,15 +11,21 @@ typedef std::function<void ()> ActionFunction;
 class Action
 {
 public:
+	Action() = default;
+	Action(const std::string& id);
 	virtual ~Action() = default;
 
+	/**@return The Action's name*/
+	virtual const std::string& getId() const;
     /**Registers the given function.
-    @param f The function. */
+    @param f The function.*/
 	virtual void registerFunction(const ActionFunction& f);
 	/**Invokes the previously registered function.*/
 	virtual void invoke() const;
 protected:
-    ///The function.
+	/// The name of this action.
+	const std::string id;
+    /// The function.
     ActionFunction func;
 };
 

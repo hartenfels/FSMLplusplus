@@ -79,7 +79,6 @@ protected:
 
     ///Maps actions to their respective name.
 	std::unordered_map<std::string, Action> actionMap;
-	std::unordered_map<const Action*, std::string> actionNames;
     ///Maps states to their respective name.
 	std::unordered_map<std::string, State> stateMap;
 	///The current State

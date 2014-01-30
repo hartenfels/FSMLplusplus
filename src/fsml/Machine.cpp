@@ -52,7 +52,7 @@ Machine::operator FlatMachine() const
 		for (const pair<string, Step>& step : p.second.getSteps()) {
 			const Action* const action{step.second.getAction()};
 			FlatStep fs{p.first, step.first, step.second.getTarget()->getId(),
-				action ? actionNames.at(action) : string{}};
+				action ? action->getId() : string{}};
 			fm.steps.push_back(fs);
 			fm.stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
 		}
@@ -101,12 +101,9 @@ Machine::addStep(const string& s, const string& i, const string& a,
 			throw ResolvableException{t, s};
 		return &it->second;
 	}()};
-	Action* action{nullptr};
-	if (!a.empty()) {
-		action = &actionMap[a];
-		actionNames[action] = a;
-	}
-	if (!src->addStep(i, Step(dst, action)))
+	if (!src->addStep(i, {dst, a.empty() ? nullptr :
+			// Insert action, if it does not yet exist, and get a pointer to the value
+			&actionMap.insert({a, {a}}).first->second}))
 		throw DeterministicException{i, s};
 }
 
