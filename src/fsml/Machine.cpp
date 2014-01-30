@@ -16,7 +16,7 @@ Machine::Machine(const vector<string>& initials, const vector<string>& states,
 	if (initials.size() != 1)
 		throw InitialStateException{initials};
 	// Insert initial state and set current state to it
-	current = &(*stateMap.insert({initials[0], State{initials[0]}}).first).second;
+	current = &(*stateMap.insert({initials[0], State{initials[0], true}}).first).second;
 	// Add all other states, throw on duplicate
 	for (const string& s : states)
 		if (!stateMap.insert({s, State{s}}).second)
@@ -42,6 +42,22 @@ Machine::operator<<(const string& input)
 {
     current = current->step(input);
 	return *this;
+}
+
+Machine::operator FlatMachine() const
+{
+    FlatMachine fm;
+	for (const pair<string, State>& p : stateMap) {
+		(p.second.isInitial() ? fm.initials : fm.states).push_back(p.first);
+		for (const pair<string, Step>& step : p.second.getSteps()) {
+			const Action* const action{step.second.getAction()};
+			FlatStep fs{p.first, step.first, step.second.getTarget()->getId(),
+				action ? actionNames.at(action) : string{}};
+			fm.steps.push_back(fs);
+			fm.stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
+		}
+	}
+    return fm;
 }
 
 const unordered_set<const State*>
@@ -85,7 +101,12 @@ Machine::addStep(const string& s, const string& i, const string& a,
 			throw ResolvableException{t, s};
 		return &it->second;
 	}()};
-	if (!src->addStep(i, Step(dst, a.empty() ? nullptr : &actionMap[a])))
+	Action* action{nullptr};
+	if (!a.empty()) {
+		action = &actionMap[a];
+		actionNames[action] = a;
+	}
+	if (!src->addStep(i, Step(dst, action)))
 		throw DeterministicException{i, s};
 }
 

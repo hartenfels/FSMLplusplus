@@ -1,0 +1,9 @@
+digraph StructOld {
+	node [shape=ellipse];
+	FsmlCode [style=filled];
+	FsmlCode -> AstMachine [label=" parse "];
+	AstMachine -> FlatMachine [label=" flatten "];
+	FlatMachine -> Machine [label=" construct/validate "];
+	FlatMachine -> HPP [label=" generateCode "];
+	HPP -> Machine [label=" construct/validate "];
+}

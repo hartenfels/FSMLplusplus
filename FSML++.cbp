@@ -75,6 +75,7 @@
 			<Option target="Simulation" />
 		</Unit>
 		<Unit filename="include/fsml/Action.hpp" />
+		<Unit filename="include/fsml/Ast.hpp" />
 		<Unit filename="include/fsml/Exceptions.hpp" />
 		<Unit filename="include/fsml/FlatMachine.hpp" />
 		<Unit filename="include/fsml/FlatStep.hpp" />

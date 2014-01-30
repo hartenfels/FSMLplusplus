@@ -21,4 +21,10 @@ Step::getTarget() const
 	return target;
 }
 
+const Action*
+Step::getAction() const
+{
+	return action;
+}
+
 }

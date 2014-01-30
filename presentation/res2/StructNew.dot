@@ -1,0 +1,12 @@
+digraph StructNew {
+	node [shape=ellipse];
+	FsmlCode [style=filled];
+	FsmlCode -> AstMachine [label=" parse "];
+	AstMachine -> FsmlCode [label=" generateFsml "];
+	AstMachine -> FlatMachine [label=" flatten "];
+	FlatMachine -> AstMachine [label=" revert "];
+	FlatMachine -> Machine [label=" construct/validate "];
+	FlatMachine -> HPP [label=" generateCode "];
+	Machine -> FlatMachine [label=" revert "];
+	HPP -> Machine [label=" construct/validate "];
+}

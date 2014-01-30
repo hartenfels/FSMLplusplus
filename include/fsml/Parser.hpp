@@ -1,40 +1,15 @@
 #ifndef FSML_PARSER_HPP
 #define FSML_PARSER_HPP
+#include "fsml/Ast.hpp"
 #include "fsml/Exceptions.hpp"
 #include "fsml/FlatMachine.hpp"
 #include <boost/spirit/include/qi.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <string>
 #include <vector>
-namespace fsml
-{
 /**@file Contains the parser and all related structures.
 Since all functions require templates, the entire implementation resides in this header
 file. There is no separat implementation file.*/
-
-/**Abstract syntax tree representation of a transition.*/
-struct AstStep
-{
-	std::string input;
-	std::string action;
-	std::string target;
-};
-
-/**Abstract syntax tree representation of a state.*/
-struct AstState
-{
-	std::string initial;
-	std::string id;
-	std::vector<AstStep> steps;
-};
-
-/**Abstract syntax tree representation of a state machine.*/
-struct AstMachine
-{
-	std::vector<AstState> states;
-};
-
-}
 
 /**Adapt state and step structs for use with Boost.Spirit.Qi.*/
 BOOST_FUSION_ADAPT_STRUCT(fsml::AstState, (std::string, initial) (std::string, id)
@@ -87,7 +62,7 @@ FlatMachine parse(Iterator s, const Iterator& e, const std::string& f)
 	AstMachine m;
 	if (phrase_parse(s, e, FsmlGrammar<Iterator>(), fsmlcs::space, m.states) &&
 			s == e) {
-		return FlatMachine(&m);
+		return FlatMachine(m);
 	}
 	throw ParserException(f);
 }

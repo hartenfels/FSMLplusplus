@@ -1,20 +1,23 @@
 #ifndef FSML_FLATMACHINE_HPP
 #define FSML_FLATMACHINE_HPP
+#include "fsml/Ast.hpp"
 #include "fsml/FlatStep.hpp"
 #include <string>
 #include <map>
 #include <vector>
 namespace fsml
 {
-struct AstMachine;
 
 /**Flat representation of the abstract syntax tree.*/
 struct FlatMachine
 {
     /**Constructs a flattened representation of the given abstract syntax tree machine.
     @param am Abstract syntax tree to generate from.*/
-	FlatMachine(const AstMachine* const am);
+    FlatMachine() = default;
+	FlatMachine(const AstMachine& am);
 	~FlatMachine() = default;
+
+	operator AstMachine() const;
 
     ///The non-inital states.
 	std::vector<std::string> states;

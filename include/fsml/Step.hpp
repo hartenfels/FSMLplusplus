@@ -20,6 +20,8 @@ public:
 	virtual State* invoke();
 	/**@return The target State.*/
 	virtual const State* getTarget() const;
+	/**@return The Action, or nullptr if there is none.*/
+	virtual const Action* getAction() const;
 protected:
     ///The target State.
 	State* const target;

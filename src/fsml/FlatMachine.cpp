@@ -1,11 +1,11 @@
 #include "FlatMachine.hpp"
-#include "fsml/Parser.hpp"
+#include <algorithm>
 namespace fsml
-{
+{ using namespace std;
 
-FlatMachine::FlatMachine(const AstMachine* const am)
+FlatMachine::FlatMachine(const AstMachine& am)
 {
-    for (const AstState& state : am->states) {
+    for (const AstState& state : am.states) {
         (state.initial.empty() ? states : initials).push_back(state.id);
 		for (const AstStep& step : state.steps) {
 			FlatStep fs{state.id, step.input, step.action,
@@ -16,6 +16,21 @@ FlatMachine::FlatMachine(const AstMachine* const am)
 			stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
 		}
 	}
+}
+
+FlatMachine::operator AstMachine() const
+{
+	AstMachine am;
+	for (const string& i : initials)
+		am.states.push_back({"initial", i, {}});
+	for (const string& s : states)
+		am.states.push_back({"", s, {}});
+	for (const FlatStep& step : steps)
+        find_if(am.states.begin(), am.states.end(), [&](const AstState& state){
+					return state.id == step.source;
+				})->steps.push_back(
+				{step.input, step.action, step.target == step.source ? "" : step.target});
+	return am;
 }
 
 }

@@ -3,7 +3,7 @@
 namespace fsml
 { using namespace std;
 
-State::State(const string& i) : id{i} {}
+State::State(const string& i, const bool& init) : initial(init), id{i} {}
 
 bool
 State::addStep(const string& input, const Step& step)
@@ -18,6 +18,12 @@ State::step(const string& input)
 	if (it == steps.end())
 		throw InvalidInputException(getId(), input);
 	return it->second.invoke();
+}
+
+const bool&
+State::isInitial() const
+{
+	return initial;
 }
 
 const string&

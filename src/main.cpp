@@ -28,7 +28,7 @@ main(int argc, const char* argv[])
 		// Strip string of all special chars so it can be used as an identifier
 		const string i{regex_replace(fileArg, sregex{~alpha}, string{})};
 		cout << '\t' << i << ".hpp...";
-		writeFile(i + ".hpp", generateCode(i, s, fm));
+		writeFile(i + ".hpp", generateCode(i, fm));
 		cout << "OK\n\t" << i << ".tex...";
 		writeFile(i + ".tex", generateLatex(fm));
 		cout << "OK\n\t" << i << ".dot...";

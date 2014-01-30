@@ -12,7 +12,7 @@ class State
 public:
 	/**Constructs a new State with the given id.
 	@param id The State's name.*/
-	State(const std::string& id);
+	State(const std::string& id, const bool& initial = false);
 	virtual ~State() = default;
 
     /**Attemps to add the given transition to this State.
@@ -26,14 +26,18 @@ public:
     @return The target State of the executed transition.
     @throws InvalidInputException if the input cannot be handled.*/
 	virtual State* step(const std::string& input);
+	/**@return If this State is an initial state.*/
+	virtual const bool& isInitial() const;
 	/**@return This State's name.*/
 	virtual const std::string& getId() const;
 	/**@return This State's transitions.*/
 	virtual const std::unordered_map<std::string, Step>& getSteps() const;
 protected:
-    ///The State's id.
+	/// The State's initialness
+	const bool initial;
+    /// The State's id.
 	const std::string id;
-	///The State's transitions.
+	/// The State's transitions.
 	std::unordered_map<std::string, Step> steps;
 };
 

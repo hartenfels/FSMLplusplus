@@ -25,7 +25,28 @@ static const string DOT{readFile("templates/dot.template")};
 static constexpr char ARROW[]{"\t%1% -> %2% [label=\" %3% \"];\n"};
 
 const string
-generateCode(const string& name, const string& fsmlCode, const FlatMachine& fm)
+generateFsml(const AstMachine& am)
+{
+	stringstream ss;
+	for (const AstState& state : am.states) {
+		if (!state.initial.empty())
+			ss << state.initial << ' ';
+		ss << "state " << state.id << " {\n";
+		for (const AstStep& step : state.steps) {
+			ss << "  " << step.input;
+			if (!step.action.empty())
+				ss << '/' << step.action;
+			if (!step.target.empty())
+				ss << " -> " << step.target;
+			ss << ";\n";
+		}
+		ss << "}\n";
+	}
+	return ss.str();
+}
+
+const string
+generateCode(const string& name, const FlatMachine& fm)
 {
 	string states, steps;
 	// Convert vector of FlatStates to vector of string
@@ -36,7 +57,7 @@ generateCode(const string& name, const string& fsmlCode, const FlatMachine& fm)
 	// ...and transitions
 	karma::generate(back_insert_iterator<string>(steps),
 			*("\t\t" << +karma::char_ << ",\n"), v);
-	return (format(CODE) % to_upper_copy(name) % fsmlCode % name %
+	return (format(CODE) % to_upper_copy(name) % generateFsml(fm) % name %
 			(format(STATE) % fm.initials.at(0)) % states % steps).str();
 }
 

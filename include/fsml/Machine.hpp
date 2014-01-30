@@ -47,6 +47,8 @@ public:
     current State will not be changed.*/
 	virtual Machine& operator<<(const std::string& input);
 
+	virtual operator FlatMachine() const;
+
     /**Gathers the States reachable from the given State.
     @param start The State from which to start from.
     @return An unordered set of states reachable from start.*/
@@ -77,6 +79,7 @@ protected:
 
     ///Maps actions to their respective name.
 	std::unordered_map<std::string, Action> actionMap;
+	std::unordered_map<const Action*, std::string> actionNames;
     ///Maps states to their respective name.
 	std::unordered_map<std::string, State> stateMap;
 	///The current State
