@@ -10,8 +10,7 @@ namespace karma = boost::spirit::karma;
 
 // Templates for C++
 static const string CODE{readFile("templates/hpp.template")};
-static constexpr char STATE[]{"\t\t\"%1%\",\n"};
-static constexpr char STEP[]{"\t\tStepTup(\"%1%\", \"%2%\", \"%3%\", \"%4%\"),\n"};
+static constexpr char STATE[]{"\t\t\t\"%1%\",\n"};
 // Templates for LaTeX
 static const string LATEX{readFile("templates/latex.template")};
 static constexpr char NODE[]
@@ -53,12 +52,12 @@ generateCode(const string& name, const FlatMachine& fm)
 	const vector<string> v(fm.steps.begin(), fm.steps.end());
 	// Use Karma to fill string with states...
 	karma::generate(back_insert_iterator<string>(states),
-			*("\t\t\"" << +karma::char_ << "\",\n"), fm.states);
+			*("\t\t\t\"" << +karma::char_ << "\",\n"), fm.states);
 	// ...and transitions
 	karma::generate(back_insert_iterator<string>(steps),
-			*("\t\t" << +karma::char_ << ",\n"), v);
+			*("\t\t\t" << +karma::char_ << ",\n"), v);
 	return (format(CODE) % to_upper_copy(name) % generateFsml(fm) % name %
-			(format(STATE) % fm.initials.at(0)) % states % steps).str();
+			(format(STATE) % *fm.initials.cbegin()) % states % steps).str();
 }
 
 const string
@@ -67,7 +66,7 @@ generateLatex(const FlatMachine& fm)
 	size_t paperWidth = (fm.states.size() + 1) * 5, paperHeight = 6 + fm.states.size();
 	// Nodes
 	// rightOf is needed to tell the nodes their position
-	const string* rightOf{&fm.initials.at(0)};
+	const string* rightOf{&*fm.initials.cbegin()};
 	stringstream nodes;
 	for (const string& s : fm.states) {
 		nodes << (format(NODE) % s % *rightOf).str();
@@ -83,8 +82,8 @@ generateLatex(const FlatMachine& fm)
 		paths << ((it->first.first == it->first.second ? format(SELF) : format(OTHER)) %
 				it->first.first % transition % it->first.second).str();
 	}
-	return (format(LATEX) % paperWidth % paperHeight % fm.initials[0] % nodes.str() %
-			paths.str()).str();
+	return (format(LATEX) % paperWidth % paperHeight % *fm.initials.cbegin() %
+			nodes.str() % paths.str()).str();
 }
 
 const string
@@ -93,7 +92,7 @@ generateDot(const string& name, const FlatMachine& fm)
 	stringstream arrows;
 	for (const FlatStep& fs : fm.steps)
 		arrows << (format(ARROW) % fs.source % fs.target % fs.getStepText()).str();
-	return (format(DOT) % name % fm.initials.at(0) % arrows.str()).str();
+	return (format(DOT) % name % *fm.initials.cbegin() % arrows.str()).str();
 }
 
 }

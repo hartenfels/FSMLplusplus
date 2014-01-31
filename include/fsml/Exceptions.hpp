@@ -1,6 +1,7 @@
 #ifndef FSML_EXCEPTIONS_HPP
 #define FSML_EXCEPTIONS_HPP
 #include <stdexcept>
+#include <set>
 #include <vector>
 namespace fsml
 {
@@ -27,7 +28,7 @@ struct FileWriteException : std::runtime_error
 /**Exception thrown if a Machine constructs with more or less than one initial state.*/
 struct InitialStateException : std::runtime_error
 {
-	InitialStateException(const std::vector<std::string>& states);
+	InitialStateException(const std::multiset<std::string>& states);
 };
 
 /**Exception thrown if an invalid input is fed into a Machine.*/

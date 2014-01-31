@@ -31,5 +31,7 @@ struct FlatStep
     std::string target;
 };
 
+bool operator<(const FlatStep& lhs, const FlatStep& rhs);
+
 }
 #endif // FSML_FLATSTEP_HPP

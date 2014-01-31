@@ -1,4 +1,6 @@
 #include "SampleFsml.hpp"
+#include "fsml/Generator.hpp"
+#include "fsml/InputOutput.hpp"
 #include <iostream>
 #include <string>
 

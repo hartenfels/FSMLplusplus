@@ -18,4 +18,10 @@ FlatStep::getStepText() const
 	return action.empty() ? input : input + '/' + action;
 }
 
+bool operator<(const FlatStep& lhs, const FlatStep& rhs)
+{
+	return lhs.source < rhs.source || lhs.input < rhs.input || lhs.action < rhs.action ||
+			lhs.target < rhs.target;
+}
+
 }

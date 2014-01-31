@@ -26,24 +26,24 @@ Machine createSampleFsml()
 {
     return Machine{
 		// Initial States
-		std::vector<std::string>{
-		"locked",
+		{
+			"locked",
 		},
 		// Other States
-		std::vector<std::string>{
-		"unlocked",
-		"exception",
+		{
+			"unlocked",
+			"exception",
 		},
 		// Transitions
-		std::vector<FlatStep>{
-		{"locked", "ticket", "collect", "unlocked"},
-		{"locked", "pass", "alarm", "exception"},
-		{"unlocked", "ticket", "eject", "unlocked"},
-		{"unlocked", "pass", "", "locked"},
-		{"exception", "ticket", "eject", "exception"},
-		{"exception", "pass", "", "exception"},
-		{"exception", "mute", "", "exception"},
-		{"exception", "release", "", "locked"},
+		{
+			{"locked", "ticket", "collect", "unlocked"},
+			{"locked", "pass", "alarm", "exception"},
+			{"unlocked", "ticket", "eject", "unlocked"},
+			{"unlocked", "pass", "", "locked"},
+			{"exception", "ticket", "eject", "exception"},
+			{"exception", "pass", "", "exception"},
+			{"exception", "mute", "", "exception"},
+			{"exception", "release", "", "locked"},
 		}
 	};
 }

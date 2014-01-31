@@ -33,9 +33,9 @@ public:
     @throw ReachableException if a state is not reachable from intial state.
     @throw ResolvableException if target state in a transition does not exist.
     @throw DeterministicException if an input in a state is not distinct.*/
-	Machine(const std::vector<std::string>& initials,
-		const std::vector<std::string>& states,
-		const std::vector<FlatStep>& steps);
+	Machine(const std::multiset<std::string>& initials,
+		const std::multiset<std::string>& states,
+		const std::multiset<FlatStep>& steps);
 	virtual ~Machine() = default;
 
     /**Feeds the given input into the Machine. The current State will attempt to execute

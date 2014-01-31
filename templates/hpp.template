@@ -13,13 +13,13 @@ Machine create%3%()
 {
     return Machine{
 		// Initial States
-		std::vector<std::string>{
+		{
 %4%		},
 		// Other States
-		std::vector<std::string>{
+		{
 %5%		},
 		// Transitions
-		std::vector<FlatStep>{
+		{
 %6%		}
 	};
 }

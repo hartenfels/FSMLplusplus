@@ -9,14 +9,15 @@ namespace fsml
 Machine::Machine(const FlatMachine& fm) :
 	Machine(fm.initials, fm.states, fm.steps) {}
 
-Machine::Machine(const vector<string>& initials, const vector<string>& states,
-		const vector<FlatStep>& steps)
+Machine::Machine(const multiset<string>& initials, const multiset<string>& states,
+		const multiset<FlatStep>& steps)
 {
 	// The initials vector must have exactly one state, which is the initial state
 	if (initials.size() != 1)
 		throw InitialStateException{initials};
 	// Insert initial state and set current state to it
-	current = &(*stateMap.insert({initials[0], State{initials[0], true}}).first).second;
+	current = &(*stateMap.insert({*initials.cbegin(),
+			State{*initials.cbegin(), true}}).first).second;
 	// Add all other states, throw on duplicate
 	for (const string& s : states)
 		if (!stateMap.insert({s, State{s}}).second)
@@ -48,12 +49,12 @@ Machine::operator FlatMachine() const
 {
     FlatMachine fm;
 	for (const pair<string, State>& p : stateMap) {
-		(p.second.isInitial() ? fm.initials : fm.states).push_back(p.first);
+		(p.second.isInitial() ? fm.initials : fm.states).insert(p.first);
 		for (const pair<string, Step>& step : p.second.getSteps()) {
 			const Action* const action{step.second.getAction()};
-			FlatStep fs{p.first, step.first, step.second.getTarget()->getId(),
-				action ? action->getId() : string{}};
-			fm.steps.push_back(fs);
+			FlatStep fs{p.first, step.first, action ? action->getId() : string{},
+					step.second.getTarget()->getId()};
+			fm.steps.insert(fs);
 			fm.stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
 		}
 	}

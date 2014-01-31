@@ -23,16 +23,17 @@ static constexpr char RESOLVABLE[]{"Constraint violation - target \"%1%\" in sta
 		"\"%2%\" is not resolvable."};
 static constexpr char UNIQUE[]{"Constraint violation - state \"%1%\" is not unique."};
 
-/**Convenience function to create a comma-separated string from a vector of string.
-@param v The vector of string of size >= 1.
-@return A string containing each string from the vector, separated with commas.
-@throw out_of_range if the given vector has size 0.*/
+/**Convenience function to create a comma-separated string from a multiset of string.
+@param v The multiset of string of size >= 1.
+@return A string containing each string from the multiset, separated with commas.
+@throw out_of_range if the given multiset has size 0.*/
+template <typename Iterator>
 static string
-stringListFromVector(const vector<string>& v)
+stringListFrom(Iterator begin, const Iterator end)
 {
 	stringstream ss;
-	ss << '"' << v.at(0) << '"';
-	for_each(next(v.begin()), v.end(), [&](const string& s){ss << ", \"" << s << '"';});
+	ss << '"' << *begin << '"';
+	for_each(next(begin), end, [&](const string& s){ss << ", \"" << s << '"';});
 	return ss.str();
 }
 
@@ -45,9 +46,9 @@ FileReadException::FileReadException(const string& f) :
 FileWriteException::FileWriteException(const string& f) :
 	runtime_error((format(FILE_WRITE) % f).str()) {}
 
-InitialStateException::InitialStateException(const vector<string>& s) :
+InitialStateException::InitialStateException(const multiset<string>& s) :
 	runtime_error(s.empty() ? INITIAL_STATE_MISSING : (format(INITIAL_STATES) %
-			stringListFromVector(s)).str()) {}
+			stringListFrom(s.begin(), s.cend())).str()) {}
 
 InvalidInputException::InvalidInputException(const string& s, const string& i) :
 	runtime_error((format(INVALID_INPUT) % s % i).str()) {}
@@ -56,7 +57,7 @@ ParserException::ParserException(const string& f) :
 	runtime_error((format(PARSER) % f).str()) {}
 
 ReachableException::ReachableException(const vector<string>& s) :
-	runtime_error((format(REACHABLE) % stringListFromVector(s)).str()) {}
+	runtime_error((format(REACHABLE) % stringListFrom(s.begin(), s.cend())).str()) {}
 
 ResolvableException::ResolvableException(const string& t, const string& s) :
 	runtime_error((format(RESOLVABLE) % t % s).str()) {}

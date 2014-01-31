@@ -4,6 +4,7 @@
 #include "fsml/FlatStep.hpp"
 #include <string>
 #include <map>
+#include <set>
 #include <vector>
 namespace fsml
 {
@@ -20,11 +21,11 @@ struct FlatMachine
 	operator AstMachine() const;
 
     ///The non-inital states.
-	std::vector<std::string> states;
+	std::multiset<std::string> states;
 	///The inital states.
-	std::vector<std::string> initials;
+	std::multiset<std::string> initials;
 	///The transitions.
-	std::vector<FlatStep> steps;
+	std::multiset<FlatStep> steps;
 	///Map from pair of states (source, target) to transitions.
 	std::map<std::pair<std::string, std::string>, std::vector<std::string>> stepMap;
 };
