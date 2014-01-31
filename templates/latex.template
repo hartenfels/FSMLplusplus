@@ -1,7 +1,5 @@
-\documentclass{article}
-\pagestyle{empty}
+\documentclass{standalone}
 \usepackage[utf8]{inputenc}
-\usepackage[paperwidth=%1%cm,paperheight=%2%cm,top=0cm,bottom=0cm,left=0cm,right=0cm]{geometry}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 \usepackage{contour}
@@ -9,17 +7,15 @@
 \contournumber{100}
 
 \begin{document}
-\begin{center}
 \begin{tikzpicture}[->,shorten >=1pt,node distance=4.5cm, semithick]
 
 \tikzstyle{initial}=[fill=gray!50!white,text=black]
 \tikzstyle{every node}=[font=\footnotesize]
 
-\node[initial,state](%3%){\parbox{1.5cm}{\centering %3%}};
-%4%
+\node[initial,state](%1%){\parbox{1.5cm}{\centering %1%}};
+%2%
 
-\path%5%;
+\path%3%;
 
 \end{tikzpicture}
-\end{center}
 \end{document}

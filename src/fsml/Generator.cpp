@@ -63,7 +63,6 @@ generateCode(const string& name, const FlatMachine& fm)
 const string
 generateLatex(const FlatMachine& fm)
 {
-	size_t paperWidth = (fm.states.size() + 1) * 5, paperHeight = 6 + fm.states.size();
 	// Nodes
 	// rightOf is needed to tell the nodes their position
 	const string* rightOf{&*fm.initials.cbegin()};
@@ -82,8 +81,7 @@ generateLatex(const FlatMachine& fm)
 		paths << ((it->first.first == it->first.second ? format(SELF) : format(OTHER)) %
 				it->first.first % transition % it->first.second).str();
 	}
-	return (format(LATEX) % paperWidth % paperHeight % *fm.initials.cbegin() %
-			nodes.str() % paths.str()).str();
+	return (format(LATEX) % *fm.initials.cbegin() %	nodes.str() % paths.str()).str();
 }
 
 const string
