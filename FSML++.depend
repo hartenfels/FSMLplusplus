@@ -50068,9 +50068,12 @@
 1389122053 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/InputOutput.hpp
 	"Machine.hpp"
 
-1388622559 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test.cpp
+1392815935 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test.cpp
 	"fsml/Exceptions.hpp"
 	"fsml/InputOutput.hpp"
+	"fsml/Generator.hpp"
+	"fsml/Parser.hpp"
+	"test/GenerateTest.hpp"
 	<gtest/gtest.h>
 
 1386875626 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/algorithm/string.hpp
@@ -50378,7 +50381,7 @@
 	<set>
 	<vector>
 
-1391066697 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/Parser.hpp
+1392804030 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/Parser.hpp
 	"fsml/Ast.hpp"
 	"fsml/Exceptions.hpp"
 	"fsml/FlatMachine.hpp"
@@ -50387,7 +50390,7 @@
 	<string>
 	<vector>
 
-1391162884 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Generator.cpp
+1391185782 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Generator.cpp
 	"fsml/Generator.hpp"
 	"fsml/InputOutput.hpp"
 	<sstream>
@@ -50416,4 +50419,256 @@
 
 1391161587 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Ast.cpp
 	"fsml/Ast.hpp"
+
+1392815899 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test/GenerateTest.cpp
+	"GenerateTest.hpp"
+
+1392815427 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/test/GenerateTest.hpp
+	"fsml/FlatMachine.hpp"
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/number.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int.hpp
+	<iostream>
+	<iomanip>
+	<boost/cstdint.hpp>
+	<boost/multiprecision/number.hpp>
+	<boost/multiprecision/detail/integer_ops.hpp>
+	<boost/array.hpp>
+	<boost/type_traits/is_integral.hpp>
+	<boost/type_traits/is_floating_point.hpp>
+	<boost/multiprecision/cpp_int/cpp_int_config.hpp>
+	<boost/multiprecision/rational_adaptor.hpp>
+	<boost/detail/endian.hpp>
+	<boost/integer/static_min_max.hpp>
+	<boost/type_traits/common_type.hpp>
+	<boost/type_traits/make_signed.hpp>
+	<boost/multiprecision/cpp_int/checked.hpp>
+	<boost/multiprecision/cpp_int/value_pack.hpp>
+	<boost/multiprecision/cpp_int/comparison.hpp>
+	<boost/multiprecision/cpp_int/add.hpp>
+	<boost/multiprecision/cpp_int/multiply.hpp>
+	<boost/multiprecision/cpp_int/divide.hpp>
+	<boost/multiprecision/cpp_int/bitwise.hpp>
+	<boost/multiprecision/cpp_int/misc.hpp>
+	<boost/multiprecision/cpp_int/limits.hpp>
+	<boost/multiprecision/cpp_int/literals.hpp>
+	<boost/multiprecision/cpp_int/serialize.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/number.hpp
+	<boost/cstdint.hpp>
+	<boost/mpl/max.hpp>
+	<boost/mpl/plus.hpp>
+	<boost/mpl/or.hpp>
+	<boost/mpl/find_if.hpp>
+	<boost/assert.hpp>
+	<boost/type_traits/remove_pointer.hpp>
+	<boost/type_traits/is_signed.hpp>
+	<boost/type_traits/is_unsigned.hpp>
+	<boost/type_traits/is_floating_point.hpp>
+	<boost/type_traits/is_integral.hpp>
+	<boost/type_traits/make_unsigned.hpp>
+	<boost/throw_exception.hpp>
+	<boost/multiprecision/detail/generic_interconvert.hpp>
+	<boost/multiprecision/detail/number_compare.hpp>
+	<boost/multiprecision/traits/is_restricted_conversion.hpp>
+	<istream>
+	<cstdio>
+	<boost/multiprecision/detail/ublas_interop.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/mpl/max.hpp
+	<boost/mpl/min_max.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/generic_interconvert.hpp
+	<boost/multiprecision/detail/default_ops.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/default_ops.hpp
+	<boost/math/policies/error_handling.hpp>
+	<boost/multiprecision/detail/number_base.hpp>
+	<boost/math/special_functions/fpclassify.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/mpl/front.hpp>
+	<boost/mpl/fold.hpp>
+	<boost/cstdint.hpp>
+	<boost/type_traits/make_unsigned.hpp>
+	<boost/multiprecision/detail/functions/constants.hpp>
+	<boost/multiprecision/detail/functions/pow.hpp>
+	<boost/multiprecision/detail/functions/trig.hpp>
+	<boost/multiprecision/detail/no_et_ops.hpp>
+	<boost/multiprecision/detail/et_ops.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/math/policies/error_handling.hpp
+	<stdexcept>
+	<iomanip>
+	<string>
+	<cerrno>
+	<boost/config/no_tr1/complex.hpp>
+	<boost/config/no_tr1/cmath.hpp>
+	<stdexcept>
+	<boost/math/tools/config.hpp>
+	<boost/math/policies/policy.hpp>
+	<boost/math/tools/precision.hpp>
+	<boost/cstdint.hpp>
+	<boost/format.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/math/tools/precision.hpp
+	<boost/limits.hpp>
+	<boost/assert.hpp>
+	<boost/static_assert.hpp>
+	<boost/mpl/int.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/if.hpp>
+	<boost/math/policies/policy.hpp>
+	<limits.h>
+	<math.h>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/number_base.hpp
+	<limits>
+	<boost/utility/enable_if.hpp>
+	<boost/type_traits/is_convertible.hpp>
+	<boost/type_traits/decay.hpp>
+	<boost/lexical_cast.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/type_traits/decay.hpp
+	<boost/type_traits/config.hpp>
+	<boost/type_traits/is_array.hpp>
+	<boost/type_traits/is_function.hpp>
+	<boost/type_traits/remove_bounds.hpp>
+	<boost/type_traits/add_pointer.hpp>
+	<boost/type_traits/remove_reference.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/identity.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/functions/constants.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/functions/pow.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/functions/trig.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/no_et_ops.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/et_ops.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/number_compare.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/traits/is_restricted_conversion.hpp
+	<boost/multiprecision/traits/explicit_conversion.hpp>
+	<boost/mpl/if.hpp>
+	<boost/multiprecision/detail/number_base.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/traits/explicit_conversion.hpp
+	<boost/type_traits/is_convertible.hpp>
+	<boost/utility/declval.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/ublas_interop.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/integer_ops.hpp
+	<boost/multiprecision/number.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/cpp_int_config.hpp
+	<boost/integer.hpp>
+	<boost/integer_traits.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/int.hpp>
+	<boost/static_assert.hpp>
+	<boost/assert.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/rational_adaptor.hpp
+	<iostream>
+	<iomanip>
+	<sstream>
+	<boost/cstdint.hpp>
+	<boost/multiprecision/number.hpp>
+	<boost/rational.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/rational.hpp
+	<iostream>
+	<ios>
+	<stdexcept>
+	<string>
+	<boost/operators.hpp>
+	<cstdlib>
+	<boost/call_traits.hpp>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/assert.hpp>
+	<boost/math/common_factor_rt.hpp>
+	<limits>
+	<boost/static_assert.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/math/common_factor_rt.hpp
+	<boost/math_fwd.hpp>
+	<boost/config.hpp>
+	<boost/limits.hpp>
+	<climits>
+	<boost/detail/workaround.hpp>
+
+1386875626 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/integer/static_min_max.hpp
+	<boost/integer_fwd.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/type_traits/common_type.hpp
+	<boost/config.hpp>
+	<boost/typeof/typeof.hpp>
+	<boost/mpl/assert.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/static_assert.hpp>
+	<boost/type_traits/detail/common_type_imp.hpp>
+	<boost/type_traits/remove_cv.hpp>
+	<boost/mpl/if.hpp>
+	<boost/utility/declval.hpp>
+	<boost/type_traits/add_rvalue_reference.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/type_traits/detail/common_type_imp.hpp
+	<cstddef>
+	<boost/mpl/assert.hpp>
+	<boost/mpl/at.hpp>
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/contains.hpp>
+	<boost/mpl/copy.hpp>
+	<boost/mpl/deref.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/inserter.hpp>
+	<boost/mpl/next.hpp>
+	<boost/mpl/or.hpp>
+	<boost/mpl/placeholders.hpp>
+	<boost/mpl/push_back.hpp>
+	<boost/mpl/size.hpp>
+	<boost/mpl/vector/vector0.hpp>
+	<boost/mpl/vector/vector10.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<boost/type_traits/is_enum.hpp>
+	<boost/type_traits/is_integral.hpp>
+	<boost/type_traits/make_signed.hpp>
+	<boost/type_traits/make_unsigned.hpp>
+	<boost/type_traits/remove_cv.hpp>
+	<boost/type_traits/remove_reference.hpp>
+	<boost/utility/declval.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/checked.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/value_pack.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/comparison.hpp
+	<boost/type_traits/make_unsigned.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/add.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/multiply.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/divide.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/bitwise.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/misc.hpp
+	<boost/multiprecision/detail/bitscan.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/detail/bitscan.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/limits.hpp
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/literals.hpp
+	<boost/multiprecision/cpp_int/cpp_int_config.hpp>
+
+1386875627 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/multiprecision/cpp_int/serialize.hpp
 

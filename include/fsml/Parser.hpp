@@ -33,7 +33,7 @@ struct FsmlGrammar : qi::grammar<Iterator, std::vector<AstState>(), fsmlcs::spac
 		state      %= initial >> "state" >> text >> '{' >> *transition >> '}';
 		initial    %= -qi::lit("initial");
 		transition %= text >> -('/' >> text) >> -("->" >> text) >> ';';
-        text       %= qi::lexeme[+(fsmlcs::alpha)];
+        text       %= qi::lexeme[fsmlcs::alpha >> +(fsmlcs::alnum)];
 	}
 
     ///Qi rule for fsm : {state}*, returns vector of AstState.

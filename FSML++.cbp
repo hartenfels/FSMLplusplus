@@ -52,6 +52,7 @@
 					<Add option="-g" />
 					<Add directory="include" />
 					<Add directory="include/fsml" />
+					<Add directory="include/test" />
 				</Compiler>
 				<Linker>
 					<Add option="-lgtest -lpthread" />
@@ -85,6 +86,9 @@
 		<Unit filename="include/fsml/Parser.hpp" />
 		<Unit filename="include/fsml/State.hpp" />
 		<Unit filename="include/fsml/Step.hpp" />
+		<Unit filename="include/test/GenerateTest.hpp">
+			<Option target="Test" />
+		</Unit>
 		<Unit filename="src/fsml/Action.cpp" />
 		<Unit filename="src/fsml/Ast.cpp" />
 		<Unit filename="src/fsml/Exceptions.cpp" />
@@ -103,6 +107,9 @@
 			<Option target="Simulation" />
 		</Unit>
 		<Unit filename="src/test.cpp">
+			<Option target="Test" />
+		</Unit>
+		<Unit filename="src/test/GenerateTest.cpp">
 			<Option target="Test" />
 		</Unit>
 		<Extensions>
