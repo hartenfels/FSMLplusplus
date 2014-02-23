@@ -57,7 +57,7 @@ tree.
 @return A FlatMachine representing the flattened abstract syntax tree.
 @throws ParserException if the given code is not well formed.*/
 template<typename Iterator>
-FlatMachine parse(Iterator s, const Iterator& e, const std::string& f)
+FlatMachine parse(Iterator s, const Iterator& e, const std::string& f = std::string{})
 {
 	AstMachine m;
 	if (phrase_parse(s, e, FsmlGrammar<Iterator>(), fsmlcs::space, m.states) &&

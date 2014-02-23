@@ -31,6 +31,8 @@ struct FlatStep
     std::string target;
 };
 
+bool operator==(const FlatStep& lhs, const FlatStep& rhs);
+bool operator!=(const FlatStep& lhs, const FlatStep& rhs);
 bool operator<(const FlatStep& lhs, const FlatStep& rhs);
 
 }

@@ -7,7 +7,9 @@ namespace fsml
 {
 
 FlatMachine geno(const size_t& numInitials, const size_t& numStates,
-		const boost::multiprecision::cpp_int& transitions, std::vector<FlatStep>&);
+		const boost::multiprecision::cpp_int& transitions);
+
+void genoTest();
 
 }
 #endif // FSML_GENERATETEST_HPP

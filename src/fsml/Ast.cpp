@@ -5,7 +5,7 @@ namespace fsml
 bool
 operator==(const AstStep& lhs, const AstStep& rhs)
 {
-	return lhs.input == rhs.input && lhs.action == rhs.action && lhs.input == rhs.input;
+	return lhs.input == rhs.input && lhs.action == rhs.action && lhs.target == rhs.target;
 }
 
 bool

@@ -4,7 +4,7 @@
 #include "fsml/FlatStep.hpp"
 #include <string>
 #include <map>
-#include <set>
+#include <unordered_map>
 #include <vector>
 namespace fsml
 {
@@ -18,17 +18,22 @@ struct FlatMachine
 	FlatMachine(const AstMachine& am);
 	~FlatMachine() = default;
 
+	void addStep(FlatStep fs);
 	operator AstMachine() const;
+	operator std::string() const;
 
     ///The non-inital states.
-	std::multiset<std::string> states;
+	std::vector<std::string> states;
 	///The inital states.
-	std::multiset<std::string> initials;
+	std::vector<std::string> initials;
 	///The transitions.
-	std::multiset<FlatStep> steps;
+	std::vector<FlatStep> steps;
 	///Map from pair of states (source, target) to transitions.
 	std::map<std::pair<std::string, std::string>, std::vector<std::string>> stepMap;
 };
+
+bool operator==(const FlatMachine& lhs, const FlatMachine& rhs);
+bool operator!=(const FlatMachine& lhs, const FlatMachine& rhs);
 
 }
 #endif // FSML_FLATMACHINE_HPP

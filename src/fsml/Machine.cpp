@@ -9,8 +9,8 @@ namespace fsml
 Machine::Machine(const FlatMachine& fm) :
 	Machine(fm.initials, fm.states, fm.steps) {}
 
-Machine::Machine(const multiset<string>& initials, const multiset<string>& states,
-		const multiset<FlatStep>& steps)
+Machine::Machine(const vector<string>& initials, const vector<string>& states,
+		const vector<FlatStep>& steps)
 {
 	// The initials vector must have exactly one state, which is the initial state
 	if (initials.size() != 1)
@@ -49,13 +49,11 @@ Machine::operator FlatMachine() const
 {
     FlatMachine fm;
 	for (const pair<string, State>& p : stateMap) {
-		(p.second.isInitial() ? fm.initials : fm.states).insert(p.first);
+		(p.second.isInitial() ? fm.initials : fm.states).push_back(p.first);
 		for (const pair<string, Step>& step : p.second.getSteps()) {
 			const Action* const action{step.second.getAction()};
-			FlatStep fs{p.first, step.first, action ? action->getId() : string{},
-					step.second.getTarget()->getId()};
-			fm.steps.insert(fs);
-			fm.stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
+			fm.addStep({p.first, step.first, action ? action->getId() : string{},
+					step.second.getTarget()->getId()});
 		}
 	}
     return fm;

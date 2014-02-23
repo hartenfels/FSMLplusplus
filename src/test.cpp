@@ -4,6 +4,7 @@
 #include "fsml/Parser.hpp"
 #include "test/GenerateTest.hpp"
 #include <gtest/gtest.h>
+#include <algorithm>
 
 int
 main()
@@ -22,14 +23,20 @@ main()
 	cout << "Done.\n";
 
 	cout << "FSML++ Generative Test\n";
-	cout << "t\t\tstep 1\t\tstep 2\t\tstep 3\n";
-	for (cpp_int t = 0; t <= 84; ++t) {
-		vector<FlatStep> v;
-		const FlatMachine fm = geno(1, 1, t, v);
-		cout << t;
-		for (const FlatStep& fs : v)
-			cout << "\t\t" << fs.source << " > " << fs.target;
-		cout << '\n';
+	const cpp_int maxT = 10000;
+	for (size_t ns = 2; ns <= 19; ++ns) {
+		cout << ns << ":\n";
+		for (cpp_int t = 0; t <= maxT; ++t) {
+			FlatMachine fm1{geno(1, ns, t)};
+			sort(fm1.states.begin(), fm1.states.end());
+			sort(fm1.steps.begin(), fm1.steps.end());
+			const AstMachine am1 = fm1;
+			string s{generateFsml(am1)};
+			const AstMachine am2 = parse<string::const_iterator>(s.begin(), s.end());
+			const FlatMachine fm2{am2};
+			EXPECT_EQ(am1, am2);
+			EXPECT_EQ(fm1, fm2);
+		}
 	}
 /*
 	AstMachine am = fm;

@@ -18,10 +18,30 @@ FlatStep::getStepText() const
 	return action.empty() ? input : input + '/' + action;
 }
 
+bool
+operator==(const FlatStep& lhs, const FlatStep& rhs)
+{
+	return lhs.source == rhs.source && lhs.action == rhs.action &&
+			lhs.input == rhs.input && lhs.target == rhs.target;
+}
+
+bool
+operator!=(const FlatStep& lhs, const FlatStep& rhs)
+{
+	return !operator==(lhs, rhs);
+}
+
 bool operator<(const FlatStep& lhs, const FlatStep& rhs)
 {
-	return lhs.source < rhs.source || lhs.input < rhs.input || lhs.action < rhs.action ||
-			lhs.target < rhs.target;
+	// Lexographical comparison
+	if (lhs.source < rhs.source) return true;
+	if (rhs.source < lhs.source) return false;
+	if (lhs.input < rhs.input) return true;
+	if (rhs.input < lhs.input) return false;
+	if (lhs.action < rhs.action) return true;
+	if (rhs.action < lhs.action) return false;
+	if (lhs.target < rhs.target) return true;
+	return false;
 }
 
 }

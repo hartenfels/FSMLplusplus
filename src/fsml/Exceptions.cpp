@@ -46,7 +46,7 @@ FileReadException::FileReadException(const string& f) :
 FileWriteException::FileWriteException(const string& f) :
 	runtime_error((format(FILE_WRITE) % f).str()) {}
 
-InitialStateException::InitialStateException(const multiset<string>& s) :
+InitialStateException::InitialStateException(const vector<string>& s) :
 	runtime_error(s.empty() ? INITIAL_STATE_MISSING : (format(INITIAL_STATES) %
 			stringListFrom(s.begin(), s.cend())).str()) {}
 

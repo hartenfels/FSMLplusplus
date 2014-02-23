@@ -1,0 +1,12 @@
+digraph SampleFsml {
+	node [shape=ellipse];
+	locked [style=filled];
+	exception -> exception [label=" mute "];
+	exception -> exception [label=" pass "];
+	exception -> locked [label=" release "];
+	exception -> exception [label=" ticket/eject "];
+	unlocked -> locked [label=" pass "];
+	locked -> exception [label=" pass/alarm "];
+	locked -> unlocked [label=" ticket/collect "];
+	unlocked -> unlocked [label=" ticket/eject "];
+}
