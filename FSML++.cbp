@@ -59,6 +59,22 @@
 					<Add option="-lgtest -lpthread" />
 				</Linker>
 			</Target>
+			<Target title="Table">
+				<Option output="bin/fsmlpp_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Test/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
+					<Add directory="include" />
+					<Add directory="include/fsml" />
+					<Add directory="include/test" />
+				</Compiler>
+				<Linker>
+					<Add option="-lgtest -lpthread" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-pedantic" />
@@ -87,8 +103,13 @@
 		<Unit filename="include/fsml/Parser.hpp" />
 		<Unit filename="include/fsml/State.hpp" />
 		<Unit filename="include/fsml/Step.hpp" />
+		<Unit filename="include/test/BoostGraphBackInserter.hpp">
+			<Option target="Test" />
+			<Option target="Table" />
+		</Unit>
 		<Unit filename="include/test/GenerateTest.hpp">
 			<Option target="Test" />
+			<Option target="Table" />
 		</Unit>
 		<Unit filename="src/fsml/Action.cpp" />
 		<Unit filename="src/fsml/Ast.cpp" />
@@ -107,11 +128,15 @@
 		<Unit filename="src/simulate.cpp">
 			<Option target="Simulation" />
 		</Unit>
+		<Unit filename="src/table.cpp">
+			<Option target="Table" />
+		</Unit>
 		<Unit filename="src/test.cpp">
 			<Option target="Test" />
 		</Unit>
 		<Unit filename="src/test/GenerateTest.cpp">
 			<Option target="Test" />
+			<Option target="Table" />
 		</Unit>
 		<Extensions>
 			<code_completion />
