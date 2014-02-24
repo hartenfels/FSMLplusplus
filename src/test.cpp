@@ -54,10 +54,10 @@ void
 testMachine()
 {
 	cout << "FSML++ Machine Test\n";
-	FlatMachine fm;
+	FlatMachine fm1;
 	BoostGraph graph;
 	GraphMap gm;
-	generateBoostGraph(1, 1, 12345, fm, graph, gm);
+	generateBoostGraph(1, 1, 12345, fm1, graph, gm);
 
 	vector<BoostGraph::vertex_descriptor> reachable;
 	reachable.reserve(num_vertices(graph));
@@ -65,12 +65,17 @@ testMachine()
 			visitor(make_bfs_visitor(write_property(identity_property_map(),
 			back_inserter(reachable), on_discover_vertex()))));
 
-	if (reachable.size() == num_vertices(graph))
-		ASSERT_NO_THROW(Machine{fm});
-	else {
+	if (reachable.size() == num_vertices(graph)) {
+		const Machine m{fm1};
+		FlatMachine fm2{m};
+		sort(fm1.steps.begin(), fm1.steps.end());
+		sort(fm2.states.begin(), fm2.states.end());
+		sort(fm2.steps.begin(), fm2.steps.end());
+		ASSERT_EQ(fm1, fm2);
+	} else {
 		sort(reachable.begin(), reachable.end());
 		try {
-			Machine{fm};
+			Machine{fm1};
 			FAIL();
 		} catch(ReachableException& e) {
 			sort(e.reachable.begin(), e.reachable.end());
