@@ -56,8 +56,9 @@ InvalidInputException::InvalidInputException(const string& s, const string& i) :
 ParserException::ParserException(const string& f) :
 	runtime_error((format(PARSER) % f).str()) {}
 
-ReachableException::ReachableException(const vector<string>& s) :
-	runtime_error((format(REACHABLE) % stringListFrom(s.begin(), s.cend())).str()) {}
+ReachableException::ReachableException(const pair<vector<string>, vector<string>>& s) :
+	runtime_error((format(REACHABLE) % stringListFrom(s.second.begin(),
+	s.second.cend())).str()), reachable(s.first) {}
 
 ResolvableException::ResolvableException(const string& t, const string& s) :
 	runtime_error((format(RESOLVABLE) % t % s).str()) {}

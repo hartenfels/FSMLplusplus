@@ -46,7 +46,9 @@ struct ParserException : std::runtime_error
 /**Exception thrown if not all States in a Machine are reachable.*/
 struct ReachableException : std::runtime_error
 {
-	ReachableException(const std::vector<std::string>& states);
+	ReachableException(const std::pair<std::vector<std::string>,
+		std::vector<std::string>>& states);
+	std::vector<std::string> reachable;
 };
 
 /**Exception thrown if the target of a Step is not resolvable.*/

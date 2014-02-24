@@ -28,13 +28,13 @@ Machine::Machine(const vector<string>& initials, const vector<string>& states,
 	// Gather states reachable from the initial (current) state
 	const unordered_set<const State*> reachable{reachableFrom(current)};
 	if (reachable.size() < stateMap.size())
-		throw ReachableException{[&](){
+		throw ReachableException{[&]() -> pair<vector<string>, vector<string>> {
 			// Collect unreachable states for error message via reachable \ stateMap
-			vector<string> unreachable;
+			vector<string> reach, unreach;
 			for (const auto& p : stateMap)
-				if (reachable.find(&p.second) == reachable.end())
-					unreachable.push_back(p.second.getId());
-			return unreachable;
+				(reachable.find(&p.second) != reachable.end() ? reach : unreach).
+						push_back(p.second.getId());
+			return {reach, unreach};
 		}()};
 }
 
