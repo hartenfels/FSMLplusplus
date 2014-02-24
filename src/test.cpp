@@ -4,11 +4,12 @@
 #include "fsml/InputOutput.hpp"
 #include "fsml/Machine.hpp"
 #include "fsml/Parser.hpp"
-#include <gtest/gtest.h>
+#include "test/BoostGraphBackInserter.hpp"
 #include <algorithm>
 #include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/graphviz.hpp>
 #include <boost/graph/visitors.hpp>
+#include <gtest/gtest.h>
 namespace fsml
 { using namespace std; using namespace boost; using namespace boost::multiprecision;
 
@@ -54,34 +55,40 @@ void
 testMachine()
 {
 	cout << "FSML++ Machine Test\n";
-	FlatMachine fm1;
-	BoostGraph graph;
-	GraphMap gm;
-	generateBoostGraph(1, 1, 12345, fm1, graph, gm);
+	const cpp_int maxT = 10000;
+	for (size_t ns = 2; ns <= 19; ++ns) {
+		cout << ns << " states...\n";
+		for (cpp_int t = 0; t <= maxT; ++t) {
+			FlatMachine fm1;
+			BoostGraph bg;
+			generateBoostGraph(1, ns, t, fm1, bg);
 
-	vector<BoostGraph::vertex_descriptor> reachable;
-	reachable.reserve(num_vertices(graph));
-	breadth_first_search(graph.graph(), *vertices(graph).first,
-			visitor(make_bfs_visitor(write_property(identity_property_map(),
-			back_inserter(reachable), on_discover_vertex()))));
+			vector<string> reachable;
+			reachable.reserve(num_vertices(bg));
+			breadth_first_search(bg.graph(), *vertices(bg).first,
+					visitor(make_bfs_visitor(write_property(identity_property_map(),
+					BoostGraphBackInserter{reachable}, on_discover_vertex()))));
 
-	if (reachable.size() == num_vertices(graph)) {
-		const Machine m{fm1};
-		FlatMachine fm2{m};
-		sort(fm1.steps.begin(), fm1.steps.end());
-		sort(fm2.states.begin(), fm2.states.end());
-		sort(fm2.steps.begin(), fm2.steps.end());
-		ASSERT_EQ(fm1, fm2);
-	} else {
-		sort(reachable.begin(), reachable.end());
-		try {
-			Machine{fm1};
-			FAIL();
-		} catch(ReachableException& e) {
-			sort(e.reachable.begin(), e.reachable.end());
-			ASSERT_EQ(reachable.size(), e.reachable.size());
-			for (size_t i = 0; i < reachable.size(); ++i)
-				ASSERT_EQ(gm.at(reachable[i]), e.reachable[i]);
+			if (reachable.size() == num_vertices(bg)) {
+				const Machine m{fm1};
+				FlatMachine fm2{m};
+				sort(fm1.states.begin(), fm1.states.end());
+				sort(fm1.steps.begin(), fm1.steps.end());
+				sort(fm2.states.begin(), fm2.states.end());
+				sort(fm2.steps.begin(), fm2.steps.end());
+				ASSERT_EQ(fm1, fm2);
+			} else {
+				sort(reachable.begin(), reachable.end());
+				try {
+					Machine{fm1};
+					FAIL();
+				} catch(ReachableException& e) {
+					sort(e.reachable.begin(), e.reachable.end());
+					ASSERT_EQ(reachable.size(), e.reachable.size());
+					for (size_t i = 0; i < reachable.size(); ++i)
+						ASSERT_EQ(reachable[i], e.reachable[i]);
+				}
+			}
 		}
 	}
 
@@ -90,8 +97,8 @@ testMachine()
 
 }
 
-#define FSML_TEST_CONSTRAINTS 0
-#define FSML_TEST_MODEL 0
+#define FSML_TEST_CONSTRAINTS 1
+#define FSML_TEST_MODEL 1
 #define FSML_TEST_MACHINE 1
 
 int

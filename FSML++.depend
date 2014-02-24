@@ -50068,18 +50068,19 @@
 1389122053 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/InputOutput.hpp
 	"Machine.hpp"
 
-1393231974 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test.cpp
+1393239350 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test.cpp
 	"fsml/Exceptions.hpp"
 	"fsml/Generator.hpp"
 	"test/GenerateTest.hpp"
 	"fsml/InputOutput.hpp"
 	"fsml/Machine.hpp"
 	"fsml/Parser.hpp"
-	<gtest/gtest.h>
+	"test/BoostGraphBackInserter.hpp"
 	<algorithm>
 	<boost/graph/breadth_first_search.hpp>
 	<boost/graph/graphviz.hpp>
 	<boost/graph/visitors.hpp>
+	<gtest/gtest.h>
 
 1386875626 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/algorithm/string.hpp
 	<boost/algorithm/string/std_containers_traits.hpp>
@@ -50426,14 +50427,13 @@
 1393113183 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Ast.cpp
 	"fsml/Ast.hpp"
 
-1393229703 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test/GenerateTest.cpp
+1393238762 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test/GenerateTest.cpp
 	"GenerateTest.hpp"
 	<boost/graph/breadth_first_search.hpp>
 	<boost/graph/visitors.hpp>
 
-1393229522 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/test/GenerateTest.hpp
+1393238765 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/test/GenerateTest.hpp
 	"fsml/FlatMachine.hpp"
-	<unordered_map>
 	<boost/graph/adjacency_list.hpp>
 	<boost/graph/labeled_graph.hpp>
 	<boost/multiprecision/cpp_int.hpp>
@@ -56869,4 +56869,7 @@
 	<boost/property_map/property_map.hpp>
 	<vector>
 	<boost/shared_ptr.hpp>
+
+1393238107 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/test/BoostGraphBackInserter.hpp
+	"test/GenerateTest.hpp"
 
