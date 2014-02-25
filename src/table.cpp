@@ -4,7 +4,7 @@ int
 main()
 {
 	using namespace std; using namespace fsml; using namespace boost::multiprecision;
-	const cpp_int maxT = 5;
+	const cpp_int maxT = 241;
 	for (cpp_int t = 0; t <= maxT; ++t) {
 		FlatMachine fm{generateFlatMachine(1, 1, t)};
 		cout << t;
