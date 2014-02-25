@@ -33,6 +33,7 @@ struct FlatStep
 
 bool operator==(const FlatStep& lhs, const FlatStep& rhs);
 bool operator!=(const FlatStep& lhs, const FlatStep& rhs);
+/// Lexographically compares two FlatSteps.
 bool operator<(const FlatStep& lhs, const FlatStep& rhs);
 
 }

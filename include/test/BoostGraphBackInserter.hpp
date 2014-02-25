@@ -4,6 +4,7 @@
 namespace fsml
 {
 
+/**A back_insert_iterator for the BoostGraph. Takes numbers, but fills a string vector.*/
 class BoostGraphBackInserter : public std::back_insert_iterator<std::vector<std::string>>
 {
 public:

@@ -7,6 +7,7 @@
 #include <boost/multiprecision/number.hpp>
 namespace fsml
 {
+/// A directed graph with labeled vertices from the Boost.Graph library.
 typedef boost::labeled_graph<boost::adjacency_list<boost::vecS, boost::vecS,
 	boost::directedS>, std::string> BoostGraph;
 

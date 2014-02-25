@@ -15,6 +15,8 @@
 namespace fsml
 { using namespace std; using namespace boost; using namespace boost::multiprecision;
 
+static constexpr char RANGE[]{"Not enough arguments after argument %1%."};
+
 void
 testConstraints()
 {
@@ -97,7 +99,46 @@ testMachine(const size_t& ns, cpp_int t, const cpp_int& maxT)
 	cout << "Success.\n";
 }
 
+void
+testSanity(const size_t& ni, const size_t& ns, cpp_int t)
+{
+	cout << "\nFSML++ Sanity Equality Check"
+			"\n........initial states: " << ni <<
+ 			"\n....non-initial states: " << ns <<
+			"\n............transition: " << t.str() << '\n';
+	FlatMachine fm{generateFlatMachine(ni, ns, t)};
+	ASSERT_EQ(fm, fm);
+	const AstMachine am1 = fm;
+	ASSERT_EQ(am1, am1);
+	sort(fm.states.begin(), fm.states.end());
+	sort(fm.steps.begin(), fm.steps.end());
+	ASSERT_EQ(fm, fm);
+	const AstMachine am2 = fm;
+	ASSERT_EQ(am2, am2);
+	cout << "Success.\n";
 }
+
+void
+testSanity(const size_t& ni1, const size_t& ns1, cpp_int t1, const size_t& ni2,
+	const size_t& ns2, cpp_int t2)
+{
+	cout << "\nFSML++ Sanity Inequality Check"
+			"\n........initial states 1: " << ni1 <<
+ 			"\n....non-initial states 1: " << ns1 <<
+			"\n............transition 1: " << t1.str() <<
+			"\n........initial states 2: " << ni2 <<
+ 			"\n....non-initial states 2: " << ns2 <<
+			"\n............transition 2: " << t2.str() << '\n';
+	const FlatMachine fm1{generateFlatMachine(ni1, ns1, t1)},
+			fm2{generateFlatMachine(ni2, ns2, t2)};
+	ASSERT_NE(fm1, fm2);
+	const AstMachine am1 = fm1, am2 = fm2;
+	ASSERT_NE(am1, am2);
+	cout << "Success.\n";
+}
+
+}
+
 
 std::vector<std::function<void ()>>
 parseArgs(const int& argc, char** argv)
@@ -108,17 +149,34 @@ parseArgs(const int& argc, char** argv)
 			v.push_back([](){fsml::testConstraints();});
 		else if (!strcmp(argv[i], "model")) {
 			if (argc <= i + 4)
-				throw std::out_of_range{"Not enough arguments."};
+				throw std::out_of_range{(boost::format(fsml::RANGE) % i).str()};
 			const size_t ni{boost::lexical_cast<size_t>(argv[++i])},
 					ns{boost::lexical_cast<size_t>(argv[++i])};
 			const boost::multiprecision::cpp_int t{argv[++i]}, maxT{argv[++i]};
 			v.push_back([=](){fsml::testModel(ni, ns, t, maxT);});
 		} else if (!strcmp(argv[i], "machine")) {
 			if (argc <= i + 3)
-				throw std::out_of_range{"Not enough arguments."};
+				throw std::out_of_range{(boost::format(fsml::RANGE) % i).str()};
 			const size_t ns{boost::lexical_cast<size_t>(argv[++i])};
 			const boost::multiprecision::cpp_int t{argv[++i]}, maxT{argv[++i]};
 			v.push_back([=](){fsml::testMachine(ns, t, maxT);});
+		} else if (!strcmp(argv[i], "sanityEqual")) {
+			if (argc <= i + 3)
+				throw std::out_of_range{(boost::format(fsml::RANGE) % i).str()};
+			const size_t ni{boost::lexical_cast<size_t>(argv[++i])},
+					ns{boost::lexical_cast<size_t>(argv[++i])};
+			const boost::multiprecision::cpp_int t{argv[++i]};
+			v.push_back([=](){fsml::testSanity(ni, ns, t);});
+		} else if (!strcmp(argv[i], "sanityInequal")) {
+			if (argc <= i + 6)
+				throw std::out_of_range{(boost::format(fsml::RANGE) % i).str()};
+			const size_t ni1{boost::lexical_cast<size_t>(argv[++i])},
+					ns1{boost::lexical_cast<size_t>(argv[++i])};
+			const boost::multiprecision::cpp_int t1{argv[++i]};
+			const size_t ni2{boost::lexical_cast<size_t>(argv[++i])},
+					ns2{boost::lexical_cast<size_t>(argv[++i])};
+			const boost::multiprecision::cpp_int t2{argv[++i]};
+			v.push_back([=](){fsml::testSanity(ni1, ns1, t1, ni2, ns2, t2);});
 		} else
 			throw std::invalid_argument{argv[i]};
 	}
@@ -136,20 +194,30 @@ main(int argc, char** argv)
 "FSML++ Test\n"
 "Useage: fsmlpp_test TEST...\n"
 "Tests:\n"
-"  constraint                  Simple verification of the given constraints.\n"
+"  constraint                    Simple verification of the given constraints.\n"
 "\n"
-"  model <ni> <ns> <t> <maxT>  Identity testing of parser, abstract syntax\n"
-"                              and flat representation.\n"
+"  model <ni> <ns> <t> <maxT>    Identity testing of parser, abstract syntax\n"
+"                                and flat representation.\n"
 "\n"
-"  machine <ns> <t> <maxT>     Oracle testing of machine against Boost's\n"
-"                              directed graph and identity testing of flat\n"
-"                              representation and actual machine.\n"
+"  machine <ns> <t> <maxT>       Oracle testing of machine against Boost's\n"
+"                                directed graph and identity testing of flat\n"
+"                                representation and actual machine.\n"
+"\n"
+"  sanityEqual <ni> <ns> <t>     Sanity check that compares a generated\n"
+"                                flat representation and abstract syntax\n"
+"                                against itself.\n"
+"\n"
+"  sanityInequal <ni1> <ns1>     Sanity check that compares the first flat\n"
+"      <t1> <ni2> <ns2> <t2>     representation and abstract syntax against\n"
+"                                the second one. Assuming the two given\n"
+"                                configurations are different, they should\n"
+"                                compare inequal."
 "\n"
 "Arguments:\n"
-"  <ni>                        Number of initial states.\n"
-"  <ns>                        Number of non-initial states.\n"
-"  <t>                         Initial transition configuration.\n"
-"  <maxT>                      Final transition configuration.\n";
+"  <ni>                          Number of initial states.\n"
+"  <ns>                          Number of non-initial states.\n"
+"  <t>                           Initial transition configuration.\n"
+"  <maxT>                        Final transition configuration.\n";
 	return 0;
 }
 

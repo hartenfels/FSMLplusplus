@@ -33,7 +33,6 @@ operator!=(const FlatStep& lhs, const FlatStep& rhs)
 
 bool operator<(const FlatStep& lhs, const FlatStep& rhs)
 {
-	// Lexographical comparison
 	if (lhs.source < rhs.source) return true;
 	if (rhs.source < lhs.source) return false;
 	if (lhs.input < rhs.input) return true;
