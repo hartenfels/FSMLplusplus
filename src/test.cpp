@@ -102,8 +102,15 @@ testMachine()
 #define FSML_TEST_MACHINE 1
 
 int
-main()
+main(int argc, char** argv)
 {
+	if (argc > 0) {
+		for (int i = 0; i < argc; ++i) {
+
+		}
+	} else {
+
+	}
 #if FSML_TEST_CONSTRAINTS
 	fsml::testConstraints();
 #endif
