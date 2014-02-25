@@ -5,12 +5,11 @@ namespace fsml
 { using namespace std; using namespace boost; using namespace boost::multiprecision;
 
 static FlatStep
-genStep(const cpp_int& pos, const cpp_int& num,
-		const cpp_int& states)
+genStep(const cpp_int& pos, const cpp_int& num, const cpp_int& states)
 {
 	const cpp_int source = (pos / num) % states;
 	const cpp_int target = (pos / (num * states)) % states;
-	return {"s" + source.str(), "input" + pos.str(), "", "s" + target.str()};
+	return {"s" + source.str(), "i" + pos.str(), "", "s" + target.str()};
 }
 
 FlatMachine
