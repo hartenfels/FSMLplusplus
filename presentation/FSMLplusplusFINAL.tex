@@ -1,9 +1,9 @@
-\documentclass[12pt,slidestop,handout]{beamer}
+\documentclass[12pt,slidestop]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{german}
 \usepackage{graphicx}
 \beamertemplatenavigationsymbolsempty
-\usetheme{Boadilla}sl
+\usetheme{Boadilla}
 \usecolortheme{whale}
 \setbeamertemplate{itemize items}[default]
 \setbeamertemplate{enumerate items}[default]
@@ -33,61 +33,121 @@
 \date{2014-02-26}
 
 \begin{document}
+ 
 \begin{frame}
 	\titlepage
 \end{frame}
 
 \begin{frame}
 	\frametitle{Contents}
-	\pause
-	\begin{enumerate}[<+->]
-		\fitem What we do
-		\fitem Where
+	\begin{enumerate}
+		\fitem Frameworks
+		\fitem What we do		
+		\fitem TestDataGeneration
 		\fitem How
 	\end{enumerate}\vfill
 \end{frame}
 
 \nextframe
 \begin{frame}
+	\framecount{Frameworks}\pause
+	\begin{itemize}[<+->]
+		\fitem Many available...
+		
+			\includegraphics[scale=0.1]{res2/listframeworks_both_1page.pdf}	
+		
+		\fitem ...but unsuitable to our approach
+		\fitem Simple algorithm
+	\end{itemize}
+	\vfill	
+	
+\end{frame}
+
+\nextframe
+\begin{frame}
 	\framecount{What we do}\pause
 	\begin{itemize}[<+->]
 	\fitem Identity Testing
+	\fitem Testing parser, abstract syntax and flat representation
+	\vfill	
 	\begin{center}
 		\includegraphics[scale=1]{res3/leftSideTesting.pdf}		
 	\end{center}
+
+	\fitem BUT not checking any constraints
+
+	\vfill
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\framecount{What we do}\pause
-	\begin{itemize}[<+->]
-	\fitem Identity Testing
+	\framecount{What we do}
+	\begin{itemize}
+	\fitem Solution: Oracle
+	\vfill
 	\begin{center}
 		\includegraphics[scale=1]{res3/rightSideTesting.pdf}
 	\end{center}
+	\vfill
 	\end{itemize}
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\framecount{Where}\pause
-	\begin{itemize}[<+->]
-		\fitem Code Changes:
-		\includegraphics[scale=0.5]{res2/StructOld.pdf}\\
-		\includegraphics[scale=0.5]{res2/StructNew.pdf}
-	\end{itemize}
-\end{frame}
-
-\nextframe
-\begin{frame}
-	\framecount{How}\pause
-	\begin{itemize}[<+->]
-	\fitem Testing environment undecided, but there oughta be one
-	\begin{center}
-		\includegraphics[scale=0.3]{res2/listframeworks_both_1page.pdf}
+	\framecount{TestDataGeneration}
+	\begin{itemize}
+		\fitem Algorithm \tiny(2 states / 25 configurations)
+	\end{itemize}	
+	\tiny	
+	\begin{center}	
+	\begin{tabular}{c|lcr}
+		\textbf{Goedel Number} &  & \textbf{Transition} &  \\\hline
+	 	0&&&\\\hline
+		1&s0 $\rightarrow$ s0&&\\\hline
+		2&s1 $\rightarrow$ s0&&\\\hline
+		3&s0 $\rightarrow$ s1&&\\\hline
+		4&s1 $\rightarrow$ s1&&\\\hline
+		5&s0 $\rightarrow$ s0&s0 $\rightarrow$ s0&\\\hline
+		6&s1 $\rightarrow$ s0&s0 $\rightarrow$ s0&\\\hline
+		7&s0 $\rightarrow$ s1&s0 $\rightarrow$ s0&\\\hline
+		8&s1 $\rightarrow$ s1&s0 $\rightarrow$ s0&\\\hline
+		9&s0 $\rightarrow$ s0&s1 $\rightarrow$ s0&\\\hline
+		10&s1 $\rightarrow$ s0&s1 $\rightarrow$ s0&\\\hline
+		11&s0 $\rightarrow$ s1&s1 $\rightarrow$ s0&\\\hline
+		12&s1 $\rightarrow$ s1&s1 $\rightarrow$ s0&\\\hline
+		13&s0 $\rightarrow$ s0&s0 $\rightarrow$ s1&\\\hline
+		14&s1 $\rightarrow$ s0&s0 $\rightarrow$ s1&\\\hline
+		15&s0 $\rightarrow$ s1&s0 $\rightarrow$ s1&\\\hline
+		16&s1 $\rightarrow$ s1&s0 $\rightarrow$ s1&\\\hline
+		17&s0 $\rightarrow$ s0&s1 $\rightarrow$ s1&\\\hline
+		18&s1 $\rightarrow$ s0&s1 $\rightarrow$ s1&\\\hline
+		19&s0 $\rightarrow$ s1&s1 $\rightarrow$ s1&\\\hline
+		20&s1 $\rightarrow$ s1&s1 $\rightarrow$ s1&\\\hline
+		21&s0 $\rightarrow$ s0&s0 $\rightarrow$ s0&s0 $\rightarrow$ s0\\\hline
+		22&s1 $\rightarrow$ s0&s0 $\rightarrow$ s0&s0 $\rightarrow$ s0\\\hline
+		23&s0 $\rightarrow$ s1&s0 $\rightarrow$ s0&s0 $\rightarrow$ s0\\\hline
+		24&s1 $\rightarrow$ s1&s0 $\rightarrow$ s0&s0 $\rightarrow$ s0\\\hline
+		25&s0 $\rightarrow$ s0&s1 $\rightarrow$ s0&s0 $\rightarrow$ s0
+ 	\end{tabular}
 	\end{center}
-	\end{itemize}
 \end{frame}
+
+\begin{frame}
+	\framecount{TestDataGeneration}
+	\begin{itemize}
+		\fitem State\&Step-Generation
+	\end{itemize}
+	\vfill
+		\includegraphics[scale=0.5]{res3/genStep.png}\\ 
+		\vfill
+		\includegraphics[scale=0.5]{res3/generateFlatMachine.png}
+		\vfill
+
+\end{frame}
+
+
+
+
 
 \nextframe
 \begin{frame}

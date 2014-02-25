@@ -1,0 +1,14 @@
+static FlatStep 
+genStep(const cpp_int& pos, 
+        const cpp_int& num, 
+        const cpp_int& states)
+{
+  const cpp_int source 
+      = (pos / num) % states;
+  const cpp_int target 
+      = (pos / (num * states)) % states;
+  return {"s" + source.str(), 
+          "input" + pos.str(), 
+          "", 
+          "s" + target.str()};
+}
