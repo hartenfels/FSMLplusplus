@@ -52,7 +52,7 @@ Machine::operator FlatMachine() const
 		(p.second.isInitial() ? fm.initials : fm.states).push_back(p.first);
 		for (const pair<string, Step>& step : p.second.getSteps()) {
 			const Action* const action{step.second.getAction()};
-			fm.addStep({p.first, step.first, action ? action->getId() : string{},
+			fm.steps.push_back({p.first, step.first, action ? action->getId() : string{},
 					step.second.getTarget()->getId()});
 		}
 	}

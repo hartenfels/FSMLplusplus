@@ -71,9 +71,13 @@ generateLatex(const FlatMachine& fm)
 		nodes << (format(NODE) % s % *rightOf).str();
 		rightOf = &s;
 	}
+	// Gather transitions for each pair of source and target
+	map<pair<string, string>, vector<string>> stepMap;
+	for (const FlatStep& fs : fm.steps)
+		stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
 	// Paths
 	stringstream paths;
-	for (auto it = fm.stepMap.begin(); it != fm.stepMap.end(); it = next(it)) {
+	for (auto it = stepMap.begin(); it != stepMap.end(); it = next(it)) {
         string transition;
 		karma::generate(back_insert_iterator<string>(transition),
 			*("\\contour{white}{" << +karma::char_ << "} "), it->second);

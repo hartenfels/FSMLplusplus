@@ -9,18 +9,9 @@ FlatMachine::FlatMachine(const AstMachine& am)
     for (const AstState& state : am.states) {
         (state.initial.empty() ? states : initials).push_back(state.id);
 		for (const AstStep& step : state.steps)
-			addStep({state.id, step.input, step.action,
+			steps.push_back({state.id, step.input, step.action,
 					step.target.empty() ? state.id : step.target});
 	}
-}
-
-void
-FlatMachine::addStep(FlatStep fs)
-{
-	steps.push_back(fs);
-	// This will construct a new vector of FlatStep
-	// if the source/target pair not yet in the map.
-	stepMap[{fs.source, fs.target}].push_back(fs.getStepText());
 }
 
 FlatMachine::operator AstMachine() const

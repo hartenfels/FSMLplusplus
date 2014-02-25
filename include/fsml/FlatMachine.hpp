@@ -3,7 +3,6 @@
 #include "fsml/Ast.hpp"
 #include "fsml/FlatStep.hpp"
 #include <string>
-#include <map>
 #include <unordered_map>
 #include <vector>
 namespace fsml
@@ -12,26 +11,27 @@ namespace fsml
 /**Flat representation of the abstract syntax tree.*/
 struct FlatMachine
 {
-    /**Constructs a flattened representation of the given abstract syntax tree machine.
-    @param am Abstract syntax tree to generate from.*/
     FlatMachine() = default;
+	/**Constructs a flattened representation of the given abstract syntax tree machine.
+    @param am Abstract syntax tree to generate from.*/
 	FlatMachine(const AstMachine& am);
 	~FlatMachine() = default;
 
-	void addStep(FlatStep fs);
+	/**Converts this FlatMachine into an equivalent, minimal abstract syntax tree.*/
 	operator AstMachine() const;
+	/**Converts this FlatMachine into a string.*/
 	operator std::string() const;
 
-    ///The non-inital states.
+    /// The non-inital states.
 	std::vector<std::string> states;
-	///The inital states.
+	/// The inital states.
 	std::vector<std::string> initials;
-	///The transitions.
+	/// The transitions.
 	std::vector<FlatStep> steps;
-	///Map from pair of states (source, target) to transitions.
-	std::map<std::pair<std::string, std::string>, std::vector<std::string>> stepMap;
 };
 
+/**Checks if two FlatMachines are equal based on their states, initials and steps. Their
+order is significant. The stepMap is diregarded.*/
 bool operator==(const FlatMachine& lhs, const FlatMachine& rhs);
 bool operator!=(const FlatMachine& lhs, const FlatMachine& rhs);
 

@@ -20,7 +20,9 @@ Use ``make debug`` or ``make release`` to build a debug or fully-optimized execu
 
 Use ``make simulation`` to build the sample interactive simulation. If you have Google's gtest unit testing library and pthread installed. The resulting binary will be called ``fsmlpp_simulation``.
 
-Use ``make test`` to build the unit test, the required libraries will be attempted to be linked via ``-lgtest -lpthread`` The resulting binary will be called ``fsmlpp_test``.
+Use ``make test`` to build the test, the required libraries will be attempted to be linked via ``-lgtest -lpthread`` The resulting binary will be called ``fsmlpp_test``.
+
+Use ``make table`` to build an executable that prints a table from the goedelization function for use in our presentation. The resulting binary will be called ``fsmlpp_table``.
 
 ``make`` by itself will build all targets.
 
@@ -38,7 +40,13 @@ The program will attempt to load the given file, parse the code inside, validate
 
 Run Test
 --------
-Execute the compiled ``fsmlpp_test`` from the project's root directory so it can find all files. No special output means that the expected errors or lack thereof occurred. Otherwise, there will be a message about each failed test.
+The syntax for running the test is ``fsmlpp_test TEST...``, where TEST is one or more of the following:
+
+- **constraint** execute the simple constraints tests given.
+- **model <ni> <ns> <t> <maxT>** execute identity testing of the parser, abstract syntax and flat representation. This will generate flat representations with **ni** initial states, **ns** non-initial states and transition configurations from **t** to **maxT**. These will be converted to an abstract syntax tree, which is converted to FSML code. This code is parsed into another abstract syntax tree and another flat representation is constructed from it. The abstract syntax trees and flat representation are compared to each other and should always be equal.
+-**machine <ns> <t> <maxT>** execute oracle testing of the machine against Boost's directed graph and, if the machine is actually valid, perform identity testing against the flat representation. This will generate flat representations together with an equivalent Boost.Graph directed graph with one initial state, **ns** non-initial states and transition configurations from **t** to **maxT**. A breadth-first search is performed on the graph. If all states are reachable, the flat representation is converted to a machine, which is converted back into another flat representation and the two are checked for equality. If not all states are reachable, it is verified that the construction of the machine fails with the same states reachable.
+
+Note that the **<ni>** and **<ns>** are limited by the size of ``size_t`` on your platform, while **<t>** and **<maxT>** are of arbitrary size.
 
 Run Simulation
 --------------

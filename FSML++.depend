@@ -35668,7 +35668,7 @@
 	<functional>
 	<string>
 
-1393231172 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Machine.cpp
+1393345937 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Machine.cpp
 	"fsml/Machine.hpp"
 	"fsml/Exceptions.hpp"
 	<algorithm>
@@ -50068,7 +50068,7 @@
 1389122053 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/InputOutput.hpp
 	"Machine.hpp"
 
-1393239350 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test.cpp
+1393336115 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test.cpp
 	"fsml/Exceptions.hpp"
 	"fsml/Generator.hpp"
 	"test/GenerateTest.hpp"
@@ -50077,9 +50077,11 @@
 	"fsml/Parser.hpp"
 	"test/BoostGraphBackInserter.hpp"
 	<algorithm>
+	<functional>
 	<boost/graph/breadth_first_search.hpp>
 	<boost/graph/graphviz.hpp>
 	<boost/graph/visitors.hpp>
+	<boost/lexical_cast.hpp>
 	<gtest/gtest.h>
 
 1386875626 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/lib/boost/algorithm/string.hpp
@@ -50375,16 +50377,15 @@
 	"fsml/FlatStep.hpp"
 	<boost/format.hpp>
 
-1393128742 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/FlatMachine.cpp
+1393345879 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/FlatMachine.cpp
 	"FlatMachine.hpp"
 	<algorithm>
 	<sstream>
 
-1393128696 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/FlatMachine.hpp
+1393345863 /windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/include/fsml/FlatMachine.hpp
 	"fsml/Ast.hpp"
 	"fsml/FlatStep.hpp"
 	<string>
-	<map>
 	<unordered_map>
 	<vector>
 
@@ -50397,7 +50398,7 @@
 	<string>
 	<vector>
 
-1393124307 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Generator.cpp
+1393345850 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Generator.cpp
 	"fsml/Generator.hpp"
 	"fsml/InputOutput.hpp"
 	<sstream>
@@ -50427,7 +50428,7 @@
 1393113183 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/fsml/Ast.cpp
 	"fsml/Ast.hpp"
 
-1393238762 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test/GenerateTest.cpp
+1393346071 source:/windows/Users/Carsten/Dropbox/SLE/FSMLplusplus/src/test/GenerateTest.cpp
 	"GenerateTest.hpp"
 	<boost/graph/breadth_first_search.hpp>
 	<boost/graph/visitors.hpp>

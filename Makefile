@@ -51,8 +51,8 @@ OBJDIR_SIMULATION = obj/Simulation
 DEP_SIMULATION = 
 OUT_SIMULATION = bin/fsmlpp_simulation
 
-INC_TEST = $(INC) -Iinclude -Iinclude/fsml
-CFLAGS_TEST = $(CFLAGS) -g
+INC_TEST = $(INC) -Iinclude -Iinclude/fsml -Iinclude/test
+CFLAGS_TEST = $(CFLAGS) -fexpensive-optimizations -O3
 RESINC_TEST = $(RESINC)
 RCFLAGS_TEST = $(RCFLAGS)
 LIBDIR_TEST = $(LIBDIR)
@@ -62,17 +62,30 @@ OBJDIR_TEST = obj/Test
 DEP_TEST = 
 OUT_TEST = bin/fsmlpp_test
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/src/fsml/Action.o $(OBJDIR_DEBUG)/src/main.o $(OBJDIR_DEBUG)/src/fsml/Step.o $(OBJDIR_DEBUG)/src/fsml/State.o $(OBJDIR_DEBUG)/src/fsml/Machine.o $(OBJDIR_DEBUG)/src/fsml/InputOutput.o $(OBJDIR_DEBUG)/src/fsml/Generator.o $(OBJDIR_DEBUG)/src/fsml/FlatStep.o $(OBJDIR_DEBUG)/src/fsml/FlatMachine.o $(OBJDIR_DEBUG)/src/fsml/Exceptions.o
+INC_TABLE = $(INC) -Iinclude -Iinclude/fsml -Iinclude/test
+CFLAGS_TABLE = $(CFLAGS) -fexpensive-optimizations -O3
+RESINC_TABLE = $(RESINC)
+RCFLAGS_TABLE = $(RCFLAGS)
+LIBDIR_TABLE = $(LIBDIR)
+LIB_TABLE = $(LIB)
+LDFLAGS_TABLE = $(LDFLAGS) -lpthread
+OBJDIR_TABLE = obj/Table
+DEP_TABLE = 
+OUT_TABLE = bin/fsmlpp_table
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/src/fsml/Action.o $(OBJDIR_RELEASE)/src/main.o $(OBJDIR_RELEASE)/src/fsml/Step.o $(OBJDIR_RELEASE)/src/fsml/State.o $(OBJDIR_RELEASE)/src/fsml/Machine.o $(OBJDIR_RELEASE)/src/fsml/InputOutput.o $(OBJDIR_RELEASE)/src/fsml/Generator.o $(OBJDIR_RELEASE)/src/fsml/FlatStep.o $(OBJDIR_RELEASE)/src/fsml/FlatMachine.o $(OBJDIR_RELEASE)/src/fsml/Exceptions.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/src/fsml/Action.o $(OBJDIR_DEBUG)/src/main.o $(OBJDIR_DEBUG)/src/fsml/Step.o $(OBJDIR_DEBUG)/src/fsml/State.o $(OBJDIR_DEBUG)/src/fsml/Machine.o $(OBJDIR_DEBUG)/src/fsml/InputOutput.o $(OBJDIR_DEBUG)/src/fsml/Generator.o $(OBJDIR_DEBUG)/src/fsml/FlatStep.o $(OBJDIR_DEBUG)/src/fsml/FlatMachine.o $(OBJDIR_DEBUG)/src/fsml/Exceptions.o $(OBJDIR_DEBUG)/src/fsml/Ast.o
 
-OBJ_SIMULATION = $(OBJDIR_SIMULATION)/src/fsml/Action.o $(OBJDIR_SIMULATION)/src/simulate.o $(OBJDIR_SIMULATION)/src/fsml/Step.o $(OBJDIR_SIMULATION)/src/fsml/State.o $(OBJDIR_SIMULATION)/src/fsml/Machine.o $(OBJDIR_SIMULATION)/src/fsml/InputOutput.o $(OBJDIR_SIMULATION)/src/fsml/Generator.o $(OBJDIR_SIMULATION)/src/fsml/FlatStep.o $(OBJDIR_SIMULATION)/src/fsml/FlatMachine.o $(OBJDIR_SIMULATION)/src/fsml/Exceptions.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/src/fsml/Action.o $(OBJDIR_RELEASE)/src/main.o $(OBJDIR_RELEASE)/src/fsml/Step.o $(OBJDIR_RELEASE)/src/fsml/State.o $(OBJDIR_RELEASE)/src/fsml/Machine.o $(OBJDIR_RELEASE)/src/fsml/InputOutput.o $(OBJDIR_RELEASE)/src/fsml/Generator.o $(OBJDIR_RELEASE)/src/fsml/FlatStep.o $(OBJDIR_RELEASE)/src/fsml/FlatMachine.o $(OBJDIR_RELEASE)/src/fsml/Exceptions.o $(OBJDIR_RELEASE)/src/fsml/Ast.o
 
-OBJ_TEST = $(OBJDIR_TEST)/src/fsml/Action.o $(OBJDIR_TEST)/src/test.o $(OBJDIR_TEST)/src/fsml/Step.o $(OBJDIR_TEST)/src/fsml/State.o $(OBJDIR_TEST)/src/fsml/Machine.o $(OBJDIR_TEST)/src/fsml/InputOutput.o $(OBJDIR_TEST)/src/fsml/Generator.o $(OBJDIR_TEST)/src/fsml/FlatStep.o $(OBJDIR_TEST)/src/fsml/FlatMachine.o $(OBJDIR_TEST)/src/fsml/Exceptions.o
+OBJ_SIMULATION = $(OBJDIR_SIMULATION)/src/fsml/Action.o $(OBJDIR_SIMULATION)/src/simulate.o $(OBJDIR_SIMULATION)/src/fsml/Step.o $(OBJDIR_SIMULATION)/src/fsml/State.o $(OBJDIR_SIMULATION)/src/fsml/Machine.o $(OBJDIR_SIMULATION)/src/fsml/InputOutput.o $(OBJDIR_SIMULATION)/src/fsml/Generator.o $(OBJDIR_SIMULATION)/src/fsml/FlatStep.o $(OBJDIR_SIMULATION)/src/fsml/FlatMachine.o $(OBJDIR_SIMULATION)/src/fsml/Exceptions.o $(OBJDIR_SIMULATION)/src/fsml/Ast.o
 
-all: debug release simulation test
+OBJ_TEST = $(OBJDIR_TEST)/src/fsml/Action.o $(OBJDIR_TEST)/src/test/GenerateTest.o $(OBJDIR_TEST)/src/test.o $(OBJDIR_TEST)/src/fsml/Step.o $(OBJDIR_TEST)/src/fsml/State.o $(OBJDIR_TEST)/src/fsml/Machine.o $(OBJDIR_TEST)/src/fsml/InputOutput.o $(OBJDIR_TEST)/src/fsml/Generator.o $(OBJDIR_TEST)/src/fsml/FlatStep.o $(OBJDIR_TEST)/src/fsml/FlatMachine.o $(OBJDIR_TEST)/src/fsml/Exceptions.o $(OBJDIR_TEST)/src/fsml/Ast.o
 
-clean: clean_debug clean_release clean_simulation clean_test
+OBJ_TABLE = $(OBJDIR_TABLE)/src/fsml/Action.o $(OBJDIR_TABLE)/src/test/GenerateTest.o $(OBJDIR_TABLE)/src/table.o $(OBJDIR_TABLE)/src/fsml/Step.o $(OBJDIR_TABLE)/src/fsml/State.o $(OBJDIR_TABLE)/src/fsml/Machine.o $(OBJDIR_TABLE)/src/fsml/InputOutput.o $(OBJDIR_TABLE)/src/fsml/Generator.o $(OBJDIR_TABLE)/src/fsml/FlatStep.o $(OBJDIR_TABLE)/src/fsml/FlatMachine.o $(OBJDIR_TABLE)/src/fsml/Exceptions.o $(OBJDIR_TABLE)/src/fsml/Ast.o
+
+all: debug release simulation test table
+
+clean: clean_debug clean_release clean_simulation clean_test clean_table
 
 before_debug: 
 	test -d bin || mkdir -p bin
@@ -115,6 +128,9 @@ $(OBJDIR_DEBUG)/src/fsml/FlatMachine.o: src/fsml/FlatMachine.cpp
 
 $(OBJDIR_DEBUG)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/fsml/Exceptions.cpp -o $(OBJDIR_DEBUG)/src/fsml/Exceptions.o
+
+$(OBJDIR_DEBUG)/src/fsml/Ast.o: src/fsml/Ast.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/fsml/Ast.cpp -o $(OBJDIR_DEBUG)/src/fsml/Ast.o
 
 clean_debug: 
 	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
@@ -164,6 +180,9 @@ $(OBJDIR_RELEASE)/src/fsml/FlatMachine.o: src/fsml/FlatMachine.cpp
 $(OBJDIR_RELEASE)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/fsml/Exceptions.cpp -o $(OBJDIR_RELEASE)/src/fsml/Exceptions.o
 
+$(OBJDIR_RELEASE)/src/fsml/Ast.o: src/fsml/Ast.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/fsml/Ast.cpp -o $(OBJDIR_RELEASE)/src/fsml/Ast.o
+
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
 	rm -rf bin
@@ -212,6 +231,9 @@ $(OBJDIR_SIMULATION)/src/fsml/FlatMachine.o: src/fsml/FlatMachine.cpp
 $(OBJDIR_SIMULATION)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/fsml/Exceptions.cpp -o $(OBJDIR_SIMULATION)/src/fsml/Exceptions.o
 
+$(OBJDIR_SIMULATION)/src/fsml/Ast.o: src/fsml/Ast.cpp
+	$(CXX) $(CFLAGS_SIMULATION) $(INC_SIMULATION) -c src/fsml/Ast.cpp -o $(OBJDIR_SIMULATION)/src/fsml/Ast.o
+
 clean_simulation: 
 	rm -f $(OBJ_SIMULATION) $(OUT_SIMULATION)
 	rm -rf bin
@@ -221,6 +243,7 @@ clean_simulation:
 before_test: 
 	test -d bin || mkdir -p bin
 	test -d $(OBJDIR_TEST)/src/fsml || mkdir -p $(OBJDIR_TEST)/src/fsml
+	test -d $(OBJDIR_TEST)/src/test || mkdir -p $(OBJDIR_TEST)/src/test
 	test -d $(OBJDIR_TEST)/src || mkdir -p $(OBJDIR_TEST)/src
 
 after_test: 
@@ -232,6 +255,9 @@ out_test: before_test $(OBJ_TEST) $(DEP_TEST)
 
 $(OBJDIR_TEST)/src/fsml/Action.o: src/fsml/Action.cpp
 	$(CXX) $(CFLAGS_TEST) $(INC_TEST) -c src/fsml/Action.cpp -o $(OBJDIR_TEST)/src/fsml/Action.o
+
+$(OBJDIR_TEST)/src/test/GenerateTest.o: src/test/GenerateTest.cpp
+	$(CXX) $(CFLAGS_TEST) $(INC_TEST) -c src/test/GenerateTest.cpp -o $(OBJDIR_TEST)/src/test/GenerateTest.o
 
 $(OBJDIR_TEST)/src/test.o: src/test.cpp
 	$(CXX) $(CFLAGS_TEST) $(INC_TEST) -c src/test.cpp -o $(OBJDIR_TEST)/src/test.o
@@ -260,11 +286,71 @@ $(OBJDIR_TEST)/src/fsml/FlatMachine.o: src/fsml/FlatMachine.cpp
 $(OBJDIR_TEST)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
 	$(CXX) $(CFLAGS_TEST) $(INC_TEST) -c src/fsml/Exceptions.cpp -o $(OBJDIR_TEST)/src/fsml/Exceptions.o
 
+$(OBJDIR_TEST)/src/fsml/Ast.o: src/fsml/Ast.cpp
+	$(CXX) $(CFLAGS_TEST) $(INC_TEST) -c src/fsml/Ast.cpp -o $(OBJDIR_TEST)/src/fsml/Ast.o
+
 clean_test: 
 	rm -f $(OBJ_TEST) $(OUT_TEST)
 	rm -rf bin
 	rm -rf $(OBJDIR_TEST)/src/fsml
+	rm -rf $(OBJDIR_TEST)/src/test
 	rm -rf $(OBJDIR_TEST)/src
 
-.PHONY: before_debug after_debug clean_debug before_release after_release clean_release before_simulation after_simulation clean_simulation before_test after_test clean_test
+before_table: 
+	test -d bin || mkdir -p bin
+	test -d $(OBJDIR_TABLE)/src/fsml || mkdir -p $(OBJDIR_TABLE)/src/fsml
+	test -d $(OBJDIR_TABLE)/src/test || mkdir -p $(OBJDIR_TABLE)/src/test
+	test -d $(OBJDIR_TABLE)/src || mkdir -p $(OBJDIR_TABLE)/src
+
+after_table: 
+
+table: before_table out_table after_table
+
+out_table: before_table $(OBJ_TABLE) $(DEP_TABLE)
+	$(LD) $(LIBDIR_TABLE) -o $(OUT_TABLE) $(OBJ_TABLE)  $(LDFLAGS_TABLE) $(LIB_TABLE)
+
+$(OBJDIR_TABLE)/src/fsml/Action.o: src/fsml/Action.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/Action.cpp -o $(OBJDIR_TABLE)/src/fsml/Action.o
+
+$(OBJDIR_TABLE)/src/test/GenerateTest.o: src/test/GenerateTest.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/test/GenerateTest.cpp -o $(OBJDIR_TABLE)/src/test/GenerateTest.o
+
+$(OBJDIR_TABLE)/src/table.o: src/table.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/table.cpp -o $(OBJDIR_TABLE)/src/table.o
+
+$(OBJDIR_TABLE)/src/fsml/Step.o: src/fsml/Step.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/Step.cpp -o $(OBJDIR_TABLE)/src/fsml/Step.o
+
+$(OBJDIR_TABLE)/src/fsml/State.o: src/fsml/State.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/State.cpp -o $(OBJDIR_TABLE)/src/fsml/State.o
+
+$(OBJDIR_TABLE)/src/fsml/Machine.o: src/fsml/Machine.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/Machine.cpp -o $(OBJDIR_TABLE)/src/fsml/Machine.o
+
+$(OBJDIR_TABLE)/src/fsml/InputOutput.o: src/fsml/InputOutput.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/InputOutput.cpp -o $(OBJDIR_TABLE)/src/fsml/InputOutput.o
+
+$(OBJDIR_TABLE)/src/fsml/Generator.o: src/fsml/Generator.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/Generator.cpp -o $(OBJDIR_TABLE)/src/fsml/Generator.o
+
+$(OBJDIR_TABLE)/src/fsml/FlatStep.o: src/fsml/FlatStep.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/FlatStep.cpp -o $(OBJDIR_TABLE)/src/fsml/FlatStep.o
+
+$(OBJDIR_TABLE)/src/fsml/FlatMachine.o: src/fsml/FlatMachine.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/FlatMachine.cpp -o $(OBJDIR_TABLE)/src/fsml/FlatMachine.o
+
+$(OBJDIR_TABLE)/src/fsml/Exceptions.o: src/fsml/Exceptions.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/Exceptions.cpp -o $(OBJDIR_TABLE)/src/fsml/Exceptions.o
+
+$(OBJDIR_TABLE)/src/fsml/Ast.o: src/fsml/Ast.cpp
+	$(CXX) $(CFLAGS_TABLE) $(INC_TABLE) -c src/fsml/Ast.cpp -o $(OBJDIR_TABLE)/src/fsml/Ast.o
+
+clean_table: 
+	rm -f $(OBJ_TABLE) $(OUT_TABLE)
+	rm -rf bin
+	rm -rf $(OBJDIR_TABLE)/src/fsml
+	rm -rf $(OBJDIR_TABLE)/src/test
+	rm -rf $(OBJDIR_TABLE)/src
+
+.PHONY: before_debug after_debug clean_debug before_release after_release clean_release before_simulation after_simulation clean_simulation before_test after_test clean_test before_table after_table clean_table
 

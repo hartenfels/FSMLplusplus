@@ -27,7 +27,7 @@ generateFlatMachine(const size_t& ni, const size_t& ns, const cpp_int& t)
 	const cpp_int states = stateCount;
 	const cpp_int pow = states * states;
     for (cpp_int off = 1, no = pow, num = 1; off <= t; off += no, no *= pow, num *= pow)
-		fm.addStep(genStep(t - off, num, states));
+		fm.steps.push_back(genStep(t - off, num, states));
 
     return fm;
 }
@@ -54,7 +54,7 @@ generateBoostGraph(const size_t& ni, const size_t& ns, const cpp_int& t,
 	const cpp_int pow = states * states;
     for (cpp_int off = 1, no = pow, num = 1; off <= t; off += no, no *= pow, num *= pow) {
 		const FlatStep step{genStep(t - off, num, states)};
-		fm.addStep(step);
+		fm.steps.push_back(step);
 		add_edge_by_label(step.source, step.target, bg);
 	}
 }
