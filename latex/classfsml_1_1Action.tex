@@ -13,6 +13,11 @@ Represents a transition action.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hypertarget{classfsml_1_1Action_aa2434deec70591006e204eb7fb0e97d7}{{\bfseries Action} (const std\-::string \&\hyperlink{classfsml_1_1Action_ab5da63bc94cdd0b4110c87fd3e4ee271}{id})}\label{classfsml_1_1Action_aa2434deec70591006e204eb7fb0e97d7}
+
+\item 
+virtual const std\-::string \& \hyperlink{classfsml_1_1Action_ab158f49a59dea6cf40ba08210dcd09cc}{get\-Id} () const 
+\item 
 virtual void \hyperlink{classfsml_1_1Action_ac41cfae7343d8b96fbd204451bee840f}{register\-Function} (const Action\-Function \&f)
 \begin{DoxyCompactList}\small\item\em Registers the given function. \end{DoxyCompactList}\item 
 virtual void \hyperlink{classfsml_1_1Action_ae5b8ae5409ea58bed119bc860a803897}{invoke} () const 
@@ -20,6 +25,9 @@ virtual void \hyperlink{classfsml_1_1Action_ae5b8ae5409ea58bed119bc860a803897}{i
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\hypertarget{classfsml_1_1Action_ab5da63bc94cdd0b4110c87fd3e4ee271}{const std\-::string \hyperlink{classfsml_1_1Action_ab5da63bc94cdd0b4110c87fd3e4ee271}{id}}\label{classfsml_1_1Action_ab5da63bc94cdd0b4110c87fd3e4ee271}
+
+\begin{DoxyCompactList}\small\item\em The name of this action. \end{DoxyCompactList}\item 
 \hypertarget{classfsml_1_1Action_a40fbbd85f83fd1c0b5260584a24469ee}{Action\-Function \hyperlink{classfsml_1_1Action_a40fbbd85f83fd1c0b5260584a24469ee}{func}}\label{classfsml_1_1Action_a40fbbd85f83fd1c0b5260584a24469ee}
 
 \begin{DoxyCompactList}\small\item\em The function. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -31,6 +39,16 @@ Represents a transition action.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classfsml_1_1Action_ab158f49a59dea6cf40ba08210dcd09cc}{\index{fsml\-::\-Action@{fsml\-::\-Action}!get\-Id@{get\-Id}}
+\index{get\-Id@{get\-Id}!fsml::Action@{fsml\-::\-Action}}
+\subsubsection[{get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}const string \& fsml\-::\-Action\-::get\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1Action_ab158f49a59dea6cf40ba08210dcd09cc}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{classfsml_1_1Action}{Action}'s name 
+\end{DoxyReturn}
 \hypertarget{classfsml_1_1Action_ae5b8ae5409ea58bed119bc860a803897}{\index{fsml\-::\-Action@{fsml\-::\-Action}!invoke@{invoke}}
 \index{invoke@{invoke}!fsml::Action@{fsml\-::\-Action}}
 \subsubsection[{invoke}]{\setlength{\rightskip}{0pt plus 5cm}void fsml\-::\-Action\-::invoke (

@@ -18,6 +18,8 @@ Represents a \hyperlink{classfsml_1_1State}{State}'s transition.
 virtual \hyperlink{classfsml_1_1State}{State} $\ast$ \hyperlink{classfsml_1_1Step_ab71a0687e8cfff12deed6b1916ff1ba3}{invoke} ()
 \begin{DoxyCompactList}\small\item\em Invokes the this \hyperlink{classfsml_1_1Step}{Step}'s \hyperlink{classfsml_1_1Action}{Action}, if it exists. \end{DoxyCompactList}\item 
 virtual const \hyperlink{classfsml_1_1State}{State} $\ast$ \hyperlink{classfsml_1_1Step_a1d0ba0e93765b946de082651f68cd3fb}{get\-Target} () const 
+\item 
+virtual const \hyperlink{classfsml_1_1Action}{Action} $\ast$ \hyperlink{classfsml_1_1Step_a7d310d684bca136ddc95ca8454dfad40}{get\-Action} () const 
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -58,6 +60,16 @@ Constructs a new \hyperlink{classfsml_1_1Step}{Step} with the given action and t
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classfsml_1_1Step_a7d310d684bca136ddc95ca8454dfad40}{\index{fsml\-::\-Step@{fsml\-::\-Step}!get\-Action@{get\-Action}}
+\index{get\-Action@{get\-Action}!fsml::Step@{fsml\-::\-Step}}
+\subsubsection[{get\-Action}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Action} $\ast$ fsml\-::\-Step\-::get\-Action (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfsml_1_1Step_a7d310d684bca136ddc95ca8454dfad40}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{classfsml_1_1Action}{Action}, or nullptr if there is none. 
+\end{DoxyReturn}
 \hypertarget{classfsml_1_1Step_a1d0ba0e93765b946de082651f68cd3fb}{\index{fsml\-::\-Step@{fsml\-::\-Step}!get\-Target@{get\-Target}}
 \index{get\-Target@{get\-Target}!fsml::Step@{fsml\-::\-Step}}
 \subsubsection[{get\-Target}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf State} $\ast$ fsml\-::\-Step\-::get\-Target (

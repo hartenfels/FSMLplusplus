@@ -13,8 +13,12 @@ Flat representation of the abstract syntax tree.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structfsml_1_1FlatMachine_a642e6c3c6b52364b9543b92ec4634c49}{Flat\-Machine} (const \hyperlink{structfsml_1_1AstMachine}{Ast\-Machine} $\ast$const am)
-\begin{DoxyCompactList}\small\item\em Constructs a flattened representation of the given abstract syntax tree machine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{structfsml_1_1FlatMachine_a939aa63ea93b644c498cf2e31f67499f}{Flat\-Machine} (const \hyperlink{structfsml_1_1AstMachine}{Ast\-Machine} \&am)
+\begin{DoxyCompactList}\small\item\em Constructs a flattened representation of the given abstract syntax tree machine. \end{DoxyCompactList}\item 
+\hyperlink{structfsml_1_1FlatMachine_a79e252b2ba388c1064d9570a6df275af}{operator Ast\-Machine} () const 
+\begin{DoxyCompactList}\small\item\em Converts this \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine} into an equivalent, minimal abstract syntax tree. \end{DoxyCompactList}\item 
+\hyperlink{structfsml_1_1FlatMachine_a3c50e3140f7629c8c34f2c760522203b}{operator std\-::string} () const 
+\begin{DoxyCompactList}\small\item\em Converts this \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine} into a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,12 +30,7 @@ Flat representation of the abstract syntax tree.
 \begin{DoxyCompactList}\small\item\em The inital states. \end{DoxyCompactList}\item 
 \hypertarget{structfsml_1_1FlatMachine_a2fc01c07d6bc3f62fba880e96e538390}{std\-::vector$<$ \hyperlink{structfsml_1_1FlatStep}{Flat\-Step} $>$ \hyperlink{structfsml_1_1FlatMachine_a2fc01c07d6bc3f62fba880e96e538390}{steps}}\label{structfsml_1_1FlatMachine_a2fc01c07d6bc3f62fba880e96e538390}
 
-\begin{DoxyCompactList}\small\item\em The transitions. \end{DoxyCompactList}\item 
-\hypertarget{structfsml_1_1FlatMachine_ae8ebf27b84297afc058dd9329883f17a}{std\-::map$<$ std\-::pair\\*
-$<$ std\-::string, std\-::string $>$\\*
-, std\-::vector$<$ \hyperlink{structfsml_1_1FlatStep}{Flat\-Step} $>$ $>$ \hyperlink{structfsml_1_1FlatMachine_ae8ebf27b84297afc058dd9329883f17a}{step\-Map}}\label{structfsml_1_1FlatMachine_ae8ebf27b84297afc058dd9329883f17a}
-
-\begin{DoxyCompactList}\small\item\em Map from pair of states (source, target) to transitions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The transitions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -40,13 +39,13 @@ Flat representation of the abstract syntax tree.
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{structfsml_1_1FlatMachine_a642e6c3c6b52364b9543b92ec4634c49}{\index{fsml\-::\-Flat\-Machine@{fsml\-::\-Flat\-Machine}!Flat\-Machine@{Flat\-Machine}}
+\hypertarget{structfsml_1_1FlatMachine_a939aa63ea93b644c498cf2e31f67499f}{\index{fsml\-::\-Flat\-Machine@{fsml\-::\-Flat\-Machine}!Flat\-Machine@{Flat\-Machine}}
 \index{Flat\-Machine@{Flat\-Machine}!fsml::FlatMachine@{fsml\-::\-Flat\-Machine}}
 \subsubsection[{Flat\-Machine}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-Flat\-Machine\-::\-Flat\-Machine (
 \begin{DoxyParamCaption}
-\item[{const {\bf Ast\-Machine} $\ast$const}]{am}
+\item[{const {\bf Ast\-Machine} \&}]{am}
 \end{DoxyParamCaption}
-)}}\label{structfsml_1_1FlatMachine_a642e6c3c6b52364b9543b92ec4634c49}
+)}}\label{structfsml_1_1FlatMachine_a939aa63ea93b644c498cf2e31f67499f}
 
 
 Constructs a flattened representation of the given abstract syntax tree machine. 
@@ -56,6 +55,31 @@ Constructs a flattened representation of the given abstract syntax tree machine.
 {\em am} & Abstract syntax tree to generate from. \\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfsml_1_1FlatMachine_a79e252b2ba388c1064d9570a6df275af}{\index{fsml\-::\-Flat\-Machine@{fsml\-::\-Flat\-Machine}!operator Ast\-Machine@{operator Ast\-Machine}}
+\index{operator Ast\-Machine@{operator Ast\-Machine}!fsml::FlatMachine@{fsml\-::\-Flat\-Machine}}
+\subsubsection[{operator Ast\-Machine}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-Flat\-Machine\-::operator {\bf Ast\-Machine} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{structfsml_1_1FlatMachine_a79e252b2ba388c1064d9570a6df275af}
+
+
+Converts this \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine} into an equivalent, minimal abstract syntax tree. 
+
+\hypertarget{structfsml_1_1FlatMachine_a3c50e3140f7629c8c34f2c760522203b}{\index{fsml\-::\-Flat\-Machine@{fsml\-::\-Flat\-Machine}!operator std\-::string@{operator std\-::string}}
+\index{operator std\-::string@{operator std\-::string}!fsml::FlatMachine@{fsml\-::\-Flat\-Machine}}
+\subsubsection[{operator std\-::string}]{\setlength{\rightskip}{0pt plus 5cm}fsml\-::\-Flat\-Machine\-::operator std\-::string (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{structfsml_1_1FlatMachine_a3c50e3140f7629c8c34f2c760522203b}
+
+
+Converts this \hyperlink{structfsml_1_1FlatMachine}{Flat\-Machine} into a string. 
+
 
 
 The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}

@@ -99,17 +99,18 @@ $(document).ready(function(){initNavTree('md_README.html','');});
 <div class="title">FSML++ </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>FSML implementation using C++ &ndash; see <a href="https://github.com/slebok/slepro/tree/master/languages/fsml">https://github.com/slebok/slepro/tree/master/languages/fsml</a></p>
+<div class="textblock"><p>FSML implementation using C++. See <a href="https://github.com/slebok/slepro/tree/master/languages/fsml">https://github.com/slebok/slepro/tree/master/languages/fsml</a> for the reference implementation in Prolog.</p>
 <h2>Requirements</h2>
 <p>This program requires a compiler that supports the C++11 standard.</p>
-<p>It also depends on Boost, which is provided in the lib folder to be linked statically. There's no need to build Boost, as only header files are used.</p>
+<p>It also depends on Boost, which is provided in the lib folder to be linked statically. There's no need to build Boost since the project exclusively uses header-only libraries.</p>
 <p>For unit testing, Google's gtest library and pthread are required.</p>
-<p>Finally, since the program generates LaTeX and Dot code, you will need appropriate programs for compiling them, e.g. pdfTeX and Graphviz</p>
+<p>Finally, since the program generates LaTeX and Dot code, you will need appropriate programs for compiling them into an image format, like pdfTeX and Graphviz.</p>
 <h2>Build</h2>
 <p>There is a Makefile for gcc provided, which will place compiled binaries into a folder called bin.</p>
 <p>Use <code>make debug</code> or <code>make release</code> to build a debug or fully-optimized executable. The binaries will be called <code>fsmlpp_debug</code> and <code>fsmlpp</code> respectively.</p>
 <p>Use <code>make simulation</code> to build the sample interactive simulation. If you have Google's gtest unit testing library and pthread installed. The resulting binary will be called <code>fsmlpp_simulation</code>.</p>
-<p>Use <code>make test</code> to build the unit test, the required libraries will be attempted to be linked via <code>-lgtest -lpthread</code> The resulting binary will be called <code>fsmlpp_test</code>.</p>
+<p>Use <code>make test</code> to build the test, the required libraries will be attempted to be linked via <code>-lgtest -lpthread</code> The resulting binary will be called <code>fsmlpp_test</code>.</p>
+<p>Use <code>make table</code> to build an executable that prints a table from the goedelization function for use in our presentation. The resulting binary will be called <code>fsmlpp_table</code>.</p>
 <p><code>make</code> by itself will build all targets.</p>
 <h2>Bash Script</h2>
 <p>There is a bash script called <code>buildnrun.sh</code> provided. It will make the release build, generate C++, LaTeX and Dot code for the Sample.Fsml, and finally run <code>pdflatex</code> and <code>graphviz</code> to yield two different PDF files.</p>
@@ -118,7 +119,15 @@ $(document).ready(function(){initNavTree('md_README.html','');});
 <p>Note that the program will look for the template files in the present working directory, so run it from the project's root directory.</p>
 <p>The program will attempt to load the given file, parse the code inside, validate it and then generate a C++ header file, LaTeX file and Dot file with an appropriate name. If any of the steps fail, an appropriate error is thrown.</p>
 <h2>Run Test</h2>
-<p>Execute the compiled <code>fsmlpp_test</code> from the project's root directory so it can find all files. No special output means that the expected errors or lack thereof occurred. Otherwise, there will be a message about each failed test.</p>
+<p>The syntax for running the test is <code>fsmlpp_test TEST...</code>, where TEST is one or more of the following:</p>
+<ul>
+<li><b>constraint</b> execute the simple constraints tests given.</li>
+<li><b>model &lt;ni&gt; &lt;ns&gt; &lt;t&gt; &lt;maxT&gt;</b> execute identity testing of the parser, abstract syntax and flat representation. This will generate flat representations with <b>ni</b> initial states, <b>ns</b> non-initial states and transition configurations from <b>t</b> to <b>maxT</b>. These will be converted to an abstract syntax tree, which is converted to FSML code. This code is parsed into another abstract syntax tree and another flat representation is constructed from it. The abstract syntax trees and flat representation are compared to each other and should always be equal.</li>
+<li><b>machine &lt;ns&gt; &lt;t&gt; &lt;maxT&gt;</b> execute oracle testing of the machine against Boost's directed graph and, if the machine is actually valid, perform identity testing against the flat representation. This will generate flat representations together with an equivalent Boost.Graph directed graph with one initial state, <b>ns</b> non-initial states and transition configurations from <b>t</b> to <b>maxT</b>. A breadth-first search is performed on the graph. If all states are reachable, the flat representation is converted to a machine, which is converted back into another flat representation and the two are checked for equality. If not all states are reachable, it is verified that the construction of the machine fails with the same states reachable.</li>
+<li><b>sanityEqual &lt;ni&gt; &lt;ns&gt; &lt;t&gt;</b> execute a simple equality sanity check. This will generate a flat representation and abstract syntax with <b>ni</b> initial states, <b>ns</b> non-initial states and a transition configuration <b>t</b> and compare them against themselves.</li>
+<li><b>sanityInequal &lt;ni1&gt; &lt;ns1&gt; &lt;t1&gt; &lt;ni2&gt; &lt;ns2&gt; &lt;t2&gt;</b> execute an inequality sanity check. This will generate two flat representations and abstract syntax trees with <b>ni1</b> and <b>ni2</b> initial states, <b>ns1</b> and <b>ns2</b> non-initial states and transition configurations <b>t1</b> and <b>t2</b> respectively. They are then compared against each other expecting them to be inequal. Note that the test will fail if two identical configurations are given.</li>
+</ul>
+<p>Note that the <b>ni</b> and <b>ns</b> are limited by the size of <code>size_t</code> on your platform, while <b>t</b> and <b>maxT</b> are of arbitrary size.</p>
 <h2>Run Simulation</h2>
 <p>To run the simulation, just execute the compiled <code>fsmlpp_simulation</code> and enjoy the interactive simulation experience. </p>
 </div></div><!-- contents -->
@@ -126,7 +135,7 @@ $(document).ready(function(){initNavTree('md_README.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jan 7 2014 20:19:49 for FSML++ by
+    <li class="footer">Generated on Wed Feb 26 2014 06:54:21 for FSML++ by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
 <li>FlatMachine()
-: <a class="el" href="structfsml_1_1FlatMachine.html#a642e6c3c6b52364b9543b92ec4634c49">fsml::FlatMachine</a>
+: <a class="el" href="structfsml_1_1FlatMachine.html#a939aa63ea93b644c498cf2e31f67499f">fsml::FlatMachine</a>
 </li>
 <li>FlatStep()
 : <a class="el" href="structfsml_1_1FlatStep.html#a2056fa8fd3e527dd04fffb7011fe3d16">fsml::FlatStep</a>
@@ -162,11 +162,15 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>getAction()
+: <a class="el" href="classfsml_1_1Step.html#a7d310d684bca136ddc95ca8454dfad40">fsml::Step</a>
+</li>
 <li>getCurrentState()
 : <a class="el" href="classfsml_1_1Machine.html#a5bce113183b6d59b652b33f4369bb45c">fsml::Machine</a>
 </li>
 <li>getId()
 : <a class="el" href="classfsml_1_1State.html#af13128f0b9cdf6433f4307bb16159477">fsml::State</a>
+, <a class="el" href="classfsml_1_1Action.html#ab158f49a59dea6cf40ba08210dcd09cc">fsml::Action</a>
 </li>
 <li>getSteps()
 : <a class="el" href="classfsml_1_1State.html#ad96fe3074f0c3d8bd3dcb9a7cd7e25ed">fsml::State</a>
@@ -182,7 +186,11 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>id
-: <a class="el" href="classfsml_1_1State.html#a4acc37de347d0e4a66d6470a4d6ebcf7">fsml::State</a>
+: <a class="el" href="classfsml_1_1Action.html#ab5da63bc94cdd0b4110c87fd3e4ee271">fsml::Action</a>
+, <a class="el" href="classfsml_1_1State.html#a4acc37de347d0e4a66d6470a4d6ebcf7">fsml::State</a>
+</li>
+<li>initial
+: <a class="el" href="classfsml_1_1State.html#aeb0c3fe997b186b77e3c363709a1bfea">fsml::State</a>
 </li>
 <li>initials
 : <a class="el" href="structfsml_1_1FlatMachine.html#a3069121ea01eab1cec46590ab186b622">fsml::FlatMachine</a>
@@ -193,6 +201,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>invoke()
 : <a class="el" href="classfsml_1_1Action.html#ae5b8ae5409ea58bed119bc860a803897">fsml::Action</a>
 , <a class="el" href="classfsml_1_1Step.html#ab71a0687e8cfff12deed6b1916ff1ba3">fsml::Step</a>
+</li>
+<li>isInitial()
+: <a class="el" href="classfsml_1_1State.html#a2cbbbb658b8d6da4b6b0f0a4e97fed7b">fsml::State</a>
 </li>
 </ul>
 
@@ -205,8 +216,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>operator AstMachine()
+: <a class="el" href="structfsml_1_1FlatMachine.html#a79e252b2ba388c1064d9570a6df275af">fsml::FlatMachine</a>
+</li>
 <li>operator std::string()
-: <a class="el" href="structfsml_1_1FlatStep.html#aa855ca1535e6dbffb556ee28bd91779f">fsml::FlatStep</a>
+: <a class="el" href="structfsml_1_1FlatMachine.html#a3c50e3140f7629c8c34f2c760522203b">fsml::FlatMachine</a>
+, <a class="el" href="structfsml_1_1FlatStep.html#aa855ca1535e6dbffb556ee28bd91779f">fsml::FlatStep</a>
 </li>
 <li>operator&lt;&lt;()
 : <a class="el" href="classfsml_1_1Machine.html#a4c02303acf2c3bd89ffc6ceda604b02d">fsml::Machine</a>
@@ -232,7 +247,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="structfsml_1_1FlatStep.html#a0d750cd9f657776ffc88627a44d9fdf6">fsml::FlatStep</a>
 </li>
 <li>State()
-: <a class="el" href="classfsml_1_1State.html#a8aa7803bfefbd8c846ebd8cb81f824ac">fsml::State</a>
+: <a class="el" href="classfsml_1_1State.html#a22711ba81bad4eb0b4a98b17a45cfd36">fsml::State</a>
 </li>
 <li>stateMap
 : <a class="el" href="classfsml_1_1Machine.html#a8d777492e8e8b0e79b041444f386c319">fsml::Machine</a>
@@ -240,18 +255,15 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>states
 : <a class="el" href="structfsml_1_1FlatMachine.html#a5f3c317f5a3a8f13f10160dcaeef63e3">fsml::FlatMachine</a>
 </li>
-<li>step()
-: <a class="el" href="classfsml_1_1State.html#a0c7aafd6216a785c159e70f00a12d3f8">fsml::State</a>
-</li>
 <li>Step()
 : <a class="el" href="classfsml_1_1Step.html#a5f656cb2f850f8a24afc710f4904ef43">fsml::Step</a>
 </li>
-<li>stepMap
-: <a class="el" href="structfsml_1_1FlatMachine.html#ae8ebf27b84297afc058dd9329883f17a">fsml::FlatMachine</a>
+<li>step()
+: <a class="el" href="classfsml_1_1State.html#a0c7aafd6216a785c159e70f00a12d3f8">fsml::State</a>
 </li>
 <li>steps
-: <a class="el" href="structfsml_1_1FlatMachine.html#a2fc01c07d6bc3f62fba880e96e538390">fsml::FlatMachine</a>
-, <a class="el" href="classfsml_1_1State.html#af9c12ff54dd9712d43b3a10609445642">fsml::State</a>
+: <a class="el" href="classfsml_1_1State.html#af9c12ff54dd9712d43b3a10609445642">fsml::State</a>
+, <a class="el" href="structfsml_1_1FlatMachine.html#a2fc01c07d6bc3f62fba880e96e538390">fsml::FlatMachine</a>
 </li>
 </ul>
 
@@ -267,7 +279,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jan 7 2014 20:19:52 for FSML++ by
+    <li class="footer">Generated on Wed Feb 26 2014 06:54:25 for FSML++ by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

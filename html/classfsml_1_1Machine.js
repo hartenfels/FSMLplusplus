@@ -5,6 +5,7 @@ var classfsml_1_1Machine =
     [ "~Machine", "classfsml_1_1Machine.html#a517f29b8c2e2b1815dd43c59a93a8390", null ],
     [ "addStep", "classfsml_1_1Machine.html#a863ac1a16a82e0fc0a8e85553061686f", null ],
     [ "getCurrentState", "classfsml_1_1Machine.html#a5bce113183b6d59b652b33f4369bb45c", null ],
+    [ "operator FlatMachine", "classfsml_1_1Machine.html#a146384b88619887f03613f439781e9e0", null ],
     [ "operator<<", "classfsml_1_1Machine.html#a4c02303acf2c3bd89ffc6ceda604b02d", null ],
     [ "reachableFrom", "classfsml_1_1Machine.html#a7d184c839fe996141a692152b9b37e0a", null ],
     [ "registerAt", "classfsml_1_1Machine.html#a51b789ab95db22995529818bed9fef20", null ],

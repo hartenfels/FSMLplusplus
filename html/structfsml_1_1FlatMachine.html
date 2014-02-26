@@ -119,9 +119,15 @@ $(document).ready(function(){initNavTree('structfsml_1_1FlatMachine.html','');})
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a642e6c3c6b52364b9543b92ec4634c49"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsml_1_1FlatMachine.html#a642e6c3c6b52364b9543b92ec4634c49">FlatMachine</a> (const <a class="el" href="structfsml_1_1AstMachine.html">AstMachine</a> *const am)</td></tr>
-<tr class="memdesc:a642e6c3c6b52364b9543b92ec4634c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a flattened representation of the given abstract syntax tree machine.  <a href="#a642e6c3c6b52364b9543b92ec4634c49">More...</a><br/></td></tr>
-<tr class="separator:a642e6c3c6b52364b9543b92ec4634c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a939aa63ea93b644c498cf2e31f67499f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsml_1_1FlatMachine.html#a939aa63ea93b644c498cf2e31f67499f">FlatMachine</a> (const <a class="el" href="structfsml_1_1AstMachine.html">AstMachine</a> &amp;am)</td></tr>
+<tr class="memdesc:a939aa63ea93b644c498cf2e31f67499f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a flattened representation of the given abstract syntax tree machine.  <a href="#a939aa63ea93b644c498cf2e31f67499f">More...</a><br/></td></tr>
+<tr class="separator:a939aa63ea93b644c498cf2e31f67499f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e252b2ba388c1064d9570a6df275af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsml_1_1FlatMachine.html#a79e252b2ba388c1064d9570a6df275af">operator AstMachine</a> () const </td></tr>
+<tr class="memdesc:a79e252b2ba388c1064d9570a6df275af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts this <a class="el" href="structfsml_1_1FlatMachine.html" title="Flat representation of the abstract syntax tree.">FlatMachine</a> into an equivalent, minimal abstract syntax tree.  <a href="#a79e252b2ba388c1064d9570a6df275af">More...</a><br/></td></tr>
+<tr class="separator:a79e252b2ba388c1064d9570a6df275af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c50e3140f7629c8c34f2c760522203b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsml_1_1FlatMachine.html#a3c50e3140f7629c8c34f2c760522203b">operator std::string</a> () const </td></tr>
+<tr class="memdesc:a3c50e3140f7629c8c34f2c760522203b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts this <a class="el" href="structfsml_1_1FlatMachine.html" title="Flat representation of the abstract syntax tree.">FlatMachine</a> into a string.  <a href="#a3c50e3140f7629c8c34f2c760522203b">More...</a><br/></td></tr>
+<tr class="separator:a3c50e3140f7629c8c34f2c760522203b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -137,24 +143,18 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 std::vector&lt; <a class="el" href="structfsml_1_1FlatStep.html">FlatStep</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsml_1_1FlatMachine.html#a2fc01c07d6bc3f62fba880e96e538390">steps</a></td></tr>
 <tr class="memdesc:a2fc01c07d6bc3f62fba880e96e538390"><td class="mdescLeft">&#160;</td><td class="mdescRight">The transitions. <br/></td></tr>
 <tr class="separator:a2fc01c07d6bc3f62fba880e96e538390"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8ebf27b84297afc058dd9329883f17a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8ebf27b84297afc058dd9329883f17a"></a>
-std::map&lt; std::pair<br class="typebreak"/>
-&lt; std::string, std::string &gt;<br class="typebreak"/>
-, std::vector&lt; <a class="el" href="structfsml_1_1FlatStep.html">FlatStep</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsml_1_1FlatMachine.html#ae8ebf27b84297afc058dd9329883f17a">stepMap</a></td></tr>
-<tr class="memdesc:ae8ebf27b84297afc058dd9329883f17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map from pair of states (source, target) to transitions. <br/></td></tr>
-<tr class="separator:ae8ebf27b84297afc058dd9329883f17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Flat representation of the abstract syntax tree. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a642e6c3c6b52364b9543b92ec4634c49"></a>
+<a class="anchor" id="a939aa63ea93b644c498cf2e31f67499f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">fsml::FlatMachine::FlatMachine </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structfsml_1_1AstMachine.html">AstMachine</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structfsml_1_1AstMachine.html">AstMachine</a> &amp;&#160;</td>
           <td class="paramname"><em>am</em></td><td>)</td>
           <td></td>
         </tr>
@@ -171,6 +171,41 @@ std::map&lt; std::pair<br class="typebreak"/>
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a79e252b2ba388c1064d9570a6df275af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">fsml::FlatMachine::operator <a class="el" href="structfsml_1_1AstMachine.html">AstMachine</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts this <a class="el" href="structfsml_1_1FlatMachine.html" title="Flat representation of the abstract syntax tree.">FlatMachine</a> into an equivalent, minimal abstract syntax tree. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3c50e3140f7629c8c34f2c760522203b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">fsml::FlatMachine::operator std::string </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts this <a class="el" href="structfsml_1_1FlatMachine.html" title="Flat representation of the abstract syntax tree.">FlatMachine</a> into a string. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>include/fsml/<a class="el" href="FlatMachine_8hpp_source.html">FlatMachine.hpp</a></li>
 <li>src/fsml/FlatMachine.cpp</li>
@@ -181,7 +216,7 @@ std::map&lt; std::pair<br class="typebreak"/>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>fsml</b></li><li class="navelem"><a class="el" href="structfsml_1_1FlatMachine.html">FlatMachine</a></li>
-    <li class="footer">Generated on Tue Jan 7 2014 20:19:52 for FSML++ by
+    <li class="footer">Generated on Wed Feb 26 2014 06:54:25 for FSML++ by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

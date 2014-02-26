@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{german}
 \usepackage{graphicx}
+\usepackage{tikz}
 \beamertemplatenavigationsymbolsempty
 \usetheme{Boadilla}
 \usecolortheme{whale}
@@ -42,9 +43,11 @@
 	\frametitle{Contents}
 	\begin{enumerate}
 		\fitem Frameworks
-		\fitem What we do		
-		\fitem TestDataGeneration
-		\fitem Run
+		\fitem Basic Testing	
+		\fitem Test Data Generation
+		\fitem Extended Testing
+		\fitem Running It
+		\fitem Questions and Answers
 	\end{enumerate}\vfill
 \end{frame}
 
@@ -53,50 +56,31 @@
 	\framecount{Frameworks}\pause
 	\begin{itemize}[<+->]
 		\fitem Many available...
-		
-			\includegraphics[scale=0.1]{res2/listframeworks_both_1page.pdf}	
-		
 		\fitem ...but unsuitable to our approach
 		\fitem Simple algorithm
-	\end{itemize}
-	\vfill	
-	
+	\end{itemize}\vfill
+\tikz[remember picture,overlay]
+ \node at ([xshift=-2.5cm,yshift=-5cm]current page.north east) 
+  {\includegraphics[scale=0.18]{res2/listframeworks_both_1page.pdf}};
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\framecount{What we do}\pause
-	\begin{itemize}[<+->]
-	\fitem Identity Testing
-	\fitem Testing parser, abstract syntax and flat representation
-	\vfill	
-	\begin{center}
-		\includegraphics[scale=1]{res3/leftSideTesting.pdf}		
-	\end{center}
-
-	\fitem BUT not checking any constraints
-
-	\vfill
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\framecount{What we do}
+	\framecount{Basic Testing}\pause
 	\begin{itemize}
-	\fitem Solution: Oracle
-	\vfill
+		\fitem Identity Testing\pause
+		\fitem Testing parser, abstract syntax and flat representation
+	\end{itemize}\vfill
 	\begin{center}
-		\includegraphics[scale=1]{res3/rightSideTesting.pdf}
+		\includegraphics[width=300pt]{res3/leftSideTesting.pdf}		
 	\end{center}
-	\vfill
-	\end{itemize}
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\framecount{TestDataGeneration}
+	\framecount{Test Data Generation}
 	\begin{itemize}
-		\fitem Algorithm \tiny(2 states / 25 configurations)
+		\fitem Goedelization \tiny(2 states / 25 configurations)
 	\end{itemize}	
 	\tiny	
 	\begin{center}	
@@ -133,21 +117,36 @@
 \end{frame}
 
 \begin{frame}
-	\framecount{TestDataGeneration}
+	\framecount{Test Data Generation}
 	\begin{itemize}
-		\fitem State\&Step-Generation
-	\end{itemize}
+		\fitem Algorithm
+	\end{itemize}\vfill	
+	\includegraphics[scale=0.5]{res3/genStep.png}\\ 
 	\vfill
-		\includegraphics[scale=0.5]{res3/genStep.png}\\ 
-		\vfill
-		\includegraphics[scale=0.5]{res3/generateFlatMachine.png}
-		\vfill
-
+	\includegraphics[scale=0.5]{res3/generateFlatMachine.png}
+	\vfill
 \end{frame}
 
+\nextframe
+\begin{frame}
+	\framecount{Extended Testing}
+	\begin{itemize}
+		\fitem Problem: Constraints are not fulfilled\pause
+		\fitem Solution: Boost.Graph as oracle
+	\end{itemize}\vfill
+	\begin{center}
+		\includegraphics[scale=1]{res3/rightSideTesting.pdf}
+	\end{center}
+	\vfill
+\end{frame}
 
-
-
+\nextframe
+\begin{frame}
+	\framecount{Running It}
+	\begin{center}\vspace{70pt}
+		{\Huge Example}\\\vspace{54.35pt}
+	\end{center}
+\end{frame}
 
 \nextframe
 \begin{frame}

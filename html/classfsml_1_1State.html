@@ -119,15 +119,17 @@ $(document).ready(function(){initNavTree('classfsml_1_1State.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8aa7803bfefbd8c846ebd8cb81f824ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#a8aa7803bfefbd8c846ebd8cb81f824ac">State</a> (const std::string &amp;<a class="el" href="classfsml_1_1State.html#a4acc37de347d0e4a66d6470a4d6ebcf7">id</a>)</td></tr>
-<tr class="memdesc:a8aa7803bfefbd8c846ebd8cb81f824ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classfsml_1_1State.html" title="Represents a Machine&#39;s state.">State</a> with the given id.  <a href="#a8aa7803bfefbd8c846ebd8cb81f824ac">More...</a><br/></td></tr>
-<tr class="separator:a8aa7803bfefbd8c846ebd8cb81f824ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22711ba81bad4eb0b4a98b17a45cfd36"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#a22711ba81bad4eb0b4a98b17a45cfd36">State</a> (const std::string &amp;<a class="el" href="classfsml_1_1State.html#a4acc37de347d0e4a66d6470a4d6ebcf7">id</a>, const bool &amp;<a class="el" href="classfsml_1_1State.html#aeb0c3fe997b186b77e3c363709a1bfea">initial</a>=false)</td></tr>
+<tr class="memdesc:a22711ba81bad4eb0b4a98b17a45cfd36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classfsml_1_1State.html" title="Represents a Machine&#39;s state.">State</a> with the given id.  <a href="#a22711ba81bad4eb0b4a98b17a45cfd36">More...</a><br/></td></tr>
+<tr class="separator:a22711ba81bad4eb0b4a98b17a45cfd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a28f6f4a995313d9bc85d1fdf51fb9b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#a0a28f6f4a995313d9bc85d1fdf51fb9b">addStep</a> (const std::string &amp;input, const <a class="el" href="classfsml_1_1Step.html">Step</a> &amp;<a class="el" href="classfsml_1_1State.html#a0c7aafd6216a785c159e70f00a12d3f8">step</a>)</td></tr>
 <tr class="memdesc:a0a28f6f4a995313d9bc85d1fdf51fb9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attemps to add the given transition to this <a class="el" href="classfsml_1_1State.html" title="Represents a Machine&#39;s state.">State</a>.  <a href="#a0a28f6f4a995313d9bc85d1fdf51fb9b">More...</a><br/></td></tr>
 <tr class="separator:a0a28f6f4a995313d9bc85d1fdf51fb9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c7aafd6216a785c159e70f00a12d3f8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classfsml_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#a0c7aafd6216a785c159e70f00a12d3f8">step</a> (const std::string &amp;input)</td></tr>
 <tr class="memdesc:a0c7aafd6216a785c159e70f00a12d3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to execute the transition corresponding to the given input.  <a href="#a0c7aafd6216a785c159e70f00a12d3f8">More...</a><br/></td></tr>
 <tr class="separator:a0c7aafd6216a785c159e70f00a12d3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cbbbb658b8d6da4b6b0f0a4e97fed7b"><td class="memItemLeft" align="right" valign="top">virtual const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#a2cbbbb658b8d6da4b6b0f0a4e97fed7b">isInitial</a> () const </td></tr>
+<tr class="separator:a2cbbbb658b8d6da4b6b0f0a4e97fed7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af13128f0b9cdf6433f4307bb16159477"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#af13128f0b9cdf6433f4307bb16159477">getId</a> () const </td></tr>
 <tr class="separator:af13128f0b9cdf6433f4307bb16159477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad96fe3074f0c3d8bd3dcb9a7cd7e25ed"><td class="memItemLeft" align="right" valign="top">virtual const <br class="typebreak"/>
@@ -137,6 +139,10 @@ std::unordered_map<br class="typebreak"/>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:aeb0c3fe997b186b77e3c363709a1bfea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb0c3fe997b186b77e3c363709a1bfea"></a>
+const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#aeb0c3fe997b186b77e3c363709a1bfea">initial</a></td></tr>
+<tr class="memdesc:aeb0c3fe997b186b77e3c363709a1bfea"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classfsml_1_1State.html" title="Represents a Machine&#39;s state.">State</a>'s initialness. <br/></td></tr>
+<tr class="separator:aeb0c3fe997b186b77e3c363709a1bfea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4acc37de347d0e4a66d6470a4d6ebcf7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4acc37de347d0e4a66d6470a4d6ebcf7"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfsml_1_1State.html#a4acc37de347d0e4a66d6470a4d6ebcf7">id</a></td></tr>
 <tr class="memdesc:a4acc37de347d0e4a66d6470a4d6ebcf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classfsml_1_1State.html" title="Represents a Machine&#39;s state.">State</a>'s id. <br/></td></tr>
@@ -150,7 +156,7 @@ std::unordered_map<br class="typebreak"/>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a <a class="el" href="classfsml_1_1Machine.html" title="Represents a simulatable final state machine.">Machine</a>'s state. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8aa7803bfefbd8c846ebd8cb81f824ac"></a>
+<a class="anchor" id="a22711ba81bad4eb0b4a98b17a45cfd36"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -158,8 +164,18 @@ std::unordered_map<br class="typebreak"/>
           <td class="memname">fsml::State::State </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>initial</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -267,6 +283,30 @@ std::unordered_map<br class="typebreak"/>
 
 </div>
 </div>
+<a class="anchor" id="a2cbbbb658b8d6da4b6b0f0a4e97fed7b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool &amp; fsml::State::isInitial </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>If this <a class="el" href="classfsml_1_1State.html" title="Represents a Machine&#39;s state.">State</a> is an initial state. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0c7aafd6216a785c159e70f00a12d3f8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +357,7 @@ std::unordered_map<br class="typebreak"/>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>fsml</b></li><li class="navelem"><a class="el" href="classfsml_1_1State.html">State</a></li>
-    <li class="footer">Generated on Tue Jan 7 2014 20:19:52 for FSML++ by
+    <li class="footer">Generated on Wed Feb 26 2014 06:54:25 for FSML++ by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>
